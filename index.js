@@ -1,20 +1,27 @@
-var express = require('express');
-var app = express();
+'use strict';
 
-app.set('port', (process.env.PORT || 5000));
+var _express = require('express');
 
-app.use(express.static(__dirname + '/public'));
+var _express2 = _interopRequireDefault(_express);
 
-// views is directory for all template files
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
+var _fs = require('fs');
 
-app.get('/', function(request, response) {
-  response.render('pages/index');
+var _fs2 = _interopRequireDefault(_fs);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var h = _fs2.default.readFileSync(__dirname + '/public/lfLogin.html');
+var m = new Map();
+m.set('login', h);
+//delete h;
+var app = (0, _express2.default)();
+app.use(_express2.default.static(__dirname + '/public'));
+
+app.get('/', function (req, res) {
+	res.write(m.get('login').toString());
+	res.end();
 });
 
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
+app.listen('3000', function () {
+	console.log("hi");
 });
-
-
