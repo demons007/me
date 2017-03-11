@@ -15,6 +15,7 @@ var m = new Map();
 m.set('login', h);
 //delete h;
 var app = (0, _express2.default)();
+app.set('port', process.env.PORT || 5000);
 app.use(_express2.default.static(__dirname + '/public'));
 
 app.get('/', function (req, res) {
@@ -22,6 +23,6 @@ app.get('/', function (req, res) {
 	res.end();
 });
 
-app.listen('3000', function () {
-	console.log("hi");
+app.listen(app.get('port'), function () {
+	console.log('Node app is running on port', app.get('port'));
 });
