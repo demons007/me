@@ -1,0 +1,919 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>linkedFace-we link faces together</title>
+    <meta name="author" content="AJAY JHA">
+    <meta name="author" content="DAEMON">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+	<style type="text/css">
+		#_head{width:100%;height:65px;background-color:#1c0238;color:white;}
+		#_head_p_1{width:10%;height:100%;display:flex;float:left;flex-direction: row;flex-wrap: nowrap;justify-content:center;align-items:center;margin-right:1%;/*float:left;margin-right:1%;*/}
+		#_head_p_2{width:15%;height:100%;display:flex;float:left;flex-direction: row;flex-wrap: nowrap;justify-content:center;align-items:center;margin-right:1%;/*float:left;margin-right:1%;vertical-align:middle;*/}
+		#_head_p_3{width:5%;height:100%;display:flex;float:left;flex-direction: row;flex-wrap: nowrap;justify-content:center;align-items:center;margin-right:1%;/*float:left;margin-right:1%;*/}
+		#_head_p_4{width:20%;height:100%;display:flex;float:left;flex-direction: row;flex-wrap: nowrap;justify-content:center;align-items:center;margin-right:1%;/*float:left;margin-right:1%;*/}
+		#_head_p_5{width:20%;height:100%;display:flex;float:left;flex-direction: row;flex-wrap: nowrap;justify-content:center;align-items:center;margin-right:1%;/*float:left;margin-right:1%;*/}
+		#_head_p_6{width:10%;height:100%;display:flex;float:left;flex-direction: row;flex-wrap: nowrap;justify-content:center;align-items:center;/*float:left;margin-right:1%;*/}
+		#_head_p_7{width:60%;height:100%;display:flex;float:right;flex-direction: row;flex-wrap: nowrap;justify-content:center;align-items:center;margin-right:0%;/*float:right;margin-right:0%;*/}
+
+
+		#_body{width:100%;height:575px;background-color:Lavender ;margin-top:5px;color:white;}
+		#_body_p_1{width:34%;height:100%;display:inline;float:left;margin-right:1%;}
+		#_body_p_2{width:35%;height:100%;display:inline;float:left;margin-right:1%;}
+		#_body_p_3{width:28%;height:100%;display:inline;float:left;margin-right:0%;}
+		#_body_p_4{width:0%;height:100%;display:inline;float:left;margin-right:0%;}
+		#_body_p_5{width:0%;height:100%;display:inline;float:right;}
+		#_foot{width:100%;height:45px;border:1px solid black;}
+		#_body_p_3_blank{width:100%;height:10%;}
+		#_body_p_3_polyFilled{width:100%;}
+	</style>
+	<style type="text/css">
+		.shreya_lf_log_em_bx::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  			color: white;
+  			font-family:cursive;
+
+		}
+		.shreya_lf_log_em_bx::-moz-placeholder { /* Firefox 19+ */
+		  	color: white;
+		  	font-family:cursive;
+		}
+		.shreya_lf_log_em_bx:-ms-input-placeholder { /* IE 10+ */
+		  	color: white;
+		  	font-family:cursive;
+		}
+		.shreya_lf_log_em_bx:-moz-placeholder { /* Firefox 18- */
+		  	color: white;
+		  	font-family:cursive;
+		}
+		
+		
+		
+		.shreya_lf_log_pwd_bx::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  			color: white;
+  			font-family:cursive;
+
+		}
+		.shreya_lf_log_pwd_bx::-moz-placeholder { /* Firefox 19+ */
+		  	color: white;
+		  	font-family:cursive;
+		}
+		.shreya_lf_log_pwd_bx:-ms-input-placeholder { /* IE 10+ */
+		  	color: white;
+		  	font-family:cursive;
+		}
+		.shreya_lf_log_pwd_bx:-moz-placeholder { /* Firefox 18- */
+		  	color: white;
+		  	font-family:cursive;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		.shreya_lf_log_pwd_bx_shreya_jha::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  			color: black;
+  			font-family:cursive;
+
+		}
+		.shreya_lf_log_pwd_bx_shreya_jha::-moz-placeholder { /* Firefox 19+ */
+		  	color: black;
+		  	font-family:cursive;
+		}
+		.shreya_lf_log_pwd_bx_shreya_jha:-ms-input-placeholder { /* IE 10+ */
+		  	color: black;
+		  	font-family:cursive;
+		}
+		.shreya_lf_log_pwd_bx_shreya_jha:-moz-placeholder { /* Firefox 18- */
+		  	color: black;
+		  	font-family:cursive;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		.shreya_lf_log_em_bx_shreya_jha::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  			color: black;
+  			font-family:cursive;
+
+		}
+		.shreya_lf_log_em_bx_shreya_jha::-moz-placeholder { /* Firefox 19+ */
+		  	color: black;
+		  	font-family:cursive;
+		}
+		.shreya_lf_log_em_bx_shreya_jha:-ms-input-placeholder { /* IE 10+ */
+		  	color: black;
+		  	font-family:cursive;
+		}
+		.shreya_lf_log_em_bx_shreya_jha:-moz-placeholder { /* Firefox 18- */
+		  	color: black;
+		  	font-family:cursive;
+		}
+		
+		
+		
+		
+		
+		
+		
+		._sign_ip_class_shreya_name::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  			color: black;
+  			font-family:cursive;
+
+		}
+		._sign_ip_class_shreya_name::-moz-placeholder { /* Firefox 19+ */
+		  	color: black;
+		  	font-family:cursive;
+		}
+		._sign_ip_class_shreya_name:-ms-input-placeholder { /* IE 10+ */
+		  	color: black;
+		  	font-family:cursive;
+		}
+		._sign_ip_class_shreya_name:-moz-placeholder { /* Firefox 18- */
+		  	color: black;
+		  	font-family:cursive;
+		}
+		
+		
+		
+		._sign_ip_class_shreya_email::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  			color: black;
+  			font-family:cursive;
+
+		}
+		._sign_ip_class_shreya_email::-moz-placeholder { /* Firefox 19+ */
+		  	color: black;
+		  	font-family:cursive;
+		}
+		._sign_ip_class_shreya_email:-ms-input-placeholder { /* IE 10+ */
+		  	color: black;
+		  	font-family:cursive;
+		}
+		._sign_ip_class_shreya_email:-moz-placeholder { /* Firefox 18- */
+		  	color: black;
+		  	font-family:cursive;
+		}
+		
+		
+		
+		
+		._sign_ip_class_shreya_password::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  			color: black;
+  			font-family:cursive;
+
+		}
+		._sign_ip_class_shreya_password::-moz-placeholder { /* Firefox 19+ */
+		  	color: black;
+		  	font-family:cursive;
+		}
+		._sign_ip_class_shreya_password:-ms-input-placeholder { /* IE 10+ */
+		  	color: black;
+		  	font-family:cursive;
+		}
+		._sign_ip_class_shreya_password:-moz-placeholder { /* Firefox 18- */
+		  	color: black;
+		  	font-family:cursive;
+		}
+		
+		
+		
+		
+		._sign_ip_class_shreya_re_password::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  			color: black;
+  			font-family:cursive;
+
+		}
+		._sign_ip_class_shreya_re_password::-moz-placeholder { /* Firefox 19+ */
+		  	color: black;
+		  	font-family:cursive;
+		}
+		._sign_ip_class_shreya_re_password:-ms-input-placeholder { /* IE 10+ */
+		  	color: black;
+		  	font-family:cursive;
+		}
+		._sign_ip_class_shreya_re_password:-moz-placeholder { /* Firefox 18- */
+		  	color: black;
+		  	font-family:cursive;
+		}
+		
+		
+		
+		._sign_ip_class_dob::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  			color: black;
+  			font-family:cursive;
+
+		}
+		._sign_ip_class_dob::-moz-placeholder { /* Firefox 19+ */
+		  	color: black;
+		  	font-family:cursive;
+		}
+		._sign_ip_class_dob:-ms-input-placeholder { /* IE 10+ */
+		  	color: black;
+		  	font-family:cursive;
+		}
+		._sign_ip_class_dob:-moz-placeholder { /* Firefox 18- */
+		  	color: black;
+		  	font-family:cursive;
+		}
+		
+		
+		
+		
+		._sign_ip_class_shreya_color{ /* Chrome/Opera/Safari */
+  			color: black;
+  			font-family:cursive;
+
+		}
+		
+	</style>
+	<style type="text/css">
+	.loader {
+  border: 16px solid grey;;
+  border-radius: 50%;
+  margin-left:42%;
+  border-top: 16px solid #1c0238;
+  width: 20px;
+  height: 20px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+	</style>
+</head>
+<body>
+<!-- email validation temp -->
+	<script type="text/javascript">
+	function shreyaEm(email) {
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+function shreyaPas(str)
+  {
+    // at least one number, one lowercase and one uppercase letter
+    // at least six characters that are letters, numbers or the underscore
+    //var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}$/;
+	var re=/^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    return re.test(str);
+  }
+
+
+
+function shreyaName(id)
+{
+    var regex = /^[a-zA-Z ]{2,30}$/;
+	return regex.test(id)
+}
+</script>
+	<script type="text/javascript" id="email_ss">
+	function validateEmail(email) {
+    	var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    	return re.test(email);
+	}
+	</script>
+	<script type="text/javascript" id="password_ss">
+	function validateEmail(password) {
+    	var re = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+
+    	return re.test(password);
+	}
+	</script>
+<div id="_head">
+	<div id="_head_p_1">
+	</div>
+	<div id="_head_p_2">
+		
+	</div>
+	<div id="_head_p_3">
+	</div>
+	<!--<div id="_head_p_4">
+	</div>
+	<div id="_head_p_5">
+	</div>
+	<div id="_head_p_6">
+	</div>-->
+	<div id="_head_p_7">
+	</div>
+</div>
+<div id="_js_root_animation">
+</div>
+<div id="_body">
+	<div id="_body_p_1">
+	</div>
+	<div id="_body_p_2">
+	</div>
+	<div id="_body_p_3">
+		<div id="_body_p_3_blank">
+		</div>
+		<div id="_body_p_3_polyFilled">
+		</div>
+	</div>
+	<div id="_body_p_4">
+	</div>
+	<div id="_body_p_5">
+	</div>
+</div>
+
+<script type="text/babel">
+	'use strict';
+	function MyNameShreya(props){
+			return (
+				<div id="_my_name_shreya" className="_my_name_shreya" style={{width:props.width,height:props.height,display:"flex",justifyContent:"center",alignItems:"center",textAlign:"center",cursor:"pointer"}} title="linkedFace-we link faces together">
+					<code style={{fontFamily:"cursive"}}>
+						<font size="5">
+							linkedFace
+						</font><br /><font size="2">
+							we link faces together
+							</font>
+					</code>
+				</div>
+			)
+	}
+	
+	ReactDOM.render(<MyNameShreya width="100%" height="100%" />,document.getElementById('_head_p_2'));
+	
+	
+	
+	
+	
+	
+	
+		class ShreyaLoading extends React.Component{
+       constructor(props){
+       super(props);
+       this.state={
+       Dot:this.props.dot,
+       Type:this.props.type
+       };
+       this.componentDidMount=this.componentDidMount.bind(this);
+       }
+       componentDidMount(){
+       if(this.state.Type=="newUsr"){
+       var xhttp = new XMLHttpRequest();
+  			xhttp.onreadystatechange = function() {
+    			if (this.readyState == 4 && this.status == 200) {
+     				if(this.responseText!="oops"){
+     				top.location.href="http://www.linkedface.in/santa.php?gift="+this.responseText;
+     				}
+    			}
+  			};
+ 	 		xhttp.open("GET", "/signup.php?data="+this.state.Dot, true);
+ 	 		//console.log(JSON.stringify({d:JSON.parse(evt.detail.message)}));
+  			xhttp.send();
+  	}else if(this.state.Type=="existingUser"){
+  			var xhttp = new XMLHttpRequest();
+  			xhttp.onreadystatechange = function() {
+    			if (this.readyState == 4 && this.status == 200) {
+    			console.log("response");
+    			console.log(this.responseText);
+     				//var js=JSON.parse(this.responseText);
+     				top.location.href="http://www.linkedface.in/my/shr/lfS.php?f_s="+this.responseText;
+    			}
+  			};
+ 	 		xhttp.open("GET", "/my/shr/log_auth.php?data="+this.state.Dot, true);
+ 	 		//console.log(JSON.stringify({d:JSON.parse(evt.detail.message)}));
+  			xhttp.send();
+       		}
+       }
+       render(){
+       return (
+       <div id="loader_cnt" style={{width:"40%",height:"300px",marginLeft:"30%",position:"absolute",zIndex:"2",backgroundColor:"grey",border:"1px solid white",marginTop:"50px"}}><header id="_lol_hider_head_shreya_raj" className="_lol_hider_head_shreya_raj" style={{width:"100%",height:"30px",backgroundColor:"#1c0238"}}><input type="button" name="_hider_hidden_shreya_bt" id="_hider_hidden_shreya_bt" className="_hider_hidden_shreya_bt" value="&#9747;" style={{backgroundColor:"transparent",float:"right",color:"white",height:"100%"}} /></header><div className="loader" style={{marginTop:"50px"}}></div><div style={{width:"100&",textAlign:"center"}}><code><font size="5" color="white">please wait...</font></code></div></div>
+       )
+       }
+       }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	class LinkedFaceSignUp extends React.Component {
+			constructor(props){
+				super(props);
+				this.state = {
+					signText:"Sign Up Here",
+					name:"",
+					email:"",
+					password:"",
+					repassword:"",
+					gType:"",
+					dob:"",
+					interest:"",
+					toggleTypeDObInp:"text",
+					signEmPlaceholder:"type email or mobile number",
+					signPasPlaceholder:"type password",
+					signRePasPlaceholder:"re-type password",
+					signNamePlaceholder:"type name",
+					signNmBorder:"transparent",
+					signEmBorder:"transparent",
+					signPasBorder:"transparent",
+					signRePasBorder:"transparent",
+					signDOBborder:"transparent",
+					signNmBackground:"transparent",
+					signEmBackground:"transparent",
+					signPasBackground:"transparent",
+					signRePasBackground:"transparent",
+					signDOBbackground:"transparent",
+					signDob:"transparent",
+					signInteShreya:"transparent",
+					disability:false,
+					shreyaClassName:"_sign_ip_class_shreya_name",
+					shreyaClassEmail:"_sign_ip_class_shreya_email",
+					shreyaClassPassword:"_sign_ip_class_shreya_password",
+					shreyaClassRePassword:"_sign_ip_class_shreya_re_password",
+					shreyaClassDOB:"_sign_ip_class_dob",
+					shreyaClassInti:"",
+					shreyaNameColor:"white",
+					shreyaEmailColor:"white",
+					shreyaPasswordColor:"white",
+					shreyaRePasswordColor:"white"
+				};
+				this._offerSignUp=this._offerSignUp.bind(this);
+				this._private_name=this._private_name.bind(this);
+				this._private_uid=this._private_uid.bind(this);
+				this._private_password=this._private_password.bind(this);
+				this._private_password_re=this._private_password_re.bind(this);
+				this.setGender=this.setGender.bind(this);
+				this._toggleTypeShreya=this._toggleTypeShreya.bind(this);
+				this._inti_change_handa=this._inti_change_handa.bind(this);
+				this._same_As_fuci_blu=this._same_As_fuci_blu.bind(this);
+				this._actDobChange=this._actDobChange.bind(this);
+				this._signNmFuci=this._signNmFuci.bind(this);
+				this._signNmBluri=this._signNmBluri.bind(this);
+				this._signEmFuci=this._signEmFuci.bind(this);
+				this._signEmBluri=this._signEmBluri.bind(this);
+				this._signPasFuciR=this._signPasFuciR.bind(this);
+				this._signPasBluriR=this._signPasBluriR.bind(this);
+				this._signPasFuci=this._signPasFuci.bind(this);
+				this._signPasBluri=this._signPasBluri.bind(this);
+				this._shreya_sub_type_cc=this._shreya_sub_type_cc.bind(this);
+			}
+			_shreya_sub_type_cc(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+				this.setState({
+						signInteShreya:"transparent"
+					});
+			}
+			_signPasFuci(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+				this.setState({
+					signPasBorder:"transparent",
+					signPasBackground:"white",
+					shreyaClassPassword:"_sign_ip_class_shreya_color",
+					signPasPlaceholder:"type password"
+					});
+			}
+			_signPasBluri(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+				if(this.state.password==""){
+					this.setState({
+							signPasBorder:"red",
+							signPasBackground:"white",
+							signPasPlaceholder:"this field is required",
+							shreyaClassPassword:"_sign_ip_class_shreya_color"
+						});
+					}else if(!shreyaPas(this.state.password)){
+							this.setState({
+								signPasBorder:"red",
+								signPasBackground:"white",
+								signPasPlaceholder:"invalid password format",
+								shreyaClassPassword:"_sign_ip_class_shreya_color",
+								password:""
+							})
+						}
+			}
+			_signPasBluriR(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+				if(this.state.repassword==""){
+					console.log(this.state.repassword);
+					this.setState({
+							signRePasBorder:"red",
+							signRePasBackground:"white",
+							shreyaClassRePassword:"_sign_ip_class_shreya_color",
+							signRePasPlaceholder:"this field is required"
+						});
+					}else if(!shreyaPas(this.state.repassword)){
+							console.log(this.state.repassword);
+							this.setState({
+								signRePasBorder:"red",
+								signRePasBackground:"white",
+								shreyaClassRePassword:"_sign_ip_class_shreya_color",
+								signRePasPlaceholder:"invalid password format",
+								repassword:""
+							})
+						}
+			}
+			_signPasFuciR(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+				this.setState({
+					signRePasBorder:"transparent",
+					signRePasBackground:"white",
+					shreyaClassRePassword:"_sign_ip_class_shreya_color",
+					signRePasPlaceholder:"re-type password"
+					});
+			}
+			_signEmBluri(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+				if(this.state.email==""){
+					this.setState({
+							signEmBorder:"red",
+							signEmBackground:"white",
+							shreyaClassEmail:"_sign_ip_class_shreya_color",
+							signEmPlaceholder:"this field is required"
+						});
+					}else if(!shreyaEm(this.state.email)){
+							this.setState({
+								signEmBorder:"red",
+								signEmBackground:"white",
+								shreyaClassEmail:"_sign_ip_class_shreya_color",
+								signEmPlaceholder:"invalid email format",
+								email:""
+							})
+						}
+			}
+			_signEmFuci(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+				this.setState({
+					signEmBorder:"transparent",
+					signEmBackground:"white",
+					shreyaClassEmail:"_sign_ip_class_shreya_color",
+					signEmPlaceholder:"type email or mobile number"
+					});
+			}
+			_signNmBluri(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+				if(this.state.name==""){
+					this.setState({
+							signNmBorder:"red",
+							signNmBackground:"white",
+							shreyaClassName:"_sign_ip_class_shreya_color",
+							signNamePlaceholder:"this field is required"
+						});
+					}else if(!shreyaName(this.state.name)){
+							this.setState({
+								signNmBorder:"red",
+								signNmBackground:"white",
+								shreyaClassName:"_sign_ip_class_shreya_color",
+								signNamePlaceholder:"invalid name format",
+								name:""
+							})
+						}
+			}
+			_signNmFuci(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+				this.setState({
+					signNmBorder:"transparent",
+					signNmBackground:"white",
+					shreyaClassName:"_sign_ip_class_shreya_color",
+					signNamePlaceholder:"type name"
+					});
+			}
+			_actDobChange(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+				this.setState({
+					dob:evt.target.value
+				})
+			}
+			_private_name(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+				this.setState({
+					name:evt.target.value
+				})
+			}
+			_private_uid(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+				this.setState({
+					email:evt.target.value
+				})
+			}
+			_private_password(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+				this.setState({
+					password:evt.target.value
+				})
+			}
+			_private_password_re(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+				this.setState({
+					repassword:evt.target.value
+				})
+			}
+			setGender(evt){
+				this.setState({
+					gType:evt.target.value
+				})
+			}
+			_toggleTypeShreya(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+			this.setState({
+				signDob:"white",
+				toggleTypeDObInp:"date"
+			})
+			}
+			_offerSignUp(evt){
+			var shr={name:this.state.name,uid:this.state.email,password:this.state.password,gType:this.state.gType,dob:this.state.dob,interest:this.state.interest}
+			evt.preventDefault();
+			evt.stopPropagation();
+				var signup = new CustomEvent(
+				"newUser", 
+				{
+					detail: {
+						message: JSON.stringify(shr),
+						time: new Date(),
+					},
+					bubbles: true,
+					cancelable: true
+				}
+				);
+				this.setState({
+					disability:true
+					});
+				window.dispatchEvent(signup);
+			}
+			_inti_change_handa(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+			this.setState({
+				interest:evt.target.value
+			})
+			}
+			_same_As_fuci_blu(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				this.setState({
+				toggleTypeDObInp:"text",
+				shreyaClassDOB:"_sign_ip_class_shreya_color"
+			})
+			}
+			render(){
+				const gendX=this.state.gType;
+				return (
+					<div id="_sign_up_rea" className="_sign_up_rea" ref="_sign_up_rea" style={{width:"100%",height:"100%",backgroundColor:"transparent",marginTop:"20px",color:"black"}} >
+						<div id="_text_display" className="_text_display" ref="_text_display" style={{width:"100%",marginBottom:"10px",textAlign:"center"}} >
+							<code style={{fontFamily:"cursive"}} >
+								<font size="5">
+									{this.state.signText}
+								</font>
+							</code>
+						</div>
+						<div id="_sign_nm_shreya" className="_sign_nm_shreya" ref="_sign_nm_shreya" style={{width:"99%",marginBottom:"10px"}} >
+							<input type="text" name="_sign_nm_ip" id="_sign_nm_ip" className={this.state.shreyaClassName} ref="_sign_nm_ip" style={{width:"100%",height:"25px",borderColor:this.state.signNmBorder,backgroundColor:this.state.signNmBackground}} placeholder={this.state.signNamePlaceholder} onChange={this._private_name} value={this.state.name} onFocus={this._signNmFuci} onBlur={this._signNmBluri} disabled={this.state.disability} />
+						</div>
+						<div id="_sign_em_shreya" className="_sign_em_shreya" ref="_sign_em_shreya" style={{width:"99%",marginBottom:"10px"}} >
+							<input type="text" name="_sign_em_ip" id="_sign_em_ip" className={this.state.shreyaClassEmail} ref="_sign_em_ip" style={{width:"100%",height:"25px",borderColor:this.state.signEmBorder,backgroundColor:this.state.signEmBackground}} placeholder={this.state.signEmPlaceholder} onChange={this._private_uid} value={this.state.email} onFocus={this._signEmFuci} onBlur={this._signEmBluri} disabled={this.state.disability} />
+						</div>
+						<div id="_sign_ps_shreya" className="_sign_ps_shreya" ref="_sign_ps_shreya" style={{width:"99%",marginBottom:"10px"}} >
+							<input type="password" name="_sign_ps_ip" id="_sign_ps_ip" className={this.state.shreyaClassPassword} ref="_sign_ps_ip" style={{width:"100%",height:"25px",borderColor:this.state.signPasBorder,backgroundColor:this.state.signPasBackground}} placeholder={this.state.signPasPlaceholder} onChange={this._private_password} value={this.state.password} disabled={this.state.disability} onFocus={this._signPasFuci} onBlur={this._signPasBluri} />
+						</div>
+						<div id="_sign_rps_shreya" className="_sign_rps_shreya" ref="_sign_rps_shreya" style={{width:"99%",marginBottom:"10px"}} >
+							<input type="password" name="_sign_rps_ip" id="_sign_rps_ip" className={this.state.shreyaClassRePassword} ref="_sign_rps_ip" style={{width:"100%",height:"25px",borderColor:this.state.signRePasBorder,backgroundColor:this.state.signRePasBackground}} placeholder={this.state.signRePasPlaceholder} onChange={this._private_password_re} value={this.state.repassword} disabled={this.state.disability} onFocus={this._signPasFuciR} onBlur={this._signPasBluriR} />
+						</div>
+						<div id="gender_table" className="gender_table" ref="gender_table" style={{width:"100%",marginBottom:"10px",display:"table"}} >
+							<div id="_gender_row" className="_gender_row" ref="_gender_row" style={{width:"100%",display:"table-row"}} >
+								<div id="_gender_cell_1" className="_gender_cell_1" ref="_gender_cell_1" style={{width:"33%",display:"table-cell"}} >
+									<input type="radio" name="_gender" id="_gender" className="_gender" checked= {gendX==0} onChange={this.setGender} value={0} style={{color:"black"}}   />Male
+								</div>
+								<div id="_gender_cell_1" className="_gender_cell_1" ref="_gender_cell_1" style={{width:"33%",display:"table-cell"}} >
+									<input type="radio" name="_gender" id="_gender" className="_gender" checked= {gendX==1} onChange={this.setGender} value={1}  />Female
+								</div>
+								<div id="_gender_cell_1" className="_gender_cell_1" ref="_gender_cell_1" style={{width:"33%",display:"table-cell"}} >
+									<input type="radio" name="_gender" id="_gender" className="_gender" checked= {gendX==2} onChange={this.setGender} value={2}  />Other
+								</div>
+							</div>
+						</div>
+						<div id="_D_o_B" className="_D_o_B" ref="_D_o_B" style={{width:"100%",marginBottom:"10px"}} >
+							<input type={this.state.toggleTypeDObInp} name="_d_o_bb" id="_d_o_bb" className={this.state.shreyaClassDOB} ref="_d_o_bb" style={{width:"99%",height:"25px",backgroundColor:this.state.signDob,border:this.state.signDOBborder}} placeholder="your date of birth" onFocus={this._toggleTypeShreya} onBlur={this._same_As_fuci_blu} onChange={this._actDobChange} disabled={this.state.disability} />
+						</div>
+						<div id="_interest_div" className="_interest_div" ref="_interest_div" style={{width:"100%",marginBottom:"10px"}} >
+							<select id="_interest_sel" className={this.state.shreyaClassInti} ref="_interest_sel" style={{width:"100%",height:"30px",fontFamily:"cursive",backgroundColor:this.state.signInteShreya,color:"black",border:"transparent"}} onChange={this._inti_change_handa} disabled={this.state.disability} onFocus={this._shreya_sub_type_cc} >
+								<option value="" disabled="true" selected="true">your interest</option>
+								<option value="male">Male</option>
+								<option value="female">Female</option>
+								<option value="both">both</option>
+								<option value="other">other</option>
+							</select>
+						</div>
+						<div id="_sin_up_div" className="_sin_up_div" ref="_sin_up_div" style={{width:"100%"}} >
+							<input type="button" name="sign_up_bt_act" id="sign_up_bt_act" className="sign_up_bt_act" ref="sign_up_bt_act" value="Sign Up" style={{float:"right",fontFamily:"cursive",backgroundColor:"transparent",color:"black",border:"transparent",fontSize:20}} onClick={this._offerSignUp} disabled={this.state.disability} />
+						</div>
+					</div>
+				)
+			}
+		}
+		
+	
+	
+	
+	
+	
+	
+	//login event  sync
+	
+	window.addEventListener("newSecurityLayerLogin",(evt) => {
+	evt.preventDefault();
+	evt.stopPropagation();
+	console.log(evt.detail.message);
+	ReactDOM.render(<ShreyaLoading type="existingUser" dot={evt.detail.message} />,document.getElementById('_js_root_animation'));
+	},true);
+	
+	
+	
+	
+	
+	
+	
+	
+
+	class LfLoginMaterialShreya extends React.Component {
+		constructor(props){
+			super(props);
+			this.state = {
+				shreya_log_lf_em_v:"",
+				shreya_log_lf_pwd_v:"",
+				shreya_em_brdr:"none",
+				shreya_pwd_brdr:"none",
+				shreyaLfBgColor:"transparent",
+				shreyaLfIpEmClass:"shreya_lf_log_em_bx",
+				shreyaLfEmColor:"white",
+				shreyaLfBgPasColor:"transparent",
+				shreyaLfIpPasClass:"shreya_lf_log_pwd_bx",
+				shreyaLfPasColor:"white",
+				shreyaLfEmDisabled:false,
+				shreyaLfPwdDisabled:false,
+				shreyaLfButtonLogDisabled:false
+			};
+			this._shreya_lf_em_chng_evt=this._shreya_lf_em_chng_evt.bind(this);
+			this._shreya_lf_pwd_chng_evt=this._shreya_lf_pwd_chng_evt.bind(this);
+			this._let_me_in_focus_shreya_please=this._let_me_in_focus_shreya_please.bind(this);
+			this._shreyaLfIpEmBlur=this._shreyaLfIpEmBlur.bind(this);
+			this._shreyaLfPwdFocus=this._shreyaLfPwdFocus.bind(this);
+			this._shreyaLfPwdBlur=this._shreyaLfPwdBlur.bind(this);
+			this._moveOnWithYourOwnClick=this._moveOnWithYourOwnClick.bind(this);
+		}
+		_moveOnWithYourOwnClick(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+			if(this.state.shreya_log_lf_em_v != "" && this.state.shreya_log_lf_pwd_v !=""){
+			let emjs=JSON.stringify({email:this.state.shreya_log_lf_em_v,password:this.state.shreya_log_lf_pwd_v});
+			var event = new CustomEvent(
+				"newSecurityLayerLogin", 
+					{
+					detail: {
+						message: emjs,
+						time: new Date(),
+					},
+					bubbles: true,
+					cancelable: true
+					}
+			);
+			window.dispatchEvent(event);
+			}
+
+		}
+		_shreyaLfPwdBlur(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+			this.setState({
+					shreyaLfIpPasClass:"shreya_lf_log_pwd_bx",
+					shreyaLfBgPasColor:"transparent",
+					shreyaLfPasColor:"white"
+				});
+		}
+		_shreyaLfPwdFocus(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+			this.setState({
+					shreyaLfIpPasClass:"shreya_lf_log_pwd_bx_shreya_jha",
+					shreyaLfBgPasColor:"white",
+					shreyaLfPasColor:"black"
+				});
+		}
+		_shreyaLfIpEmBlur(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+			this.setState({
+					shreyaLfIpEmClass:"shreya_lf_log_em_bx",
+					shreyaLfBgColor:"transparent",
+					shreyaLfEmColor:"white"
+				});
+		}
+		_let_me_in_focus_shreya_please(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+			this.setState({
+					shreyaLfIpEmClass:"shreya_lf_log_em_bx_shreya_jha",
+					shreyaLfBgColor:"white",
+					shreyaLfEmColor:"black"
+				});
+		}
+		_shreya_lf_pwd_chng_evt(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+			this.setState({
+				shreya_log_lf_pwd_v:evt.target.value
+				});
+		}
+		_shreya_lf_em_chng_evt(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+			this.setState({
+				shreya_log_lf_em_v:evt.target.value
+				});
+		}
+		render(){
+			return (
+				<div id="_shreya_lf_log" className="_shreya_lf_log" ref="_shreya_lf_log" style={{width:"100%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+					<div id="_shreya_fl_p_1" className="_shreya_fl_p_1" ref="_shreya_fl_p_1" style={{width:"40%",height:"100%",display:"flex",float:"left",justifyContent:"center",alignItems:"center",marginRight:"1%"}}>
+						<input type="text" name="shreya_lf_log_em_bx" id="shreya_lf_log_em_bx" className={this.state.shreyaLfIpEmClass} ref="shreya_lf_log_em_bx" style={{borderColor:this.state.shreya_em_brdr,width:"100%",height:"45%",backgroundColor:this.state.shreyaLfBgColor,color:this.state.shreyaLfEmColor}} placeholder="email or mobile number" value={this.state.shreya_log_lf_em_v} onChange={this._shreya_lf_em_chng_evt} onFocus={this._let_me_in_focus_shreya_please} onBlur={this._shreyaLfIpEmBlur} disabled={this.state.shreyaLfEmDisabled} />
+					</div>
+					<div id="_shreya_fl_p_2" className="_shreya_fl_p_2" ref="_shreya_fl_p_2" style={{width:"40%",height:"100%",display:"flex",float:"left",justifyContent:"center",alignItems:"center",marginRight:"1%"}}>
+						<input type="password" name="shreya_lf_log_pwd_bx" id="shreya_lf_log_pwd_bx" className={this.state.shreyaLfIpPasClass} ref="shreya_lf_log_pwd_bx" style={{borderColor:this.state.shreya_pwd_brdr,width:"100%",height:"45%",backgroundColor:this.state.shreyaLfBgPasColor,color:this.state.shreyaLfPasColor}} placeholder="secret code" value={this.state.shreya_log_lf_pwd_v} onChange={this._shreya_lf_pwd_chng_evt} onFocus={this._shreyaLfPwdFocus} onBlur={this._shreyaLfPwdBlur} disabled={this.state.shreyaLfPwdDisabled} />
+					</div>
+					<div id="_shreya_fl_p_3" className="_shreya_fl_p_3" ref="_shreya_fl_p_3" style={{width:"16%",height:"100%",display:"flex",float:"left",alignItems:"center",marginRight:"5%"}}>
+						<input type="button" name="shreya_lf_log_ok_bx" id="shreya_lf_log_ok_bx" className="shreya_lf_log_ok_bx" ref="shreya_lf_log_ok_bx" style={{width:"70%",height:"45%",float:"left",fontFamily:"cursive",backgroundColor:"transparent",color:"white"}} value="login" disabled={this.state.shreyaLfButtonLogDisabled} onClick={this._moveOnWithYourOwnClick} />
+					</div>
+				</div>
+			)
+		}
+	}
+	ReactDOM.render(<LfLoginMaterialShreya />,document.getElementById('_head_p_7'));
+
+
+	/*class LfLoginShreya extends React.Component {
+		constructor(props){
+			super(props);
+			this.state = {
+			};
+		}
+		render(){
+			return (
+				<div id="_id_of_lf_login_shreya" className="_id_of_lf_login_shreya" ref="_id_of_lf_login_shreya" style={{width:"99%",height:"100%"}}>
+					<div id="_shreya_blank_space" className="_shreya_blank_space" ref="_shreya_blank_space" style={{width:"100%",height:"5%"}}>
+					</div>
+					<div id="_my_in_text_sign_lf_shreya" className="_my_in_text_sign_lf_shreya" ref="_my_in_text_sign_lf_shreya" style={{width:"100%",textAlign:"center"}}>
+						<code style={{fontFamily:"cursive"}}>
+							<font size="5">
+								sign up here
+							</font>
+						</code>
+					</div>
+					<div id="_shreya_actual_boxes_sign" className="_shreya_actual_boxes_sign" ref="_shreya_actual_boxes_sign" style={{width:"100%",height:"100%"}}>
+						<div id="_" className="" ref="" style={{}}>
+						</div>
+					</div>
+				</div>
+			)
+		}
+	}
+	ReactDOM.render(<LfLoginShreya />,document.getElementById('_body_p_3'))*/
+	
+	
+	
+	//render the signupzone to shreya DOM
+	ReactDOM.render(<LinkedFaceSignUp />,document.getElementById('_body_p_3_polyFilled'))
+	
+</script>
+</body>
+</html>
