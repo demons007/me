@@ -1,4 +1,3 @@
-
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -69,6 +68,23 @@
   			font-family:cursive;
 		}
 	</style>
+	<style type="text/css">
+		select {
+    			-webkit-appearance: none;
+    			-moz-appearance: none;
+    			text-indent: 1px;
+    			text-overflow: '';
+			border:0px;
+			-webkit-user-select: none;
+		}
+		select option {
+    			margin: 40px;
+    			background: #eaeff2;
+    			color: black;
+			border:0px;
+			outline:none;
+		}
+	</style>
 <script type="text/javascript">
 	function myResize(argument) {
 		document.getElementById("_body").style.height=window.innerHeight-105+"px";
@@ -82,19 +98,10 @@
 
 <!-- email validation temp -->
 	<script type="text/javascript">
-	function shreyaEm(email) {
+	function sEmail(email) {
   var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(email);
 }
-function shreyaPas(str)
-  {
-    // at least one number, one lowercase and one uppercase letter
-    // at least six characters that are letters, numbers or the underscore
-    //var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}$/;
-	var re=/^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
-    return re.test(str);
-  }
-
 
 
 function sName(id)
@@ -103,26 +110,26 @@ function sName(id)
 	return regex.test(id)
 }
 </script>
-	<script type="text/javascript" id="email_ss">
+	<!-- <script type="text/javascript" id="email_ss">
 	function validateEmail(email) {
     	var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     	return re.test(email);
 	}
-	</script>
+	</script> -->
 	<script type="text/javascript" id="password_ss">
-	function validatePassword(password) {
+	function sPassword(password) {
     	var re = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
     	return re.test(password);
 	}
 	</script>
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		function shreyaName(id)
 		{
     		var regex = /^[a-zA-Z ]{2,30}$/;
 			return regex.test(id)
 		}
-	</script>
+	</script> -->
 <div id="_head">
 	<div id="_head_p_1">
 	</div>
@@ -154,28 +161,287 @@ function sName(id)
 				super(props);
 				this._name_change=this._name_change.bind(this);
 				this._name_focus=this._name_focus.bind(this);
+				this._name_blur=this._name_blur.bind(this);
+				this._email_change=this._email_change.bind(this);
+				this._email_focus=this._email_focus.bind(this);
+				this._email_blur=this._email_blur.bind(this);
+				this._password_change=this._password_change.bind(this);
+				this._password_focus=this._password_focus.bind(this);
+				this._password_blur=this._password_blur.bind(this);
+				this._password_re_change=this._password_re_change.bind(this);
+				this._password_re_focus=this._password_re_focus.bind(this);
+				this._password_re_blur=this._password_re_blur.bind(this);
+				this._c_type_date=this._c_type_date.bind(this);
+				this._c_type_text=this._c_type_text.bind(this);
+				this._dob=this._dob.bind(this);
+				this._my_interest=this._my_interest.bind(this);
+				this._my_interest_value=this._my_interest_value.bind(this);
+				this._link_my_face=this._link_my_face.bind(this);
+				this._my_gender=this._my_gender.bind(this);
 				this.state={
 					name:"",
-					nameBorder:"transparent"
+					nameBorder:"transparent",
+					namePlaceholder:"name",
+					email:"",
+					emailBorder:"transparent",
+					emailPlaceholder:"email or mobile",
+					password:"",
+					passwordBorder:"transparent",
+					passwordPlaceholder:"password",
+					password_r:"",
+					passwordReBorder:"transparent",
+					passwordRePlaceholder:"confirm password",
+					cTypeToggle:"text",
+					dob:"",
+					interest:"",
+					gender:""
 				};
+			}
+			_name_blur(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				if(evt.target.value==""){
+					this.setState({
+							nameBorder:"red",
+							namePlaceholder:"this is required"
+						})
+				}else if(!sName(evt.target.value)){
+					this.setState({
+						nameBorder:"red",
+						name:"",
+						namePlaceholder:"enter a valid name"
+					})
+				}
 			}
 			_name_focus(evt){
 				evt.preventDefault();
 				evt.stopPropagation();
 				evt.target.style.outline="none";
+				if(!sName(evt.target.value)){
+					this.setState({
+						namePlaceholder:"name",
+						nameBorder:"transparent"
+					});
+				}else{
+					this.setState({
+						namePlaceholder:"name",
+						nameBorder:"green"
+					});
+				}
+				
 			}
 			_name_change(evt){
 				console.log(sName(evt.target.value))
+					this.setState({ name:evt.target.value })
 				if(sName(evt.target.value)){
 					this.setState({
 						nameBorder:"green"
 					})
+				}else{
+					this.setState({
+						nameBorder:"red"
+					})
 				}
+			}
+			_email_blur(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				if(evt.target.value==""){
+					this.setState({
+							emailBorder:"red",
+							emailPlaceholder:"this is required"
+						})
+				}else if(!sEmail(evt.target.value)){
+					this.setState({
+						emailBorder:"red",
+						email:"",
+						emailPlaceholder:"enter a valid email or mobile"
+					})
+				}
+			}
+			_email_focus(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				evt.target.style.outline="none";
+				if(!sEmail(evt.target.value)){
+					this.setState({
+						emailPlaceholder:"email or mobile",
+						emailBorder:"transparent"
+					});
+				}else{
+					this.setState({
+						emailPlaceholder:"email or mobile",
+						emailBorder:"green"
+					});
+				}
+				
+			}
+			_email_change(evt){
+				console.log(sEmail(evt.target.value))
+					this.setState({ email:evt.target.value })
+				if(sEmail(evt.target.value)){
+					this.setState({
+						emailBorder:"green"
+					})
+				}else{
+					this.setState({
+						emailBorder:"red"
+					})
+				}
+			}
+			_password_blur(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				if(evt.target.value==""){
+					this.setState({
+							passwordBorder:"red",
+							passwordPlaceholder:"this is required"
+						})
+				}else if(!sPassword(evt.target.value)){
+					this.setState({
+						passwordBorder:"red",
+						password:"",
+						passwordPlaceholder:"enter a valid password"
+					})
+				}
+			}
+			_password_focus(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				evt.target.style.outline="none";
+				if(!sPassword(evt.target.value)){
+					this.setState({
+						passwordPlaceholder:"password",
+						passwordBorder:"transparent"
+					});
+				}else{
+					this.setState({
+						passwordPlaceholder:"password",
+						passwordBorder:"green"
+					});
+				}
+				
+			}
+			_password_change(evt){
+				console.log(sPassword(evt.target.value))
+					this.setState({ password:evt.target.value })
+				if(sPassword(evt.target.value)){
+					this.setState({
+						passwordBorder:"green"
+					})
+				}else{
+					this.setState({
+						passwordBorder:"red"
+					})
+				}
+			}
+			_password_re_blur(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				evt.persist();
+				var t_pass=document.getElementById('password').value;
+				if(evt.target.value==""){
+					this.setState({
+							passwordReBorder:"red",
+							passwordRePlaceholder:"this is required"
+						})
+				}else if(!sPassword(evt.target.value)){
+					this.setState({
+						passwordReBorder:"red",
+						password_r:"",
+						passwordRePlaceholder:"enter a valid password"
+					})
+				}else if(sPassword(t_pass) && sPassword(evt.target.value) && t_pass!=evt.target.value){
+					this.setState({
+						passwordReBorder:"red",
+						password_r:"",
+						passwordRePlaceholder:"password won't match"
+					})
+				}
+			}
+			_password_re_focus(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				evt.target.style.outline="none";
+				if(!sPassword(evt.target.value)){
+					this.setState({
+						passwordRePlaceholder:"confirm password",
+						passwordReBorder:"transparent"
+					});
+				}else{
+					this.setState({
+						passwordRePlaceholder:"confirm password",
+						passwordReBorder:"green"
+					});
+				}
+				
+			}
+			_password_re_change(evt){
+				console.log(sPassword(evt.target.value))
+					this.setState({ password_r:evt.target.value })
+				if(sPassword(evt.target.value)){
+					this.setState({
+						passwordReBorder:"green"
+					})
+				}else{
+					this.setState({
+						passwordReBorder:"red"
+					})
+				}
+			}
+			_c_type_date(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				evt.target.style.outline="none";
+				this.setState({
+						cTypeToggle:"date"
+					});
+			}
+			_c_type_text(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				//evt.target.style.outline="none";
+				if(evt.target.value==""){
+					this.setState({
+						cTypeToggle:"text"
+					});
+				}
+			}
+			_dob(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				this.setState({
+						dob:evt.target.value
+					})
+			}
+			_my_interest(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				evt.target.style.outline="none";
+			}
+			_my_interest_value(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				this.setState({
+						interest:evt.target.value
+					});
+			}
+			_link_my_face(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				console.log(`here is the string date ${this.state.dob} name is ${this.state.name} email ${this.state.email} password ${this.state.password} gender ${this.state.gender}`);
+			}
+			_my_gender(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				this.setState({
+						gender:evt.target.value
+					});
 			}
 			render(){
 				return (
 					<div id="sign_lf_r" className="sign_lf_r" style={signAreaStyle}>
-						<div id="lf_s_1" style={{width:"100%",height:"10%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+						<div id="lf_s_1" style={{width:"100%",height:"5%",display:"flex",justifyContent:"center",alignItems:"center"}}>
 							
 						</div>
 						<div id="lf_s_2" style={{width:"100%",height:"10%",display:"flex",justifyContent:"center",alignItems:"center"}}>
@@ -186,24 +452,24 @@ function sName(id)
 							</code>
 						</div>
 						<div id="lf_s_3" style={{width:"100%",height:"10%",display:"flex",justifyContent:"center",alignItems:"center"}}>
-							<input type="text" name="name" id="name" style={{width:"70%",height:"60%",backgroundColor:"transparent",borderColor:this.state.nameBorder,fontFamily:"cursive",fontSize:"18px"}} placeholder="name" onChange={this._name_change} onFocus={this._name_focus} />
+							<input type="text" name="name" id="name" style={{width:"70%",height:"60%",backgroundColor:"transparent",borderColor:this.state.nameBorder,fontFamily:"cursive",fontSize:"18px"}} placeholder={this.state.namePlaceholder} onChange={this._name_change} onFocus={this._name_focus} onBlur={this._name_blur} value={this.state.name} />
 						</div>
 						<div id="lf_s_4" style={{width:"100%",height:"10%",display:"flex",justifyContent:"center",alignItems:"center"}}>
-							<input type="text" name="email" id="email" style={{width:"70%",height:"60%",backgroundColor:"transparent",borderColor:"transparent"}} placeholder="email or mobile" />
+							<input type="text" name="email" id="email" style={{width:"70%",height:"60%",backgroundColor:"transparent",borderColor:this.state.emailBorder,fontFamily:"cursive",fontSize:"18px"}} placeholder={this.state.emailPlaceholder} onChange={this._email_change} onFocus={this._email_focus} onBlur={this._email_blur} value={this.state.email} />
 						</div>
 						<div id="lf_s_5" style={{width:"100%",height:"10%",display:"flex",justifyContent:"center",alignItems:"center"}}>
-							<input type="password" name="password" id="password" style={{width:"70%",height:"60%",backgroundColor:"transparent",borderColor:"transparent"}} placeholder="password" />
+							<input type="password" name="password" id="password" style={{width:"70%",height:"60%",backgroundColor:"transparent",borderColor:this.state.passwordBorder,fontFamily:"cursive",fontSize:"18px"}} placeholder={this.state.passwordPlaceholder} onChange={this._password_change} onFocus={this._password_focus} onBlur={this._password_blur} value={this.state.password} />
 						</div>
 						<div id="lf_s_6" style={{width:"100%",height:"10%",display:"flex",justifyContent:"center",alignItems:"center"}}>
-							<input type="password" name="password_r" id="password_r" style={{width:"70%",height:"60%",backgroundColor:"transparent",borderColor:"transparent"}} placeholder="confirm password" />
+							<input type="password" name="password_r" id="password_r" style={{width:"70%",height:"60%",backgroundColor:"transparent",borderColor:this.state.passwordReBorder,fontFamily:"cursive",fontSize:"18px"}} placeholder={this.state.passwordRePlaceholder} onChange={this._password_re_change} onFocus={this._password_re_focus} onBlur={this._password_re_blur} value={this.state.password_r} />
 						</div>
 						<div id="lf_s_8" style={{width:"100%",height:"10%",display:"flex",justifyContent:"center",alignItems:"center"}}>
 							<div style={{width:"70%",height:"60%",display:"block"}} >
 								<div style={{width:"33%",height:"100%",display:"inline",float:"left"}}>
-									<input type="radio" name="gender" id="gender"  /><code style={{fontFamily:"cursive"}}><font size="4">male</font></code>
+									<input type="radio" name="gender" id="gender" value="male" onChange={this._my_gender} onClick={this._my_gender} /><code style={{fontFamily:"cursive"}}><font size="4">male</font></code>
 								</div>
 								<div style={{width:"33%",height:"100%",display:"inline",float:"left"}}>
-									<input type="radio" name="gender" id="gender"  /><code style={{fontFamily:"cursive"}}><font size="4">female</font></code>
+									<input type="radio" name="gender" id="gender"   /><code style={{fontFamily:"cursive"}}><font size="4">female</font></code>
 								</div>
 								<div style={{width:"33%",height:"100%",display:"inline",float:"left"}}>
 									<input type="radio" name="gender" id="gender"  /><code style={{fontFamily:"cursive"}}><font size="4">other</font></code>
@@ -211,11 +477,11 @@ function sName(id)
 							</div>
 						</div>
 						<div id="lf_s_7" style={{width:"100%",height:"10%",display:"flex",justifyContent:"center",alignItems:"center",borderColor:"transparent"}}>
-							<input type="text" name="dob" id="dob" style={{width:"70%",height:"60%",backgroundColor:"transparent",borderColor:"transparent"}} placeholder="birth day" />
+							<input type={this.state.cTypeToggle} name="dob" id="dob" style={{width:"70%",height:"60%",backgroundColor:"transparent",borderColor:"transparent",fontFamily:"cursive",fontSize:"18px"}} placeholder="birth day" onFocus={this._c_type_date} onBlur={this._c_type_text} onChange={this._dob} value={this.state.dob} />
 						</div>
 						
 						<div id="lf_s_9" style={{width:"100%",height:"10%",display:"flex",justifyContent:"center",alignItems:"center"}}>
-							<select id="_select_interest" style={{width:"60%",height:"60%",fontFamily:"cursive",backgroundColor:"transparent",borderColor:"transparent",fontSize:"18px"}}>
+							<select id="_select_interest" style={{width:"70%",height:"60%",fontFamily:"cursive",backgroundColor:"transparent",borderColor:"transparent",fontSize:"18px"}} onFocus={this._my_interest} onChange={this._my_interest_value}>
 								<option value="" disabled="true" selected="true">interested in</option>
 								<option>male</option>
 								<option>female</option>
@@ -224,7 +490,7 @@ function sName(id)
 							</select>
 						</div>
 						<div id="lf_s_10" style={{width:"100%",height:"10%",display:"flex",justifyContent:"center",alignItems:"center"}}>
-							<input type="button" name="_s_sign" id="_s_sign" value="Sign Up" style={{fontFamily:"cursive",fontSize:"22px",backgroundColor:"transparent",borderColor:"transparent",cursor:"pointer"}} />
+							<input type="button" name="_s_sign" id="_s_sign" value="Sign Up" style={{fontFamily:"cursive",fontSize:"22px",backgroundColor:"transparent",borderColor:"transparent",cursor:"pointer"}} onClick={this._link_my_face} />
 						</div>
 					</div>
 				);
