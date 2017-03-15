@@ -189,9 +189,9 @@ function sName(id)
 	<script type="text/babel">
 	const loginMaxArea={width:"100%",height:"100%",display:"flex",alignItems:"center"};
 	const emBoxStyle={width:"35%",height:"50%",display:"inline",float:"left",borderColor:"transparent"};
-	const togBtStyle={height:"60%",marginRight:"5%",backgroundColor:"white",borderColor:"transparent",cursor:"pointer",display:"inline",float:"left"}
+	const togBtStyle={height:"60%",marginRight:"2%",backgroundColor:"white",borderColor:"transparent",cursor:"pointer",display:"inline",float:"left"}
 	const psBoxStyle={width:"35%",height:"50%",display:"inline",float:"left",borderColor:"transparent"};
-	const togBtStyleHide={height:"60%",marginRight:"5%",backgroundColor:"white",borderColor:"transparent",cursor:"pointer",display:"inline",float:"left"}
+	const togBtStyleHide={height:"60%",marginRight:"2%",backgroundColor:"white",borderColor:"transparent",cursor:"pointer",display:"inline",float:"left"}
 		class LoginMe extends React.Component {
 			constructor(props){
 				super(props);
@@ -200,29 +200,44 @@ function sName(id)
 					togTypePwd:"password",
 					togNem:"number",
 					numEmPlace:"mobile",
-					eye:"eye.jpg"
+					eye:"lock.jpg",
+					atVal:"@",
+					mobEm:"mobile.jpg"
 				};
 				this._show_pwd=this._show_pwd.bind(this);
 				this._hide_pwd=this._hide_pwd.bind(this);
+				this._tog_email=this._tog_email.bind(this);
+				this._tog_number=this._tog_number.bind(this);
+			}
+			_tog_number(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				this.setState({togNem:"number",mobEm:"mobile.jpg",numEmPlace:"mobile"});
+			}
+			_tog_email(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				this.setState({togNem:"email",mobEm:"email.jpg",numEmPlace:"email"});
 			}
 			_hide_pwd(evt){
 				evt.preventDefault();
 				evt.stopPropagation();
-				this.setState({togTypePwd:"password",eye:"eye.jpg"})
+				this.setState({togTypePwd:"password",eye:"lock.jpg"})
 
 			}
 			_show_pwd(evt){
 				evt.preventDefault();
 				evt.stopPropagation();
-				this.setState({togTypePwd:"text",eye:"eye2.jpg"})
+				this.setState({togTypePwd:"text",eye:"unlock.jpg"})
 			}
 			render(){
 				return (
 					<div id="_login_data" style={loginMaxArea}>
 						<input type={this.state.togNem} max="9999999999" name="_em_o_m" id="_em_o_m" style={emBoxStyle} placeholder={this.state.numEmPlace}  />
-						<input type="button" name="tog_me_bt" id="tog_me_bt"  value="@" style={togBtStyle} title={this.state.togTitle} />
+						<input type="image" src={this.state.mobEm} name="tog_me_bt" id="tog_me_bt"  value={this.state.atVal} style={togBtStyle} title={this.state.togTitle} onClick={this._tog_email} onBlur={this._tog_number} />
 						<input type={this.state.togTypePwd} name="_ps_o_s" id="_ps_o_s" style={psBoxStyle} placeholder="password"  />
 						<input type="image" src={this.state.eye} name="tog_me_bt" id="tog_me_bt"  alt="show" style={togBtStyleHide} title="show password" onClick={this._show_pwd} onBlur={this._hide_pwd} />
+						<input type="submit" name="submit" value="login" />
 					</div>
 				)
 			}
