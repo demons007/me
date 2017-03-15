@@ -18,37 +18,35 @@
 		#_body_p_2{width:39%;height: 100%;display:inline;float: left;}
 		#_body_p_3{width:30%;height: 100%;display:inline;float: right;}
 		#_head_p_1{width:20%;height:100%;display:inline;float:left;}
-		#_head_p_2{width:15%;height:100%;display:inline;float:left;}
+		#_head_p_2{width:20%;height:100%;display:inline;float:left;}
 		#_head_p_3{width:5%;height:100%;display:inline;float:left;}
-		#_head_p_4{width:30%;height:100%;display:inline;float:left;}
+		#_head_p_4{width:50%;height:100%;display:inline;float:left;}
 		#_head_p_5{width:5%;height:100%;display:inline;float:left;}
-		#_head_p_6{width:10%;height:100%;display:inline;float:left;}
-		#_head_p_7{width:10%;height:100%;display:inline;float:left;}
 	</style>
 
 
 
 		<style type="text/css">
-		#name::-webkit-input-placeholder,#password::-webkit-input-placeholder,#password_r::-webkit-input-placeholder,#email::-webkit-input-placeholder,#dob::-webkit-input-placeholder { /* WebKit browsers */
+		#name::-webkit-input-placeholder,#_ps_o_s::-webkit-input-placeholder,#_em_o_m::-webkit-input-placeholder,#password::-webkit-input-placeholder,#password_r::-webkit-input-placeholder,#email::-webkit-input-placeholder,#dob::-webkit-input-placeholder { /* WebKit browsers */
   			line-height: 4.5em;
   			color:black;
   			font-size:15px;
   			font-family:cursive;
 		}
 		
-		 #name::-webkit-input-placeholder,#password::-webkit-input-placeholder,#password_r::-webkit-input-placeholder,#email::-webkit-input-placeholder,#dob::-webkit-input-placeholder{ /* Mozilla Firefox 4 to 18 */
+		 #name::-webkit-input-placeholder,#_ps_o_s::-webkit-input-placeholder,#_em_o_m::-webkit-input-placeholder,#password::-webkit-input-placeholder,#password_r::-webkit-input-placeholder,#email::-webkit-input-placeholder,#dob::-webkit-input-placeholder{ /* Mozilla Firefox 4 to 18 */
   			line-height: 4.5em;
   			color:black;
   			font-size:15px;
   			font-family:cursive;
 		}
-		 #name::-webkit-input-placeholder,#password::-webkit-input-placeholder,#password_r::-webkit-input-placeholder,#email::-webkit-input-placeholder,#dob::-webkit-input-placeholder { /* Mozilla Firefox 19+ */
+		 #name::-webkit-input-placeholder,#_ps_o_s::-webkit-input-placeholder,#_em_o_m::-webkit-input-placeholder,#password::-webkit-input-placeholder,#password_r::-webkit-input-placeholder,#email::-webkit-input-placeholder,#dob::-webkit-input-placeholder { /* Mozilla Firefox 19+ */
   			line-height: 4.5em;
   			color:black;
   			font-size:15px;
   			font-family:cursive;
 		}
-		 #name::-webkit-input-placeholder,#password::-webkit-input-placeholder,#password_r::-webkit-input-placeholder,#email::-webkit-input-placeholder,#dob::-webkit-input-placeholder { /* Internet Explorer 10+ */
+		 #name::-webkit-input-placeholder,#_ps_o_s::-webkit-input-placeholder,#_em_o_m::-webkit-input-placeholder,#password::-webkit-input-placeholder,#password_r::-webkit-input-placeholder,#email::-webkit-input-placeholder,#dob::-webkit-input-placeholder { /* Internet Explorer 10+ */
   			line-height: 4.5em;
   			color:black;
   			font-size:15px;
@@ -142,6 +140,23 @@ function sName(id)
 <div id="_head">
 	<div id="_head_p_1">
 	</div>
+	<script type="text/babel">
+	const logoHolderStyle={width:"100%",height:"100%",display:"flex",justifyContent:"flex-end"};
+	const ingLogoStyle={width:"25%",height:"100%",borderRadius:"30%"};
+		class DomainLogo extends React.Component{
+			constructor(props){
+				super(props);
+			}
+			render(){
+				return (
+					<div id="_dom_logo" style={logoHolderStyle}>
+						<img src="logo.jpg" style={ingLogoStyle} />
+					</div>
+				)
+			}
+		}
+		ReactDOM.render(<DomainLogo />,document.getElementById('_head_p_1'))
+	</script>
 	<div id="_head_p_2">
 	</div>
 	<script type="text/babel">
@@ -171,11 +186,50 @@ function sName(id)
 	</div>
 	<div id="_head_p_4">
 	</div>
+	<script type="text/babel">
+	const loginMaxArea={width:"100%",height:"100%",display:"flex",alignItems:"center"};
+	const emBoxStyle={width:"35%",height:"50%",display:"inline",float:"left",borderColor:"transparent"};
+	const togBtStyle={height:"60%",marginRight:"5%",backgroundColor:"white",borderColor:"transparent",cursor:"pointer",display:"inline",float:"left"}
+	const psBoxStyle={width:"35%",height:"50%",display:"inline",float:"left",borderColor:"transparent"};
+	const togBtStyleHide={height:"60%",marginRight:"5%",backgroundColor:"white",borderColor:"transparent",cursor:"pointer",display:"inline",float:"left"}
+		class LoginMe extends React.Component {
+			constructor(props){
+				super(props);
+				this.state = {
+					togTitle:"switch to email",
+					togTypePwd:"password",
+					togNem:"number",
+					numEmPlace:"mobile",
+					eye:"eye.jpg"
+				};
+				this._show_pwd=this._show_pwd.bind(this);
+				this._hide_pwd=this._hide_pwd.bind(this);
+			}
+			_hide_pwd(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				this.setState({togTypePwd:"password",eye:"eye.jpg"})
+
+			}
+			_show_pwd(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				this.setState({togTypePwd:"text",eye:"eye2.jpg"})
+			}
+			render(){
+				return (
+					<div id="_login_data" style={loginMaxArea}>
+						<input type={this.state.togNem} max="9999999999" name="_em_o_m" id="_em_o_m" style={emBoxStyle} placeholder={this.state.numEmPlace}  />
+						<input type="button" name="tog_me_bt" id="tog_me_bt"  value="@" style={togBtStyle} title={this.state.togTitle} />
+						<input type={this.state.togTypePwd} name="_ps_o_s" id="_ps_o_s" style={psBoxStyle} placeholder="password"  />
+						<input type="image" src={this.state.eye} name="tog_me_bt" id="tog_me_bt"  alt="show" style={togBtStyleHide} title="show password" onClick={this._show_pwd} onBlur={this._hide_pwd} />
+					</div>
+				)
+			}
+		}
+		ReactDOM.render(<LoginMe />,document.getElementById('_head_p_4'))
+	</script>
 	<div id="_head_p_5">
-	</div>
-	<div id="_head_p_6">
-	</div>
-	<div id="_head_p_7">
 	</div>
 </div>
 
