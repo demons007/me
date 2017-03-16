@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -126,11 +127,6 @@ function sName(id)
 
     	return re.test(password);
 	}
-	function sMobile(mob) {
-    	var pattern = new RegExp("^[0-9]{10}$");
-
-    		return pattern.test(mob);
-	}
 	</script>
 	<!-- <script type="text/javascript">
 		function shreyaName(id)
@@ -202,7 +198,7 @@ function sName(id)
 				this.state = {
 					togTitle:"switch to email",
 					togTypePwd:"password",
-					togNem:"text",
+					togNem:"number",
 					numEmPlace:"mobile",
 					eye:"lock.jpg",
 					atVal:"@",
@@ -306,7 +302,7 @@ class Spinner extends React.Component {
 		 		}
 		 		componentDidMount(){
 		 			var x=this.state.max.length;
-		 			var IntervalOn=setInterval(
+		 			setInterval(
 		 			()=>{
 		 					var z = this.state.max;
 		 					z.push(".");
@@ -324,7 +320,7 @@ class Spinner extends React.Component {
 		 						})
 		 					}
 						},2);
-		 			sessionStorage.setItem("inti_lo",IntervalOn)
+		 			
 		 			
 		 		}
 		 		render(){
@@ -345,76 +341,16 @@ class Spinner extends React.Component {
 
 		 	const sh=`${document.body.clientHeight}px`;
 		 	const sw=`${document.body.clientWidth}px`;
-		 	const ph={width:"100%",height:"20%",display:"flex",justifyContent:"flex-end",alignItems:"center"};
-		 	const pw={width:"100%",height:"80%",display:"flex",justifyContent:"center",alignItems:"center"}
-		 	//console.log(`${sh} ${sw} lol`)
-		 	window.addEventListener("opacity",(evt) => {
-		 		console.log(evt.detail.message+"hi")
-		 		console.log("i am")
-		 		document.getElementById("_head").style.opacity=evt.detail.message;
-		 			document.getElementById("_body").style.opacity=evt.detail.message;
-		 	},false)
+		 	console.log(`${sh} ${sw} lol`)
 		 	class SvgContainer extends React.Component {
 		 		constructor(props){
 		 			super(props);
-		 			this._unmount_me=this._unmount_me.bind(this);
-		 			this.componentWillUnmount=this.componentWillUnmount.bind(this);
-		 			this.componentWillMount=this.componentWillMount.bind(this);
-		 		}
-		 		componentWillMount(){
-				var opacityO = new CustomEvent(
-					"opacity", 
-					{
-					detail: {
-						message: "0.2",
-						time: new Date(),
-					},
-					bubbles: false,
-					cancelable: false
-					}
-					);
-
-					window.dispatchEvent(opacityO);
-		 		}
-		 		componentWillUnmount(){
-		 		console.log("llllllllll")
-		 		//document.getElementById("_head").style.opacity="1";
-		 			//document.getElementById("_head").style.opacity="1";
-		 		clearInterval(sessionStorage.getItem("inti_lo"));
-		 			console.log(document.getElementById("_head").style.opacity)
-					
-		 		}
-		 		_unmount_me(evt){
-		 			evt.preventDefault();
-					evt.stopPropagation();
-					document.getElementById("_head").style.opacity="1";
-		 			document.getElementById("_body").style.opacity="1";
-					var opacity = new CustomEvent(
-					"opacity", 
-					{
-					detail: {
-						message: "1",
-						time: new Date(),
-					},
-					bubbles: false,
-					cancelable: false
-					}
-					);
-
-					window.dispatchEvent(opacity);
-					ReactDOM.unmountComponentAtNode(document.getElementById('_js_root_animation'))
 		 		}
 		 		render(){
 		 			return (
-		 				<div id="_map_in_search" style={{width:sw,height:sh,position:"absolute",backgroundColor:"transparent",overflow:"hidden",zIndex:1}} ref={() => {/*document.getElementById("_head").style.opacity="0.2";
-		 																document.getElementById("_body").style.opacity="0.2"; */
-		 																
+		 				<div id="_map_in_search" style={{width:sw,height:sh,position:"absolute",backgroundColor:"transparent",display:"flex",justifyContent:"center",alignItems:"center",overflow:"hidden",zIndex:1}} ref={() => {document.getElementById("_head").style.opacity="0.2";
+		 																document.getElementById("_body").style.opacity="0.2";
 		 															}}>
-
-		 				<div id="_table_p_head" style={ph} >
-		 					<input type="image" src="Cancel.png" name="_bt_close_pop" id="_bt_close_pop" style={{width:"80px",height:"50%",fontSize:"25px"}} onClick={this._unmount_me} />
-		 				</div>
-		 				<div id="_table_p_body" style={pw} >
 		 					<table style={{width:"20%"}}>
 		 					<tr><td>
 		 					<Spinner />
@@ -425,8 +361,6 @@ class Spinner extends React.Component {
 		 					</div></td>
 		 					</tr>
 		 					</table>
-		 				</div>
-		 					
 		 				</div>
 		 			)
 		 		}
@@ -529,7 +463,7 @@ class Spinner extends React.Component {
 							emailBorder:"red",
 							emailPlaceholder:"this is required"
 						})
-				}else if(!sEmail(evt.target.value) || !sMobile(evt.target.value)){
+				}else if(!sEmail(evt.target.value)){
 					this.setState({
 						emailBorder:"red",
 						email:"",
@@ -555,9 +489,9 @@ class Spinner extends React.Component {
 				
 			}
 			_email_change(evt){
-				console.log(sMobile(evt.target.value))
+				console.log(sEmail(evt.target.value))
 					this.setState({ email:evt.target.value })
-				if(sEmail(evt.target.value) || sMobile(evt.target.value)){
+				if(sEmail(evt.target.value)){
 					this.setState({
 						emailBorder:"green"
 					})
