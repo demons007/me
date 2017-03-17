@@ -1,0 +1,937 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>LF</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap/0.30.7/react-bootstrap.min.js"></script>-->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">-->
+	<style type="text/css">
+		#_head{width:100%;height:65px;background-color:#3f4360;}
+		#_p_body_prev{width:35%;height:1200px;margin-top:15px;float:left;display:inline;margin-right:1%;}
+		#_body{width:64%;height:1200px;margin-top:15px;float:right;display:inline;}
+		#_body_p_1{width:100%;height:17%;margin-bottom:1%;}
+		#_body_p_3{width:100%;height:82%;}
+		body{background-color:#eaeff2;}
+		#_foot{width:100%;height:45px;border:1px solid black;}
+		#_ok_lol_pro{width:100%;height:100%;}
+		#_face_sug{width:74%;height:100%;display:inline;float:left;margin-right:1%;}
+		#_my_face{width:25%;height:100%;display:inline;float:right;}
+		#_mm_musics{width:64%;height:100%;margin-right:1%;display:inline;float:left;}
+		#_mm_flist{width:35%;height:100%;display:inline;float:right;}
+		#_act_musics{width:100%;height:50%;}
+		#_act_playlist{width:100%;height:49%;margin-top:1%;}
+		#_music_text{width:100%;height:10%;}
+		#_music_content{width:100%;height:89%;margin-top:1%}
+		#_mm_act_vide_pl{width:49%;height:100%;margin-right:1%;display:inline;float:left;}
+		#_mm_act_aude_pl{width:49%;height:100%;margin-left:1%;display:inline;float:right;}
+		#_prev_texta{width:100%;height:10%;}
+		#_prev_feed{width:100%;height:89%;margin-top:2%;}
+		#_m_playlist_text_vide{width:100%;height:10%;margin-bottom:2%;}
+		#_m_playlist_content_vide{width:100%;height:88%;}
+		#_m_playlist_text_aude{width:100%;height:10%;margin-bottom:2%;}
+		#_m_playlist_content_aude{width:100%;height:88%;}
+		#_mm_info_mine_aj{width:100%;height:20%;minHeight:20%;}
+		#_mm_info_mine_aj_after{width:100%;height:80%;minHeight:79%;margin-top:1%;}
+		img{cursor:pointer;}
+	</style>
+    	<style type="text/css">
+		#_act_of_face_cont::-webkit-scrollbar {
+    			width: 0px;  /* remove scrollbar space */
+    			background: transparent;  /* optional: just make scrollbar invisible */
+		}
+		#_act_of_face_cont::-webkit-scrollbar {
+    			width: 7px;  /* remove scrollbar space */
+    			background: darkgrey;  /* optional: just make scrollbar invisible */
+		}
+		#_act_of_face_cont::-webkit-scrollbar-thumb {
+    			background: white;
+		}
+	</style>
+	<style type="text/css">
+		html::-webkit-scrollbar {
+    			width: 0px;  /* remove scrollbar space */
+    			background: transparent;  /* optional: just make scrollbar invisible */
+		}
+		
+	</style>
+	<style type="text/css">
+		#_p_music_cont::-webkit-scrollbar {
+    			width: 0px;  /* remove scrollbar space */
+    			background: transparent;  /* optional: just make scrollbar invisible */
+		}
+		
+	</style>
+	<style type="text/css">
+		#_act_idea_texta::-webkit-input-placeholder { /* WebKit browsers */
+  			line-height: 4.5em;
+  			color:black;
+  			font-size:15px;
+  			font-family:cursive;
+		}
+		 #_act_idea_texta:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  			line-height: 4.5em;
+  			color:black;
+  			font-size:15px;
+  			font-family:cursive;
+		}
+		 #_act_idea_texta::-moz-placeholder { /* Mozilla Firefox 19+ */
+  			line-height: 4.5em;
+  			color:black;
+  			font-size:15px;
+  			font-family:cursive;
+		}
+		 #_act_idea_texta:-ms-input-placeholder { /* Internet Explorer 10+ */
+  			line-height: 4.5em;
+  			color:black;
+  			font-size:15px;
+  			font-family:cursive;
+		}
+	</style>
+	<style type="text/css">
+		#_m_ser_act_ip::-webkit-input-placeholder { /* WebKit browsers */
+  			color:black;
+  			font-size:15px;
+  			font-family:cursive;
+		}
+		 #_m_ser_act_ip:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  			color:black;
+  			font-size:15px;
+  			font-family:cursive;
+		}
+		 #_m_ser_act_ip::-moz-placeholder { /* Mozilla Firefox 19+ */
+  			color:black;
+  			font-size:15px;
+  			font-family:cursive;
+		}
+		 #_m_ser_act_ip:-ms-input-placeholder { /* Internet Explorer 10+ */
+  			color:black;
+  			font-size:15px;
+  			font-family:cursive;
+		}
+	</style>
+
+	<style type="text/css">
+		#_d_search_all::-webkit-input-placeholder { /* WebKit browsers */
+  			color:black;
+  			font-size:15px;
+  			font-family:cursive;
+		}
+		 #_d_search_all:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  			color:black;
+  			font-size:15px;
+  			font-family:cursive;
+		}
+		 #_d_search_all::-moz-placeholder { /* Mozilla Firefox 19+ */
+  			color:black;
+  			font-size:15px;
+  			font-family:cursive;
+		}
+		 #_d_search_all:-ms-input-placeholder { /* Internet Explorer 10+ */
+  			color:black;
+  			font-size:15px;
+  			font-family:cursive;
+		}
+	</style>
+
+	<style type="text/css">
+		#_head_p_p_1{width:15%;height:100%;display:inline;float:left}
+		#_head_p_p_2{width:15%;height:100%;display:inline;float:left}
+		#_head_p_p_3{width:5%;height:100%;display:inline;float:left}
+		#_head_p_p_4{width:30%;height:100%;display:inline;float:left}
+		#_head_p_p_5{width:5%;height:100%;display:inline;float:left}
+		#_head_p_p_6{width:10%;height:100%;display:inline;float:left}
+		#_head_p_p_7{width:10%;height:100%;display:inline;float:left}
+		#_head_p_p_8{width:10%;height:100%;display:inline;float:left}
+		#_head_p_p_1_p_1{width:70%;height:100%;display:inline;float:left;}
+		#_head_p_p_1_p_2{width:30%;height:100%;display:inline;float:right;}
+	</style>
+	<style type="text/css">
+		.inputfile {
+  			/* visibility: hidden etc. wont work */
+  			width: 0.1px;
+  			height: 0.1px;
+  			opacity: 0;
+  			overflow: hidden;
+  			position: absolute;
+  			z-index: -1;
+			}
+		.inputfile:focus + label {
+  			/* keyboard navigation */
+  			outline: 1px dotted #000;
+ 			outline: -webkit-focus-ring-color auto 5px;
+		}
+		.inputfile + label * {
+  			pointer-events: none;
+		}
+	</style>
+</head>
+<body >
+<!-- <script type="text/javascript">
+	function domInit(){
+		var lenOf=document.getElementsByTagName("IMG");
+		console.log(lenOf)
+		console.log(lenOf.length);
+		for (var mc=0;mc<lenOf.length;mc++){
+			lenOf[mc].addEventListener('click',function(evt){
+						evt.preventDefault();
+						evt.stopPropagation();
+						//alert(evt.currentTarget.src)
+						if(typeof document.getElementById('_pop_up').children[0] === "undefined"){
+							ReactDOM.render(<ImgPopup />,document.getElementById('_pop_up'))
+						}else{
+							ReactDOM.unmountComponentAtNode(document.getElementById('_pop_up'));
+							ReactDOM.render(<ImgPopup />,document.getElementById('_pop_up'))
+						}
+					},false)
+		}
+	}
+</script> -->
+<div id="_head">
+	<div id="_head_p_p_1">
+		<div id="_head_p_p_1_p_1">
+		</div>
+		<div id="_head_p_p_1_p_2">
+		</div>
+			<script type="text/babel">
+				const logoDomStyle={width:"100%",height:"100%"};
+				const imgStyle={width:"100%",height:"100%",borderRadius:"50%"};
+				class DomainLogo extends React.Component {
+					constructor(props){
+						super(props);
+						this.state = {
+							log:"logo.jpg"
+						};
+					}
+					render(){
+						return (
+							<div id="_dom_logo" style={logoDomStyle}>
+								<img src={this.state.log} style={imgStyle} />
+							</div>
+						)
+					}
+				}
+				ReactDOM.render(<DomainLogo />,document.getElementById('_head_p_p_1_p_2'))
+			</script>
+	</div>
+	<div id="_head_p_p_2">
+	</div>
+		<script type="text/babel">
+			const dNameStyle={width:"100%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center",textAlign:"center"};
+			const codeStyleDname={fontFamily:"cursive",cursor:"pointer"}
+			class DomainNameCaption extends React.Component {
+				constructor(props){
+					super(props);
+					this.state = {
+						name:"linkedFace",
+						Sname:"we link faces together"
+					};
+				}
+				render(){
+					return (
+						<div id="_mm_d_caption_name" style={dNameStyle}>
+							<code style={codeStyleDname}>
+								<font size={4} color="white">{this.state.name}</font><br /><font size={2} color="white">{this.state.Sname}</font>
+							</code>
+						</div>
+					)
+				}
+			}
+			ReactDOM.render(<DomainNameCaption />,document.getElementById('_head_p_p_2'))
+		</script>
+	<div id="_head_p_p_3">
+	</div>
+	<div id="_head_p_p_4">
+	</div>
+		<script type="text/babel">
+			const dCapStyle={width:"100%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center"};
+			const dSerAllStyle={width:"100%",height:"35px"}
+			class DomainSearch extends React.Component {
+				constructor(props){
+					super(props);
+					this.state = {
+					};
+				}
+				render(){
+					return (
+						<div id="_domain_caption" style={dCapStyle}>
+							<input type="search" name="_d_search_all" id="_d_search_all" style={dSerAllStyle} placeholder="Search anything" />
+						</div>
+					)
+				}
+			}
+			ReactDOM.render(<DomainSearch />,document.getElementById('_head_p_p_4'))
+		</script>
+	<div id="_head_p_p_5">
+	</div>
+	<div id="_head_p_p_6">
+	</div>
+	<div id="_head_p_p_7">
+	</div>
+	<div id="_head_p_p_8">
+	</div>
+</div>
+<div id="_pop_up">
+</div>
+	<!-- <script type="text/babel">
+		class Popup extends React.Component {
+			constructor(props){
+				super(props);
+				this.state = {
+				};
+			}
+			render(){
+				return (
+					<div id="_p_pop_up_mm" style={{width:"65%",height:"400px",position:"absolute",marginLeft:"10%",backgroundColor:"white"}}>
+					</div>
+				)
+			}
+		}
+		//ReactDOM.render(<Popup />,document.getElementById('_pop_up'))
+	</script> -->
+<div id="_p_body_prev">
+	<div id="_prev_texta">
+	</div>
+		<script type="text/babel">
+		
+		// sass for popup body
+		
+		const popupBodyIndiStyle={width:"100%",height:"100%",border:"1px solid black"};
+		const popBdTxtStyle={width:"100%",height:"20%",display:"flex",justifyContent:"center",alignItems:"center",textAlign:"center"};
+		const popAttachBdPart_2Style={width:"100%",height:"75%",marginTop:"5%",display:"flex",justifyContent:"center",alignItems:"center"};
+		const progressStyle={width:"80%",height:"35px"};
+		const boxFileStyle={width:"100%",height:"20%",display:"block",textAlign:"center"};
+		const progressBoxStyle={width:"100%",height:"45px",display:"block",position:"absolute",textAlign:"center",marginTop:"inherit"};
+		const locProgressTxtStyle={width:"50%",height:"45px",position:"absolute",textAlign:"center",marginTop:"80px"};
+		//end of sas
+		
+		//class for the popup body
+		
+		class AttachPopupBody extends React.Component {
+			constructor(props){
+				super(props);
+				this.state = {
+					fpText:"Welcome please select files to attach with your brand new ideas... happy surfing"
+				};
+			}
+			render(){
+				return (
+					<div id="_indi_attach_helper" style={popupBodyIndiStyle}>
+						<div id="_pop_bd_txt_infy" style={popBdTxtStyle}>
+							<code style={{fontFamily:"cursive"}}>
+								<font size={3} color="black">
+								{this.state.fpText}
+								</font>
+							</code>
+						</div>
+						<div id="_pop_bd_txt_action" style={popAttachBdPart_2Style}>
+							<div id="_box_for_input_fl" style={boxFileStyle}>
+								<input type="file" name="file" id="file" className="input_file" /><br /><br />
+							</div>
+							<div id="_progress_box_as_cont" style={progressBoxStyle}>
+								<progress id="_mm_progres_monitor" style={progressStyle} value="0" max="100"></progress>
+							</div>
+							<div id="_mm_loc_prog_text" style={locProgressTxtStyle}>
+								hi
+							</div>
+						</div>
+					</div>
+				)
+			}
+		}
+		
+		//class ended
+		
+		const blackBodyStyle={width:"99%",height:"1220px",backgroundColor:"black",position:"absolute",zIndex:"2"};
+		const popUpStyle={width:"50%",height:"400px",position:"absolute",marginLeft:"25%",marginRight:"25%",marginBottom:"10%",marginTop:"10%",backgroundColor:"white",zIndex:"2"};
+		const popCutterStyle={width:"100%",height:"45px",backgroundColor:"#3f4360"};
+		const popCotterInnerStyle_1={width:"90%",height:"100%",display:"inline",float:"left"};
+		const popcutterInnerStyle_2={width:"10%",height:"100%",display:"inline",float:"right"};
+		const popCotterInnerStyle_1_1={width:"100%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center"};
+		const popCotterInnerStyle_2_2={width:"100%",height:"100%",display:"flex",justifyContent:"flex-end",alignItems:"center"};
+		const popCutterBdyStyle={width:"100%",height:"345px",marginTop:"9px"}
+		class Popup extends React.Component {
+			constructor(props){
+				super(props);
+				this.state = {
+				};
+				this._mm_rndr_clk_go=this._mm_rndr_clk_go.bind(this);
+			}
+			_mm_rndr_clk_go(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				//alert("hello")
+				ReactDOM.unmountComponentAtNode(document.getElementById('_pop_up'))
+			}
+			render(){
+				return (
+					<div id="_black_body" style={blackBodyStyle}><div id="_p_pop_up_mm" style={popUpStyle}>
+						<div id="_pop_cutter" style={popCutterStyle}>
+							<div id="_pop_cutter_i_1" style={popCotterInnerStyle_1}>
+								<div id="_pop_cutter_i_1_1" style={popCotterInnerStyle_1_1}>
+								</div>
+							</div>
+							<div id="_pop_cutter_i_2" style={popcutterInnerStyle_2}>
+								<div id="_pop_cutter_i_2_2" style={popCotterInnerStyle_2_2}>
+									<code style={{fontFamily:"cursive",cursor:"pointer"}} onClick={this._mm_rndr_clk_go} title="close popup">
+										<font size={20} color="white">
+											x
+										</font>
+									</code>
+								</div>
+							</div>
+						</div>
+						<div id="_pop_cutter_dp_bdy" style={popCutterBdyStyle}>
+							<AttachPopupBody />
+						</div>
+					</div></div>
+				)
+			}
+		}
+		
+		//img popup helper
+		
+		//sass
+		
+		const popupBodyIndiStyleImg={width:"100%",height:"100%",border:"1px solid black"};
+		const popBdTxtStyleImg={width:"100%",height:"20%",display:"flex",justifyContent:"center",alignItems:"center",textAlign:"center"};
+		const popAttachBdPart_2StyleImg={width:"100%",height:"75%",marginTop:"5%",display:"flex",justifyContent:"center",alignItems:"center"};
+		const progressStyleImg={width:"80%",height:"35px"};
+		const boxFileStyleImg={width:"100%",height:"20%",display:"block",textAlign:"center"};
+		const progressBoxStyleImg={width:"100%",height:"45px",display:"block",position:"absolute",textAlign:"center",marginTop:"inherit"};
+		const locProgressTxtStyleImg={width:"50%",height:"45px",position:"absolute",textAlign:"center",marginTop:"80px"};
+		
+		//end sass
+		
+		class AttachPopupBodyImg extends React.Component {
+			constructor(props){
+				super(props);
+				this.state = {
+					fpText:"Welcome please select files to attach with your brand new ideas... happy surfing"
+				};
+			}
+			render(){
+				return (
+					<div id="_indi_attach_helper" style={popupBodyIndiStyleImg}>
+						<div id="_pop_bd_txt_infy" style={popBdTxtStyleImg}>
+							<code style={{fontFamily:"cursive"}}>
+								<font size={3} color="black">
+								{this.state.fpText}
+								</font>
+							</code>
+						</div>
+						<div id="_pop_bd_txt_action" style={popAttachBdPart_2StyleImg}>
+							
+						</div>
+					</div>
+				)
+			}
+		}
+		
+		//end img popup helper
+		
+		
+		//img popup global
+		
+		
+		//sass
+		
+		const blackBodyStyleImg={width:"99%",height:"1220px",backgroundColor:"black",position:"absolute",zIndex:"2"};
+		const popUpStyleImg={width:"50%",height:"400px",position:"absolute",marginLeft:"25%",marginRight:"25%",marginBottom:"10%",marginTop:"10%",backgroundColor:"white",zIndex:"2"};
+		const popCutterStyleImg={width:"100%",height:"45px",backgroundColor:"#3f4360"};
+		const popCotterInnerStyle_1Img={width:"90%",height:"100%",display:"inline",float:"left"};
+		const popcutterInnerStyle_2Img={width:"10%",height:"100%",display:"inline",float:"right"};
+		const popCotterInnerStyle_1_1Img={width:"100%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center"};
+		const popCotterInnerStyle_2_2Img={width:"100%",height:"100%",display:"flex",justifyContent:"flex-end",alignItems:"center"};
+		const popCutterBdyStyleImg={width:"100%",height:"345px",marginTop:"9px"}
+		
+		//end sass
+		
+		class ImgPopup extends React.Component {
+			constructor(props){
+				super(props);
+				this.state = {
+				};
+				this._mm_rndr_clk_go=this._mm_rndr_clk_go.bind(this);
+			}
+			_mm_rndr_clk_go(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				//alert("hello")
+				ReactDOM.unmountComponentAtNode(document.getElementById('_pop_up'))
+			}
+			render(){
+				return (
+					<div id="_black_body" style={blackBodyStyleImg}><div id="_p_pop_up_mm" style={popUpStyle}>
+						<div id="_pop_cutter" style={popCutterStyleImg}>
+							<div id="_pop_cutter_i_1" style={popCotterInnerStyle_1Img}>
+								<div id="_pop_cutter_i_1_1" style={popCotterInnerStyle_1_1Img}>
+								</div>
+							</div>
+							<div id="_pop_cutter_i_2" style={popcutterInnerStyle_2Img}>
+								<div id="_pop_cutter_i_2_2" style={popCotterInnerStyle_2_2Img}>
+									<code style={{fontFamily:"cursive",cursor:"pointer"}} onClick={this._mm_rndr_clk_go} title="close popup">
+										<font size={20} color="white">
+											x
+										</font>
+									</code>
+								</div>
+							</div>
+						</div>
+						<div id="_pop_cutter_dp_bdy" style={popCutterBdyStyleImg}>
+							<AttachPopupBodyImg />
+						</div>
+					</div></div>
+				)
+			}
+		}
+		
+		//end img popup
+			function domInit(){
+		var lenOf=document.getElementsByTagName("IMG");
+		console.log(lenOf)
+		console.log(lenOf.length);
+		for (var mc=0;mc<lenOf.length;mc++){
+			lenOf[mc].addEventListener('click',function(evt){
+						evt.preventDefault();
+						evt.stopPropagation();
+						//alert(evt.currentTarget.src)
+						if(typeof document.getElementById('_pop_up').children[0] === "undefined"){
+							ReactDOM.render(<ImgPopup />,document.getElementById('_pop_up'))
+						}else{
+							ReactDOM.unmountComponentAtNode(document.getElementById('_pop_up'));
+							ReactDOM.render(<ImgPopup />,document.getElementById('_pop_up'))
+						}
+					},false)
+		}
+	}
+		
+		window.addEventListener('load',function(evt){
+					domInit();
+				},true);
+		/*document.getElementsByTagName("img").addEventListener('click',function(evt){
+						evt.preventDefault();
+						evt.stopPropagation();
+					},true)*/
+		//ReactDOM.render(<Popup />,document.getElementById('_pop_up'))
+			class TextareaPsd extends React.Component {
+				constructor(props){
+					super(props);
+					this.state = {
+						char:160,
+						textVal:"",
+						cur:0,
+						dColor:"black"
+					};
+					this._pageAtTextaChng=this._pageAtTextaChng.bind(this);
+					this._mm_letme_clk=this._mm_letme_clk.bind(this);
+				}
+				_mm_letme_clk(evt){
+					evt.preventDefault();
+					evt.stopPropagation();
+					console.log(document.getElementById('_pop_up').hasChildNodes())
+					if(typeof document.getElementById('_pop_up').children[0] === "undefined"){
+						ReactDOM.render(<Popup />,document.getElementById('_pop_up'))
+					}else{
+						ReactDOM.unmountComponentAtNode(document.getElementById('_pop_up'));
+						ReactDOM.render(<Popup />,document.getElementById('_pop_up'))
+					}
+				}
+				_pageAtTextaChng(evt){
+					evt.preventDefault();
+					evt.stopPropagation();
+						if(evt.target.value.length<=this.state.char){
+					let char2=this.state.char-evt.target.value.length
+					this.setState({
+							cur:evt.target.value.length,
+							textVal:evt.target.value
+						})
+						}
+					if(this.state.cur>=140){
+						this.setState({
+								dColor:"red"
+							})
+					}else{
+						this.setState({
+								dColor:"black"
+							})
+					}
+				}
+				render(){
+					return (
+						<div id="_my_idea" style={{width:"100%",height:"100%"}}>
+							<div id="_wrapper_texta" style={{width:"100%",height:"70%",maxHeight:"70%"}}>
+								<textarea id="_act_idea_texta" placeholder="have any idea in your mind ???" style={{width:"100%",height:"97%"}} value={this.state.textVal} onChange={this._pageAtTextaChng}></textarea>
+							</div><br />
+							<div id="_wrapper_btn" style={{width:"100%",height:"30%",maxHeight:"30%"}}>
+								<input type="button" id="_snd" style={{display:"inline",float:"left",backgroundColor:"transparent",fontFamily:"cursive"}} value="Share" />
+								<input type="button" style={{display:"inline",float:"left",marginLeft:"15%",backgroundColor:"transparent",borderColor:"transparent",fontFamily:"cursive",color:this.state.dColor,cursor:"pointer"}} value={this.state.char-this.state.cur+" charecter left"} disabled="true"/>
+								<input type="button" id="_snd" style={{display:"inline",float:"right",backgroundColor:"transparent",fontFamily:"cursive",cursor:"pointer"}} value="Attach" onClick={this._mm_letme_clk} />
+							</div>
+						</div>
+					)
+				}
+			}
+			ReactDOM.render(<TextareaPsd />,document.getElementById('_prev_texta'))
+		</script>
+	<div id="_prev_feed">
+	</div>
+	<script type="text/babel">
+			function domInitX(){
+		var lenOf=document.getElementsByTagName("IMG");
+		console.log(lenOf)
+		console.log(lenOf.length);
+		for (var mc=0;mc<lenOf.length;mc++){
+			lenOf[mc].addEventListener('click',function(evt){
+						evt.preventDefault();
+						evt.stopPropagation();
+						alert(evt.currentTarget.src)
+						/*if(typeof document.getElementById('_pop_up').children[0] === "undefined"){
+							ReactDOM.render(<ImgPopup />,document.getElementById('_pop_up'))
+						}else{
+							ReactDOM.unmountComponentAtNode(document.getElementById('_pop_up'));
+							ReactDOM.render(<ImgPopup />,document.getElementById('_pop_up'))
+						}*/
+					},false)
+		}
+	}
+		const postBoxPsudoStyle={width:"100%",height:"100%",overflowY:"scroll"};
+		const postMapperIneerEachStyle={width:"100%",height:"300px",marginTop:"15px"};
+		class PostToDisplay extends React.Component {
+			constructor(props){
+				super(props);
+				this.state = {
+					postMapper:this.props.PostMapper
+				};
+				this.componentWillReceiveProps=this.componentWillReceiveProps.bind(this);
+				this.componentDidMount=this.componentDidMount.bind(this);
+			}
+			componentWillReceiveProps(nextProps){
+				//console.log(this.props.PostMapper)
+				//var propsm=this.props.PostMapper;
+				//propsm.push(nextProps.PostMapper);
+				//console.log(nextProps)
+				//console.log(JSON.parse(nextProps.PostMapper).key)
+				//console.log(Array.prototype.slice.call(nextProps))
+				this.setState({
+						postMapper:nextProps.PostMapper
+					})
+			}
+			componentDidMount(){
+				domInitX();
+			}
+			render(){
+				return (
+					<div id="_post_ok_sse" style={postBoxPsudoStyle}>
+						{
+							JSON.parse(this.state.postMapper).key.reverse().map( (a,b) => {
+									return (
+										<div key={b} id="_1_1_" style={postMapperIneerEachStyle}>
+											<img src={a} style={{width:"100%",height:"100%"}} />
+										</div>
+									)
+								} )
+						}
+					</div>
+				)
+			}
+		}
+		//if (!sessionStorage.postMap) {
+    					
+    						
+					//console.log()
+					var mv={key:["a.jpg"]};
+    						sessionStorage.postMap = JSON.stringify(mv);
+					//}
+		ReactDOM.render(<PostToDisplay PostMapper={sessionStorage.postMap} />,document.getElementById('_prev_feed'))
+		var source = new EventSource("ssePost.php");
+				source.onmessage = function(event) {
+    					//console.log(event.data);
+    					//console.log("hi")
+    					//console.log(JSON.parse([sessionStorage.postMap]).key)
+    					var cv=JSON.parse(sessionStorage.postMap).key
+    					cv.push(event.data)
+    					var cv2={key:cv};
+    						sessionStorage.postMap = JSON.stringify(cv2)
+					//document.getElementById("result").innerHTML = "You have clicked the button " +
+					//sessionStorage.clickcount + " time(s) in this session.";
+    					ReactDOM.render(<PostToDisplay PostMapper={sessionStorage.postMap} />,document.getElementById('_prev_feed'))
+				};
+	</script>
+</div>
+<div id="_body">
+	<div id="_body_p_1">
+		<div id="_face_sug">
+		</div>
+			<script type="text/babel">
+				// style sheet sass for component NewFaceSuggestion
+
+				const hScrollStyle={width:"100%",height:"100%"};
+				const actFaceStyle={width:"90%",height:"100%",display:"inline",float:"left",overflowY:"hidden",overflowX:"scroll",whiteSpace:"nowrap"};
+				const showMoreStyle={width:"10%",height:"100%",display:"inline",float:"right"};
+				const divFlexMoreStyle={width:"100%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center"};
+				const codeStyle={fontFamily:"cursive",cursor:"pointer"};
+
+				// sass end for component NewFaceSuggestion
+
+				// local map class for individual new face to display
+
+				//sass for AvailableFaceOnDomain
+
+				const aStyle={width:"30%",minHeight:"30%",height:"100%",backgroundColor:"white",marginRight:"2%",display:"inline-block"};
+				const realFaceOtherStyle={width:"100%",height:"50%",display:"flex",justifyContent:"center",alignItems:"center"};
+				const realFaceInfyOtherStyle={width:"100%",height:"48%",marginTop:"2%"};
+				const imgEachStyle={width:"50%",height:"100%",borderRadius:"50%"};
+
+				//sass end for AvailableFaceOnDomain
+
+				class AvailableFaceOnDomain extends React.Component {
+					constructor(props){
+						super(props);
+						this.state = {
+							imSrc:this.props.ImSrc
+						};
+					}
+					render(){
+						return (
+							<div className="_ok_see_my_face" style={aStyle}>
+								<div id="_see_my_real_face_f" style={realFaceOtherStyle}>
+									<img src={this.state.imSrc} style={imgEachStyle} />
+								</div>
+								<div id="_see_my_real_face_infy" style={realFaceInfyOtherStyle}>
+								</div>
+							</div>
+						)
+					}
+				}
+ 
+				class NewFaceSuggestion extends React.Component {
+					constructor(props){
+						super(props);
+						this.state = {
+							mp:this.props.MP
+						}
+					}
+					render(){
+						return (
+							<div id="_main_more_container_face" style={hScrollStyle}>
+								<div id="_act_of_face_cont" style={actFaceStyle}>
+									{
+										this.state.mp.map((a,b) => {
+												return (
+													<AvailableFaceOnDomain ImSrc="a.jpg" key={b} />
+												)
+											})
+									}
+								</div>
+								<div id="_show_me_more_face" style={showMoreStyle}>
+									<div id="_mm_flex_show_more" style={divFlexMoreStyle}>
+										<code style={codeStyle}><font size="20">></font></code>
+									</div>
+								</div>
+							</div>
+						)
+					}
+				}
+				ReactDOM.render(<NewFaceSuggestion MP={[{name:"ajay jha"},{name:"ajay jha"},{name:"ajay jha"},{name:"ajay jha"},{name:"ajay jha"}]} />,document.getElementById('_face_sug'))
+			</script>
+		<div id="_my_face">
+		</div>
+		<script type="text/babel">
+			const faceStyle={width:"100%",height:"100%"};
+			const imgStyle={width:"100%",height:"100%"};
+			class MyOwnFacePicVid extends React.Component {
+				constructor(props){
+					super(props);
+					this.state = {
+						ur:this.props.UR
+					};
+				}
+				render(){
+					return (
+						<div id="_mm_my_own_face" style={faceStyle}>
+							<img src={this.state.ur} style={imgStyle} alt="refetching from server" />
+						</div>
+					)
+				}
+			}
+			ReactDOM.render(<MyOwnFacePicVid UR="a.jpg" />,document.getElementById('_my_face'))
+		</script>
+	</div>
+	<div id="_body_p_3">
+		<div id="_ok_lol_pro">
+			<div id="_mm_musics">
+				<div id="_act_musics">
+					<div id="_music_text">
+					</div>
+						<script type="text/babel">
+							class MusicText extends React.Component {
+								constructor(props){
+									super(props);
+									this.state = {
+										mText:this.props.MText
+									};
+								}
+								render(){
+									return (
+										<div id="" style={{width:"100%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+											<code style={{fontFamily:"cursive"}}>
+												<font size="3" color="black">
+													{this.state.mText}
+												</font>
+											</code>
+										</div>
+									)
+								}
+							}
+							ReactDOM.render(<MusicText MText="refresh your mood with some musics" />,document.getElementById('_music_text'))
+						</script>
+					<div id="_music_content">
+					</div>
+						<script type="text/babel">
+							class MusicContents extends React.Component {
+								constructor(props){
+									super(props);
+									this.state = {
+										cPlay:"yahin.mp4"
+									};
+								}
+								render(){
+									return (
+										<div id="_p_music_cont" style={{width:"100%",height:"100%",overflowY:"scroll"}}>
+											<div id="_m_search_bx" style={{width:"100%",height:"45px",display:"flex",alignItems:"center"}}>
+												<input type="search" id="_m_ser_act_ip" name="_m_ser_act_ip" placeholder="search musics .." style={{width:"100%",height:"35px"}} />
+											</div>
+											<div id="_m_ser_bx_after" style={{width:"100%"}}>
+											</div>
+											<div id="_m_player" style={{width:"100%",height:"350px"}}>
+												<video id="_vid_player" src={this.state.cPlay} style={{width:"100%",height:"100%"}} controls="true"></video>
+											</div>
+										</div>
+									)
+								}
+							}
+							ReactDOM.render(<MusicContents />,document.getElementById('_music_content'))
+						</script>
+				</div>
+				<div id="_act_playlist">
+					<div id="_mm_act_vide_pl">
+						<div id="_m_playlist_text_vide">
+						</div>
+							<script type="text/babel">
+								class PlayListVideoText extends React.Component {
+									constructor(props){
+										super(props);
+										this.state = {
+											vText:this.props.VText
+										}
+									}
+									render(){
+										return (
+											<div id="_v_text_in" style={{width:"100%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+												<code style={{fontFamily:"cursive"}}>
+													<font size="4" color="black">
+														{this.state.vText}
+													</font>
+												</code>
+											</div>
+										)
+									}
+								}
+								ReactDOM.render(<PlayListVideoText VText="video playlist" />,document.getElementById('_m_playlist_text_vide'))
+							</script>
+						<div id="_m_playlist_content_vide">
+						</div>
+					</div>
+					<div id="_mm_act_aude_pl">
+						<div id="_m_playlist_text_aude">
+						</div>
+							<script type="text/babel">
+								class PlayListAudeoText extends React.Component {
+									constructor(props){
+										super(props);
+										this.state = {
+											aText:this.props.AText
+										}
+									}
+									render(){
+										return (
+											<div id="_a_text_in" style={{width:"100%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+												<code style={{fontFamily:"cursive"}}>
+													<font size="4" color="black">
+														{this.state.aText}
+													</font>
+												</code>
+											</div>
+										)
+									}
+								}
+								ReactDOM.render(<PlayListAudeoText AText="audio playlist" />,document.getElementById('_m_playlist_text_aude'))
+							</script>
+						<div id="_m_playlist_content_aude">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="_mm_flist">
+				<div id="_mm_info_mine_aj">
+				</div>
+					<script type="text/babel">
+						class WlecomeUser extends React.Component {
+							constructor(props){
+								super(props);
+								this.state = {
+									wlcm:"Welcome =>>",
+									usr:this.props.User,
+									face:this.props.Face,
+									follower:this.props.Follower,
+									sessDur:this.props.WhenIt,
+									following:this.props.Following
+								};
+							}
+							render(){
+								return (
+									<div id="_welcome_ajay" style={{width:"100%",height:"100%"}}>
+										<div id="_mm_wlcm" style={{width:"100%",height:"25%"}}>
+											<div id="_mm_wlcm_caption" style={{width:"48%",height:"100%",display:"inline-flex",justifyContent:"center",alignItems:"center",float:"left"}}>
+												<code style={{fontFamily:"cursive"}}><font size={3} color="black">{this.state.wlcm}</font></code>
+											</div>
+											<div id="_mm_wlcm_user" style={{width:"48%",height:"100%",display:"inline-flex",justifyContent:"center",alignItems:"center",float:"right"}}>
+												<select id="" style={{width:"50%",maxWidth:"100%",fontFamily:"cursive",fontSize:14,backgroundColor:"transparent",borderColor:"transparent"}}>
+													<option value="" disabled="true" selected="true">{this.state.usr.split(' ')[0]}</option>
+													{
+														this.state.face.map((a,b) => {
+																	return (
+																		<option key={b} value={a+" face"}>{a+" face"}</option>
+																	)
+																})
+													}
+												</select>
+											</div>
+										</div>
+										<div id="_mm_wlcm_follower" style={{width:"100%",height:"25%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+											<code style={{fontFamily:"cursive"}}><font size={3} color="black"><a href="http://www.linkedface.in/xmas.php?gota=lol" style={{textDecoration:"none",color:"black"}}>{this.state.follower+" followers"}</a></font></code>
+										</div>
+										<div id="_mm_following" style={{width:"100%",height:"25%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+											<code style={{fontFamily:"cursive"}}><font size={3} color="black"><a href="http://www.linkedface.in/xmas.php?gota=lol" style={{textDecoration:"none",color:"black"}}>{this.state.following+" linked face"}</a></font></code>
+										</div>
+										<div id="_mm_last_visited" style={{width:"100%",height:"25%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+											<code style={{fontFamily:"cursive"}}><font size={3} color="black">{"Session - "+this.state.sessDur.toLocaleString().split(',')[1]}</font></code>
+										</div>
+									</div>
+								)
+							}
+						}
+						ReactDOM.render(<WlecomeUser User="ajay jha" Face={["Social","Professional","Dating","Donator","Sinner","Custom"]} Follower={100} WhenIt={new Date(Math.floor(Date.now()))} Following={200} />,document.getElementById('_mm_info_mine_aj'))
+					</script>
+				<div id="_mm_info_mine_aj_after">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

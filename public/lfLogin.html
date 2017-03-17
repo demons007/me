@@ -529,7 +529,7 @@ class Spinner extends React.Component {
 							emailBorder:"red",
 							emailPlaceholder:"this is required"
 						})
-				}else if(!sEmail(evt.target.value) || !sMobile(evt.target.value)){
+				}else if(!sEmail(evt.target.value) && !sMobile(evt.target.value)){
 					this.setState({
 						emailBorder:"red",
 						email:"",
@@ -707,6 +707,18 @@ class Spinner extends React.Component {
 			_link_my_face(evt){
 				evt.preventDefault();
 				evt.stopPropagation();
+				var ob={name:this.state.name,email:this.state.email,password:this.state.password,gender:this.state.gender,dob:this.state.dob,interest:this.state.interest};
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = (evt) => {
+    			if (this.readyState == 4 && this.status == 200) {
+       				// Action to be performed when the document is read;
+       				console.log(this._responseText)
+    			}
+				};
+				xhttp.open("POST", "signAuth", true);
+				xhttp.setRequestHeader('Content-Type', 'application/json');
+				xhttp.send(JSON.stringify(ob));
+				console.log(ob);
 				console.log(`here is the string date ${this.state.dob} name is ${this.state.name} email ${this.state.email} password ${this.state.password} gender ${this.state.gender}`);
 				ReactDOM.render(<SvgContainer />,document.getElementById('_js_root_animation'))
 			}
