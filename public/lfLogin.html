@@ -26,26 +26,26 @@
 
 
 		<style type="text/css">
-		#name::-webkit-input-placeholder,#_ps_o_s::-webkit-input-placeholder,#_em_o_m::-webkit-input-placeholder,#password::-webkit-input-placeholder,#password_r::-webkit-input-placeholder,#email::-webkit-input-placeholder,#dob::-webkit-input-placeholder { /* WebKit browsers */
+		#name::-webkit-input-placeholder,#_optopi_otp::-webkit-input-placeholder,#_ps_o_s::-webkit-input-placeholder,#_em_o_m::-webkit-input-placeholder,#password::-webkit-input-placeholder,#password_r::-webkit-input-placeholder,#email::-webkit-input-placeholder,#dob::-webkit-input-placeholder { /* WebKit browsers */
   			line-height: 4.5em;
   			color:black;
   			font-size:15px;
   			font-family:cursive;
 		}
 		
-		 #name::-webkit-input-placeholder,#_ps_o_s::-webkit-input-placeholder,#_em_o_m::-webkit-input-placeholder,#password::-webkit-input-placeholder,#password_r::-webkit-input-placeholder,#email::-webkit-input-placeholder,#dob::-webkit-input-placeholder{ /* Mozilla Firefox 4 to 18 */
+		 #name::-webkit-input-placeholder,#_optopi_otp::-webkit-input-placeholder,#_ps_o_s::-webkit-input-placeholder,#_em_o_m::-webkit-input-placeholder,#password::-webkit-input-placeholder,#password_r::-webkit-input-placeholder,#email::-webkit-input-placeholder,#dob::-webkit-input-placeholder{ /* Mozilla Firefox 4 to 18 */
   			line-height: 4.5em;
   			color:black;
   			font-size:15px;
   			font-family:cursive;
 		}
-		 #name::-webkit-input-placeholder,#_ps_o_s::-webkit-input-placeholder,#_em_o_m::-webkit-input-placeholder,#password::-webkit-input-placeholder,#password_r::-webkit-input-placeholder,#email::-webkit-input-placeholder,#dob::-webkit-input-placeholder { /* Mozilla Firefox 19+ */
+		 #name::-webkit-input-placeholder,#_optopi_otp::-webkit-input-placeholder,#_ps_o_s::-webkit-input-placeholder,#_em_o_m::-webkit-input-placeholder,#password::-webkit-input-placeholder,#password_r::-webkit-input-placeholder,#email::-webkit-input-placeholder,#dob::-webkit-input-placeholder { /* Mozilla Firefox 19+ */
   			line-height: 4.5em;
   			color:black;
   			font-size:15px;
   			font-family:cursive;
 		}
-		 #name::-webkit-input-placeholder,#_ps_o_s::-webkit-input-placeholder,#_em_o_m::-webkit-input-placeholder,#password::-webkit-input-placeholder,#password_r::-webkit-input-placeholder,#email::-webkit-input-placeholder,#dob::-webkit-input-placeholder { /* Internet Explorer 10+ */
+		 #name::-webkit-input-placeholder,#_optopi_otp::-webkit-input-placeholder,#_ps_o_s::-webkit-input-placeholder,#_em_o_m::-webkit-input-placeholder,#password::-webkit-input-placeholder,#password_r::-webkit-input-placeholder,#email::-webkit-input-placeholder,#dob::-webkit-input-placeholder { /* Internet Explorer 10+ */
   			line-height: 4.5em;
   			color:black;
   			font-size:15px;
@@ -97,10 +97,20 @@ svg rect{
 	}
 </style>
 
+<script type="text/javascript">
+	window.addEventListener("opacity",(evt) => {
+		 		console.log(evt.detail.message+"hi")
+		 		console.log("i am")
+		 		document.getElementById("_head").style.opacity=evt.detail.message;
+		 			document.getElementById("_body").style.opacity=evt.detail.message;
+		 	},false)
+</script>
+
 </head>
 <body onresize="myResize()">
 
 <!-- email validation temp -->
+
 	<script type="text/javascript">
 	function sEmail(email) {
   var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -190,6 +200,9 @@ function sName(id)
 	</div>
 	<div id="_head_p_4">
 	</div>
+	<script type="text/javascript">
+		"use strict";var _createClass=function(){function c(d,e){for(var g,f=0;f<e.length;f++)g=e[f],g.enumerable=g.enumerable||!1,g.configurable=!0,"value"in g&&(g.writable=!0),Object.defineProperty(d,g.key,g)}return function(d,e,f){return e&&c(d.prototype,e),f&&c(d,f),d}}();function _classCallCheck(c,d){if(!(c instanceof d))throw new TypeError("Cannot call a class as a function")}function _possibleConstructorReturn(c,d){if(!c)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return d&&("object"==typeof d||"function"==typeof d)?d:c}function _inherits(c,d){if("function"!=typeof d&&null!==d)throw new TypeError("Super expression must either be null or a function, not "+typeof d);c.prototype=Object.create(d&&d.prototype,{constructor:{value:c,enumerable:!1,writable:!0,configurable:!0}}),d&&(Object.setPrototypeOf?Object.setPrototypeOf(c,d):c.__proto__=d)}var Spinner=function(c){function d(e){_classCallCheck(this,d);var f=_possibleConstructorReturn(this,(d.__proto__||Object.getPrototypeOf(d)).call(this,e));return f.state={},f}return _inherits(d,c),_createClass(d,[{key:"render",value:function render(){return React.createElement("div",{className:"loader loader--style5",title:"4"},React.createElement("svg",{version:"1.1",id:"Layer_1",xmlns:"http://www.w3.org/2000/svg",xmlnsXlink:"http://www.w3.org/1999/xlink",x:"0px",y:"0px",width:"24px",height:"30px",viewBox:"0 0 24 30",style:{enableBackground:"new 0 0 50 50"},xmlSpace:"preserve"},React.createElement("rect",{x:"0",y:"0",width:"4",height:"20",fill:"#333"},React.createElement("animateTransform",{attributeType:"xml",attributeName:"transform",type:"translate",values:"0 0; 0 20; 0 0",begin:"0",dur:"0.6s",repeatCount:"indefinite"})),React.createElement("rect",{x:"10",y:"0",width:"4",height:"10",fill:"#333"},React.createElement("animateTransform",{attributeType:"xml",attributeName:"transform",type:"translate",values:"0 0; 0 20; 0 0",begin:"0.2s",dur:"0.6s",repeatCount:"indefinite"})),React.createElement("rect",{x:"20",y:"0",width:"4",height:"20",fill:"#333"},React.createElement("animateTransform",{attributeType:"xml",attributeName:"transform",type:"translate",values:"0 0; 0 20; 0 0",begin:"0.4s",dur:"0.6s",repeatCount:"indefinite"}))))}}]),d}(React.Component),DotArray=function(c){function d(e){_classCallCheck(this,d);var f=_possibleConstructorReturn(this,(d.__proto__||Object.getPrototypeOf(d)).call(this,e));return f.state={max:["."]},f.componentDidMount=f.componentDidMount.bind(f),f}return _inherits(d,c),_createClass(d,[{key:"componentDidMount",value:function componentDidMount(){var g=this,e=this.state.max.length,f=setInterval(function(){var h=g.state.max;h.push("."),9>=h.length?g.setState({max:h}):g.setState({max:["."]})},2);sessionStorage.setItem("inti_lo",f)}},{key:"render",value:function render(){return React.createElement("div",{id:"_max_dot",style:{display:"inline"}},this.state.max.map(function(e,f){return React.createElement("span",{key:f},e)}))}}]),d}(React.Component),sh=document.body.clientHeight+"px",sw=document.body.clientWidth+"px",ph={width:"100%",height:"20%",display:"flex",justifyContent:"flex-end",alignItems:"center"},pw={width:"100%",height:"80%",display:"flex",justifyContent:"center",alignItems:"center"},SvgContainer=function(c){function d(e){_classCallCheck(this,d);var f=_possibleConstructorReturn(this,(d.__proto__||Object.getPrototypeOf(d)).call(this,e));return f._unmount_me=f._unmount_me.bind(f),f.componentWillUnmount=f.componentWillUnmount.bind(f),f.componentWillMount=f.componentWillMount.bind(f),f.state={clH:f.props.Ch,clW:f.props.Cw},f}return _inherits(d,c),_createClass(d,[{key:"componentWillMount",value:function componentWillMount(){var e=new CustomEvent("opacity",{detail:{message:"0.2",time:new Date},bubbles:!1,cancelable:!1});window.dispatchEvent(e)}},{key:"componentWillUnmount",value:function componentWillUnmount(){console.log("llllllllll"),clearInterval(sessionStorage.getItem("inti_lo")),console.log(document.getElementById("_head").style.opacity)}},{key:"_unmount_me",value:function _unmount_me(e){e.preventDefault(),e.stopPropagation(),document.getElementById("_head").style.opacity="1",document.getElementById("_body").style.opacity="1";var f=new CustomEvent("opacity",{detail:{message:"1",time:new Date},bubbles:!1,cancelable:!1});window.dispatchEvent(f),ReactDOM.unmountComponentAtNode(document.getElementById("_js_root_animation"))}},{key:"render",value:function render(){return React.createElement("div",{id:"_map_in_search",style:{width:this.state.clW,height:this.state.clH,position:"absolute",backgroundColor:"transparent",overflow:"hidden",zIndex:1},ref:function ref(){console.log("plpo")}},React.createElement("div",{id:"_table_p_head",style:ph},React.createElement("input",{type:"image",src:"Cancel.png",name:"_bt_close_pop",id:"_bt_close_pop",style:{width:"80px",height:"50%",fontSize:"25px"},onClick:this._unmount_me})),React.createElement("div",{id:"_table_p_body",style:pw},React.createElement("table",{style:{width:"20%"}},React.createElement("tr",null,React.createElement("td",null,React.createElement(Spinner,null))),React.createElement("tr",null,React.createElement("td",null,React.createElement("div",null,React.createElement("code",{style:{fontFamily:"cursive"}},React.createElement("span",null,React.createElement("font",{size:5,style:{position:"fixed"}},"Please Wait Loading ",React.createElement(DotArray,null))))))))))}}]),d}(React.Component);
+	</script>
 	<script type="text/babel">
 	const loginMaxArea={width:"100%",height:"100%",display:"flex",alignItems:"center"};
 	const emBoxStyle={width:"35%",height:"50%",display:"inline",float:"left",borderColor:"transparent"};
@@ -260,7 +273,7 @@ function sName(id)
 	<script type="text/babel">
 		"use strict";
 
-class Spinner extends React.Component {
+/*class Spinner extends React.Component {
 		 		constructor(props){
 		 			super(props);
 		 			this.state = {
@@ -348,18 +361,17 @@ class Spinner extends React.Component {
 		 	const ph={width:"100%",height:"20%",display:"flex",justifyContent:"flex-end",alignItems:"center"};
 		 	const pw={width:"100%",height:"80%",display:"flex",justifyContent:"center",alignItems:"center"}
 		 	//console.log(`${sh} ${sw} lol`)
-		 	window.addEventListener("opacity",(evt) => {
-		 		console.log(evt.detail.message+"hi")
-		 		console.log("i am")
-		 		document.getElementById("_head").style.opacity=evt.detail.message;
-		 			document.getElementById("_body").style.opacity=evt.detail.message;
-		 	},false)
+		 	
 		 	class SvgContainer extends React.Component {
 		 		constructor(props){
 		 			super(props);
 		 			this._unmount_me=this._unmount_me.bind(this);
 		 			this.componentWillUnmount=this.componentWillUnmount.bind(this);
 		 			this.componentWillMount=this.componentWillMount.bind(this);
+		 			this.state={
+		 				clH:this.props.Ch,
+		 				clW:this.props.Cw
+		 			};
 		 		}
 		 		componentWillMount(){
 				var opacityO = new CustomEvent(
@@ -406,8 +418,7 @@ class Spinner extends React.Component {
 		 		}
 		 		render(){
 		 			return (
-		 				<div id="_map_in_search" style={{width:sw,height:sh,position:"absolute",backgroundColor:"transparent",overflow:"hidden",zIndex:1}} ref={() => {/*document.getElementById("_head").style.opacity="0.2";
-		 																document.getElementById("_body").style.opacity="0.2"; */
+		 				<div id="_map_in_search" style={{width:this.state.clW,height:this.state.clH,position:"absolute",backgroundColor:"transparent",overflow:"hidden",zIndex:1}} ref={() => {console.log("plpo");
 		 																
 		 															}}>
 
@@ -430,8 +441,122 @@ class Spinner extends React.Component {
 		 				</div>
 		 			)
 		 		}
-		 	}
+		 	}*/
+			const sh1=`${document.body.clientHeight}px`;
+		 	const sw1=`${document.body.clientWidth}px`;
+		 	const ph1={width:"100%",height:"20%",display:"flex",justifyContent:"flex-end",alignItems:"center"};
+		 	const pw1={width:"100%",height:"80%",display:"flex",justifyContent:"center",alignItems:"center"}
+		 	class Otp extends React.Component {
+		 		constructor(props){
+		 			super(props);
+		 			this.state={
+		 			bgbf:this.props.hfdhg,
+		 			to:this.props.to,
+		 			otp:""
+		 			};
+		 			this.top_submit=this.top_submit.bind(this);
+		 			this._otp_val=this._otp_val.bind(this);
+		 			this._go_back_existing=this._go_back_existing.bind(this);
+		 		}
+		 		_go_back_existing(evt){
+		 			evt.preventDefault();
+		 			evt.stopPropagation();
+		 			var opacityO = new CustomEvent(
+					"opacity", 
+					{
+					detail: {
+						message: "1",
+						time: new Date(),
+					},
+					bubbles: false,
+					cancelable: false
+					}
+					);
 
+					window.dispatchEvent(opacityO);
+		 			ReactDOM.unmountComponentAtNode(document.getElementById('_js_root_animation'))
+		 		}
+		 		_otp_val(evt){
+		 			evt.preventDefault();
+		 			evt.stopPropagation();
+		 			this.setState({
+		 				otp:evt.target.value
+		 			})
+		 		}
+		 		top_submit(evt) {
+		 			evt.preventDefault();
+		 			evt.stopPropagation();
+		 			let ob={otp:this.state.otp,to:this.state.to}
+		 			console.log(ob)
+		 			var xhttps = new XMLHttpRequest();
+					xhttps.open("POST", "otpAuth", true);
+					xhttps.onreadystatechange = function(data){
+    				if (xhttps.readyState==4) {
+       				console.log(this.responseText)
+       				top.location.href=`http://localhost:5000${this.responseText}`;
+    				}
+					};
+				
+					xhttps.setRequestHeader('Content-Type', 'application/json');
+					xhttps.send(JSON.stringify(ob));
+				
+		 		}
+		 		render(){
+		 		if(this.state.bgbf=="otp sent"){
+		 			return (
+		 				<div id="_otp" style={{width:sw1,height:sh1,position:"absolute",backgroundColor:"transparent",overflow:"hidden",zIndex:1}}>
+		 					<div style={{width:"100%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+		 						<table style={{width:"20%",backgroundColor:"lavender"}}>
+		 							
+		 								
+		 								<tr ><td>
+		 									<input type="text" name="_optopi_otp" id="_optopi_otp" style={{width:"100%",height:"30px"}} placeholder={"enter otp"} onChange={this._otp_val} />
+		 								</td></tr>
+		 								<tr><td style={{width:"50%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+		 									<a href="#" style={{marginLeft:"5%",textDecoration:"none"}} onClick={this.top_submit} >submit</a>
+		 								</td>
+		 									<td>
+		 									<a href="#" style={{textDecoration:"none"}} >Resend OTP</a>
+		 								</td>
+		 								</tr>
+		 							
+		 						</table>
+		 					</div>
+		 				</div>
+		 				)
+		 			}else if(this.state.bgbf=="existing otp"){
+		 				return (
+		 				<div id="_otp" style={{width:sw1,height:sh1,position:"absolute",backgroundColor:"transparent",overflow:"hidden",zIndex:1}}>
+		 					<div style={{width:"100%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+		 						<table style={{width:"20%",backgroundColor:"lavender"}}>
+		 							
+		 								
+		 								<tr ><td>
+		 									<input type="text" name="_optopi_otp" id="_optopi_otp" style={{width:"100%",height:"30px"}} placeholder={"enter otp"} onChange={this._otp_val} />
+		 								</td></tr>
+		 								<tr><td style={{width:"50%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+		 									<a href="#" style={{marginLeft:"5%",textDecoration:"none"}} onClick={this.top_submit} >submit</a>
+		 								</td>
+		 									<td>
+		 									<a href="#" style={{textDecoration:"none"}} >Resend OTP</a>
+		 								</td>
+		 								</tr>
+		 							
+		 						</table>
+		 					</div>
+		 				</div>
+		 				)
+		 			}else{
+		 				return (
+		 				<div id="_otp" style={{width:sw1,height:sh1,position:"absolute",backgroundColor:"transparent",overflow:"hidden",zIndex:1}}>
+		 					<div style={{width:"100%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+		 						<font size={5}><b>we already have a user with this id </b></font><font size={4}><a href="" style={{textDecoration:"none"}} onClick={this._go_back_existing}> click here to go back</a></font>
+		 					</div>
+		 				</div>
+		 				)
+		 			}
+		 		}
+		 	}
 
 		const signAreaStyle={width:"100%",height:"100%"};
 		class SignUp extends React.Component {
@@ -707,20 +832,29 @@ class Spinner extends React.Component {
 			_link_my_face(evt){
 				evt.preventDefault();
 				evt.stopPropagation();
+				console.log("bye");
 				var ob={name:this.state.name,email:this.state.email,password:this.state.password,gender:this.state.gender,dob:this.state.dob,interest:this.state.interest};
 				var xhttp = new XMLHttpRequest();
-				xhttp.onreadystatechange = (evt) => {
-    			if (this.readyState == 4 && this.status == 200) {
+				xhttp.open("POST", "signAuth", true);
+				xhttp.onreadystatechange = function(data){
+    			if (xhttp.readyState==4) {
        				// Action to be performed when the document is read;
-       				console.log(this._responseText)
+       				console.log("in true")
+       				console.log(this.responseText)
+       				
+       					ReactDOM.unmountComponentAtNode(document.getElementById('_js_root_animation'))
+       					ReactDOM.render(<Otp hfdhg={this.responseText} to={ob.email} />,document.getElementById('_js_root_animation'))
+       				
     			}
 				};
-				xhttp.open("POST", "signAuth", true);
+				
 				xhttp.setRequestHeader('Content-Type', 'application/json');
 				xhttp.send(JSON.stringify(ob));
 				console.log(ob);
 				console.log(`here is the string date ${this.state.dob} name is ${this.state.name} email ${this.state.email} password ${this.state.password} gender ${this.state.gender}`);
-				ReactDOM.render(<SvgContainer />,document.getElementById('_js_root_animation'))
+							const shcv=`${document.body.clientHeight}px`;
+		 	const swcv=`${document.body.clientWidth}px`;
+				ReactDOM.render(<SvgContainer Ch={shcv} Cw={swcv} />,document.getElementById('_js_root_animation'))
 			}
 			_my_gender(evt){
 				this.setState({

@@ -1,0 +1,644 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>linkedFace-we link faces together</title>
+    <meta name="author" content="AJAY JHA">
+    <meta name="author" content="DAEMON">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+	<style type="text/css">
+		#_head{width:100%;height:65px;background-color:#3f4360;}
+		body{background-color:#eaeff2;}
+		#_body_p_1{width:30%;height: 100%;display:inline;float: left;}
+		#_body_p_2{width:39%;height: 100%;display:inline;float: left;}
+		#_body_p_3{width:30%;height: 100%;display:inline;float: right;}
+	</style>
+	<style type="text/css">
+	.loader {
+  border: 16px solid transparent;;
+  border-radius: 50%;
+  margin-left:42%;
+  border-top: 16px solid transparent;
+  width: 20px;
+  height: 20px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+	</style>
+
+
+		<style type="text/css">
+		#name::-webkit-input-placeholder,#password::-webkit-input-placeholder,#password_r::-webkit-input-placeholder,#email::-webkit-input-placeholder,#dob::-webkit-input-placeholder { /* WebKit browsers */
+  			line-height: 4.5em;
+  			color:black;
+  			font-size:15px;
+  			font-family:cursive;
+		}
+		
+		 #name::-webkit-input-placeholder,#password::-webkit-input-placeholder,#password_r::-webkit-input-placeholder,#email::-webkit-input-placeholder,#dob::-webkit-input-placeholder{ /* Mozilla Firefox 4 to 18 */
+  			line-height: 4.5em;
+  			color:black;
+  			font-size:15px;
+  			font-family:cursive;
+		}
+		 #name::-webkit-input-placeholder,#password::-webkit-input-placeholder,#password_r::-webkit-input-placeholder,#email::-webkit-input-placeholder,#dob::-webkit-input-placeholder { /* Mozilla Firefox 19+ */
+  			line-height: 4.5em;
+  			color:black;
+  			font-size:15px;
+  			font-family:cursive;
+		}
+		 #name::-webkit-input-placeholder,#password::-webkit-input-placeholder,#password_r::-webkit-input-placeholder,#email::-webkit-input-placeholder,#dob::-webkit-input-placeholder { /* Internet Explorer 10+ */
+  			line-height: 4.5em;
+  			color:black;
+  			font-size:15px;
+  			font-family:cursive;
+		}
+	</style>
+	<style type="text/css">
+		select {
+    			-webkit-appearance: none;
+    			-moz-appearance: none;
+    			text-indent: 1px;
+    			text-overflow: '';
+			border:0px;
+			-webkit-user-select: none;
+		}
+		select option {
+    			margin: 40px;
+    			background: #eaeff2;
+    			color: black;
+			border:0px;
+			outline:none;
+		}
+	</style>
+		<style type="text/css">
+.loader{
+  margin: 0 0 2em;
+  height: 100px;
+  width: 20%;
+  text-align: center;
+  padding: 1em;
+  margin: 0 auto 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+svg path,
+svg rect{
+  fill: #FF6700;
+}
+	</style>
+<script type="text/javascript">
+	function myResize(argument) {
+		document.getElementById("_body").style.height=window.innerHeight-105+"px";
+		document.getElementById("_body").style.width="100%";
+		document.getElementById("_body").style.marginTop="15px";
+	}
+</script>
+
+</head>
+<body onresize="myResize()">
+
+<!-- email validation temp -->
+	<script type="text/javascript">
+	function sEmail(email) {
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+
+
+function sName(id)
+{
+    var regex = /^[a-zA-Z ]{2,30}$/;
+	return regex.test(id)
+}
+</script>
+	<!-- <script type="text/javascript" id="email_ss">
+	function validateEmail(email) {
+    	var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    	return re.test(email);
+	}
+	</script> -->
+	<script type="text/javascript" id="password_ss">
+	function sPassword(password) {
+    	var re = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+
+    	return re.test(password);
+	}
+	</script>
+	<!-- <script type="text/javascript">
+		function shreyaName(id)
+		{
+    		var regex = /^[a-zA-Z ]{2,30}$/;
+			return regex.test(id)
+		}
+	</script> -->
+<div id="_js_root_animation">
+</div>
+<div id="_head">
+	<div id="_head_p_1">
+	</div>
+	<div id="_head_p_2">
+	</div>
+	<div id="_head_p_3">
+	</div>
+	<div id="_head_p_4">
+	</div>
+	<div id="_head_p_5">
+	</div>
+	<div id="_head_p_6">
+	</div>
+	<div id="_head_p_7">
+	</div>
+</div>
+
+<div id="_body">
+	<div id="_body_p_1">1
+	</div>
+	<div id="_body_p_2">
+	</div>
+	<script type="text/babel">
+		"use strict";
+
+class Spinner extends React.Component {
+		 		constructor(props){
+		 			super(props);
+		 			this.state = {
+		 			};
+		 		}
+		 		render(){
+		 			return (
+		 				<div className="loader loader--style5" title="4">
+  							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+  width="24px" height="30px" viewBox="0 0 24 30" style={{enableBackground:"new 0 0 50 50"}} xmlSpace="preserve">
+    <rect x="0" y="0" width="4" height="10" fill="#333">
+      <animateTransform attributeType="xml"
+        attributeName="transform" type="translate"
+        values="0 0; 0 20; 0 0"
+        begin="0" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+    <rect x="10" y="0" width="4" height="10" fill="#333">
+      <animateTransform attributeType="xml"
+        attributeName="transform" type="translate"
+        values="0 0; 0 20; 0 0"
+        begin="0.2s" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+    <rect x="20" y="0" width="4" height="10" fill="#333">
+      <animateTransform attributeType="xml"
+        attributeName="transform" type="translate"
+        values="0 0; 0 20; 0 0"
+        begin="0.4s" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+  </svg>
+</div>
+		 			)
+		 		}
+		 	}
+
+
+		 	class DotArray extends React.Component {
+		 		constructor(props){
+		 			super(props);
+		 			this.state = {
+		 				max:["."]
+		 			};
+		 			this.componentDidMount=this.componentDidMount.bind(this);
+		 		}
+		 		componentDidMount(){
+		 			var x=this.state.max.length;
+		 			setInterval(
+		 			()=>{
+		 					var z = this.state.max;
+		 					z.push(".");
+		 					if(z.length <= 9){
+		 					this.setState({
+
+		 						max:z
+		 					})
+		 					}
+		 					else
+		 					{
+		 						this.setState({
+
+		 							max : ["."]
+		 						})
+		 					}
+						},2);
+		 			
+		 			
+		 		}
+		 		render(){
+		 			return (
+		 				<div id="_max_dot" style={{display:"inline"}}>
+		 				{
+		 					this.state.max.map( (a,b) =>{
+		 						return (
+		 							<span key={b}>{a}</span>
+		 						)
+		 					} )
+		 				}
+		 				</div>
+		 			)
+		 		}
+		 	}
+
+
+		 	const sh=`${document.body.clientHeight}px`;
+		 	const sw=`${document.body.clientWidth}px`;
+		 	console.log(`${sh} ${sw} lol`)
+		 	class SvgContainer extends React.Component {
+		 		constructor(props){
+		 			super(props);
+		 		}
+		 		render(){
+		 			return (
+		 				<div id="_map_in_search" style={{width:sw,height:sh,position:"absolute",backgroundColor:"transparent",display:"flex",justifyContent:"center",alignItems:"center",overflow:"hidden",zIndex:1}} ref={() => {document.getElementById("_head").style.opacity="0.2";
+		 																document.getElementById("_body").style.opacity="0.2";
+		 															}}>
+		 					<table>
+		 					<tr><td>
+		 					<Spinner />
+		 					
+		 					</td></tr><tr><td>
+		 					<div>
+		 						<code style={{fontFamily:"cursive"}}><span><font size={5} style={{position: "fixed"}}>Please Wait Loading <DotArray /></font></span></code>
+		 					</div></td>
+		 					</tr>
+		 					</table>
+		 				</div>
+		 			)
+		 		}
+		 	}
+
+
+		const signAreaStyle={width:"100%",height:"100%"};
+		class SignUp extends React.Component {
+			constructor(props){
+				super(props);
+				this._name_change=this._name_change.bind(this);
+				this._name_focus=this._name_focus.bind(this);
+				this._name_blur=this._name_blur.bind(this);
+				this._email_change=this._email_change.bind(this);
+				this._email_focus=this._email_focus.bind(this);
+				this._email_blur=this._email_blur.bind(this);
+				this._password_change=this._password_change.bind(this);
+				this._password_focus=this._password_focus.bind(this);
+				this._password_blur=this._password_blur.bind(this);
+				this._password_re_change=this._password_re_change.bind(this);
+				this._password_re_focus=this._password_re_focus.bind(this);
+				this._password_re_blur=this._password_re_blur.bind(this);
+				this._c_type_date=this._c_type_date.bind(this);
+				this._c_type_text=this._c_type_text.bind(this);
+				this._dob=this._dob.bind(this);
+				this._my_interest=this._my_interest.bind(this);
+				this._my_interest_value=this._my_interest_value.bind(this);
+				this._link_my_face=this._link_my_face.bind(this);
+				this._my_gender=this._my_gender.bind(this);
+				this.state={
+					name:"",
+					nameBorder:"transparent",
+					namePlaceholder:"name",
+					email:"",
+					emailBorder:"transparent",
+					emailPlaceholder:"email or mobile",
+					password:"",
+					passwordBorder:"transparent",
+					passwordPlaceholder:"password",
+					password_r:"",
+					passwordReBorder:"transparent",
+					passwordRePlaceholder:"confirm password",
+					cTypeToggle:"text",
+					dob:"",
+					interest:"",
+					gender:""
+				};
+			}
+			_name_blur(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				if(evt.target.value==""){
+					this.setState({
+							nameBorder:"red",
+							namePlaceholder:"this is required"
+						})
+				}else if(!sName(evt.target.value)){
+					this.setState({
+						nameBorder:"red",
+						name:"",
+						namePlaceholder:"enter a valid name"
+					})
+				}
+			}
+			_name_focus(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				evt.target.style.outline="none";
+				if(!sName(evt.target.value)){
+					this.setState({
+						namePlaceholder:"name",
+						nameBorder:"transparent"
+					});
+				}else{
+					this.setState({
+						namePlaceholder:"name",
+						nameBorder:"green"
+					});
+				}
+				
+			}
+			_name_change(evt){
+				console.log(sName(evt.target.value))
+					this.setState({ name:evt.target.value })
+				if(sName(evt.target.value)){
+					this.setState({
+						nameBorder:"green"
+					})
+				}else{
+					this.setState({
+						nameBorder:"red"
+					})
+				}
+			}
+			_email_blur(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				if(evt.target.value==""){
+					this.setState({
+							emailBorder:"red",
+							emailPlaceholder:"this is required"
+						})
+				}else if(!sEmail(evt.target.value)){
+					this.setState({
+						emailBorder:"red",
+						email:"",
+						emailPlaceholder:"enter a valid email or mobile"
+					})
+				}
+			}
+			_email_focus(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				evt.target.style.outline="none";
+				if(!sEmail(evt.target.value)){
+					this.setState({
+						emailPlaceholder:"email or mobile",
+						emailBorder:"transparent"
+					});
+				}else{
+					this.setState({
+						emailPlaceholder:"email or mobile",
+						emailBorder:"green"
+					});
+				}
+				
+			}
+			_email_change(evt){
+				console.log(sEmail(evt.target.value))
+					this.setState({ email:evt.target.value })
+				if(sEmail(evt.target.value)){
+					this.setState({
+						emailBorder:"green"
+					})
+				}else{
+					this.setState({
+						emailBorder:"red"
+					})
+				}
+			}
+			_password_blur(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				if(evt.target.value==""){
+					this.setState({
+							passwordBorder:"red",
+							passwordPlaceholder:"this is required"
+						})
+				}else if(!sPassword(evt.target.value)){
+					this.setState({
+						passwordBorder:"red",
+						password:"",
+						passwordPlaceholder:"enter a valid password"
+					})
+				}
+			}
+			_password_focus(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				evt.target.style.outline="none";
+				if(!sPassword(evt.target.value)){
+					this.setState({
+						passwordPlaceholder:"password",
+						passwordBorder:"transparent"
+					});
+				}else{
+					this.setState({
+						passwordPlaceholder:"password",
+						passwordBorder:"green"
+					});
+				}
+				
+			}
+			_password_change(evt){
+				console.log(sPassword(evt.target.value))
+					this.setState({ password:evt.target.value })
+				if(sPassword(evt.target.value)){
+					this.setState({
+						passwordBorder:"green"
+					})
+				}else{
+					this.setState({
+						passwordBorder:"red"
+					})
+				}
+			}
+			_password_re_blur(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				evt.persist();
+				var t_pass=document.getElementById('password').value;
+				if(evt.target.value==""){
+					this.setState({
+							passwordReBorder:"red",
+							passwordRePlaceholder:"this is required"
+						})
+				}else if(!sPassword(evt.target.value)){
+					this.setState({
+						passwordReBorder:"red",
+						password_r:"",
+						passwordRePlaceholder:"enter a valid password"
+					})
+				}else if(sPassword(t_pass) && sPassword(evt.target.value) && t_pass!=evt.target.value){
+					this.setState({
+						passwordReBorder:"red",
+						password_r:"",
+						passwordRePlaceholder:"password won't match"
+					})
+				}
+			}
+			_password_re_focus(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				evt.target.style.outline="none";
+				if(!sPassword(evt.target.value)){
+					this.setState({
+						passwordRePlaceholder:"confirm password",
+						passwordReBorder:"transparent"
+					});
+				}else{
+					this.setState({
+						passwordRePlaceholder:"confirm password",
+						passwordReBorder:"green"
+					});
+				}
+				
+			}
+			_password_re_change(evt){
+				console.log(sPassword(evt.target.value))
+					this.setState({ password_r:evt.target.value })
+				if(sPassword(evt.target.value)){
+					this.setState({
+						passwordReBorder:"green"
+					})
+				}else{
+					this.setState({
+						passwordReBorder:"red"
+					})
+				}
+			}
+			_c_type_date(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				evt.target.style.outline="none";
+				this.setState({
+						cTypeToggle:"date"
+					});
+			}
+			_c_type_text(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				//evt.target.style.outline="none";
+				if(evt.target.value==""){
+					this.setState({
+						cTypeToggle:"text"
+					});
+				}
+			}
+			_dob(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				this.setState({
+						dob:evt.target.value
+					})
+			}
+			_my_interest(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				evt.target.style.outline="none";
+			}
+			_my_interest_value(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				this.setState({
+						interest:evt.target.value
+					});
+			}
+			_link_my_face(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				console.log(`here is the string date ${this.state.dob} name is ${this.state.name} email ${this.state.email} password ${this.state.password} gender ${this.state.gender}`);
+				ReactDOM.render(<SvgContainer />,document.getElementById('_js_root_animation'))
+			}
+			_my_gender(evt){
+				this.setState({
+						gender:evt.target.value
+					});
+			}
+			render(){
+				return (
+					<div id="sign_lf_r" className="sign_lf_r" style={signAreaStyle}>
+						<div id="lf_s_1" style={{width:"100%",height:"5%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+							
+						</div>
+						<div id="lf_s_2" style={{width:"100%",height:"10%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+							<code style={{fontFamily:"cursive"}}>
+								<font size={5}>
+									sign up here.
+								</font>
+							</code>
+						</div>
+						<div id="lf_s_3" style={{width:"100%",height:"10%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+							<input type="text" name="name" id="name" style={{width:"70%",height:"60%",backgroundColor:"transparent",borderColor:this.state.nameBorder,fontFamily:"cursive",fontSize:"18px"}} placeholder={this.state.namePlaceholder} onChange={this._name_change} onFocus={this._name_focus} onBlur={this._name_blur} value={this.state.name} />
+						</div>
+						<div id="lf_s_4" style={{width:"100%",height:"10%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+							<input type="text" name="email" id="email" style={{width:"70%",height:"60%",backgroundColor:"transparent",borderColor:this.state.emailBorder,fontFamily:"cursive",fontSize:"18px"}} placeholder={this.state.emailPlaceholder} onChange={this._email_change} onFocus={this._email_focus} onBlur={this._email_blur} value={this.state.email} />
+						</div>
+						<div id="lf_s_5" style={{width:"100%",height:"10%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+							<input type="password" name="password" id="password" style={{width:"70%",height:"60%",backgroundColor:"transparent",borderColor:this.state.passwordBorder,fontFamily:"cursive",fontSize:"18px"}} placeholder={this.state.passwordPlaceholder} onChange={this._password_change} onFocus={this._password_focus} onBlur={this._password_blur} value={this.state.password} />
+						</div>
+						<div id="lf_s_6" style={{width:"100%",height:"10%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+							<input type="password" name="password_r" id="password_r" style={{width:"70%",height:"60%",backgroundColor:"transparent",borderColor:this.state.passwordReBorder,fontFamily:"cursive",fontSize:"18px"}} placeholder={this.state.passwordRePlaceholder} onChange={this._password_re_change} onFocus={this._password_re_focus} onBlur={this._password_re_blur} value={this.state.password_r} />
+						</div>
+						<div id="lf_s_8" style={{width:"100%",height:"10%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+							<div style={{width:"70%",height:"60%",display:"block"}} >
+								<div style={{width:"33%",height:"100%",display:"inline",float:"left"}}>
+									<input type="radio" name="gender" id="gender" value="male" onClick={this._my_gender} /><code style={{fontFamily:"cursive"}}><font size="4">male</font></code>
+								</div>
+								<div style={{width:"33%",height:"100%",display:"inline",float:"left"}}>
+									<input type="radio" name="gender" id="gender"   /><code style={{fontFamily:"cursive"}}><font size="4">female</font></code>
+								</div>
+								<div style={{width:"33%",height:"100%",display:"inline",float:"left"}}>
+									<input type="radio" name="gender" id="gender"  /><code style={{fontFamily:"cursive"}}><font size="4">other</font></code>
+								</div>
+							</div>
+						</div>
+						<div id="lf_s_7" style={{width:"100%",height:"10%",display:"flex",justifyContent:"center",alignItems:"center",borderColor:"transparent"}}>
+							<input type={this.state.cTypeToggle} name="dob" id="dob" style={{width:"70%",height:"60%",backgroundColor:"transparent",borderColor:"transparent",fontFamily:"cursive",fontSize:"18px"}} placeholder="birth day" onFocus={this._c_type_date} onBlur={this._c_type_text} onChange={this._dob} value={this.state.dob} />
+						</div>
+						
+						<div id="lf_s_9" style={{width:"100%",height:"10%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+							<select id="_select_interest" style={{width:"70%",height:"60%",fontFamily:"cursive",backgroundColor:"transparent",borderColor:"transparent",fontSize:"18px"}} onFocus={this._my_interest} onChange={this._my_interest_value}>
+								<option value="" disabled="true" selected="true">interested in</option>
+								<option>male</option>
+								<option>female</option>
+								<option>both</option>
+								<option>other</option>
+							</select>
+						</div>
+						<div id="lf_s_10" style={{width:"100%",height:"10%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+							<input type="button" name="_s_sign" id="_s_sign" value="Sign Up" style={{fontFamily:"cursive",fontSize:"22px",backgroundColor:"transparent",borderColor:"transparent",cursor:"pointer"}} onClick={this._link_my_face} />
+						</div>
+					</div>
+				);
+			}
+		}
+		ReactDOM.render(<SignUp />,document.getElementById("_body_p_2"))
+	</script>
+	<div id="_body_p_3">3
+	</div>
+</div>
+<script type="text/javascript">
+	(function setStyleBody(){
+		//var a=document.getElementById("_body");;
+		//console.log(a);
+		console.log(window.outerHeight)
+		document.getElementById("_body").style.height=window.innerHeight-105+"px";
+		document.getElementById("_body").style.width="100%";
+		document.getElementById("_body").style.marginTop="15px";
+		//document.getElementById("_body").style.border="1px solid black";
+	})();
+</script>
+</body>
+</html>

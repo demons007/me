@@ -13,11 +13,15 @@
     "body-parser": "1.17.1",
     "ejs": "2.4.1",
     "express": "4.13.3",
+    "express-redirect": "1.2.2",
     "literalify": "^0.4.0",
     "neo4j-driver": "1.1.1",
+    "nodemailer": "3.1.7",
+    "promise": "7.1.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "socket.io": "^1.7.3"
+    "socket.io": "^1.7.3",
+    "twilio": "2.11.1"
   },
   "repository": {
     "type": "git",
