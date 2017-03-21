@@ -28,9 +28,9 @@ var _twilio = require('twilio');
 
 var _twilio2 = _interopRequireDefault(_twilio);
 
-var _nodemailer = require('nodemailer');
+//var _nodemailer = require('nodemailer');
 
-var _nodemailer2 = _interopRequireDefault(_nodemailer);
+//var _nodemailer2 = _interopRequireDefault(_nodemailer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
