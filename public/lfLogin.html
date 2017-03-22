@@ -493,7 +493,7 @@ function sName(id)
 					xhttps.onreadystatechange = function(data){
     				if (xhttps.readyState==4) {
        				console.log(this.responseText)
-       				top.location.href=`http://localhost:5000${this.responseText}`;
+       				top.location.href=`${this.responseText}`;
     				}
 					};
 				
