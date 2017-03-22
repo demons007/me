@@ -6,7 +6,7 @@ import bodyParser from 'body-parser';
 import events from 'events';
 import Promise from 'promise';
 import twilio from 'twilio';
-import nodemailer from 'nodemailer';
+const nodemailer = require('nodemailer');
 var userMap=new Map();
 var redirect = require("express-redirect");
 var crypto = require('crypto'),

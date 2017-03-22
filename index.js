@@ -28,12 +28,9 @@ var _twilio = require('twilio');
 
 var _twilio2 = _interopRequireDefault(_twilio);
 
-//var _nodemailer = require('nodemailer');
-
-//var _nodemailer2 = _interopRequireDefault(_nodemailer);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var nodemailer = require('nodemailer');
 var userMap = new Map();
 var redirect = require("express-redirect");
 var crypto = require('crypto'),
@@ -120,7 +117,7 @@ var sendOtp = function sendOtp(no) {
 };
 eventEmitter.addListener("otpSend", sendOtp);
 var sendMailAj = function sendMailAj(data, to, subject) {
-	var transporter = _nodemailer2.default.createTransport({
+	var transporter = nodemailer.createTransport({
 		service: 'gmail',
 		auth: {
 			user: 'ajaykrjha93@gmail.com',
