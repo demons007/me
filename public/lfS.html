@@ -35,6 +35,7 @@
 		#_m_playlist_content_aude{width:100%;height:88%;}
 		#_mm_info_mine_aj{width:100%;height:20%;minHeight:20%;}
 		#_mm_info_mine_aj_after{width:100%;height:80%;minHeight:79%;margin-top:1%;}
+		#_cht_baxa{position: fixed;margin-top: 600px;}
 		img{cursor:pointer;}
 	</style>
     	<style type="text/css">
@@ -189,6 +190,9 @@
 		}
 	}
 </script> -->
+<div id="_cht_baxa">
+	
+</div>
 <div id="_head">
 	<div id="_head_p_p_1">
 		<div id="_head_p_p_1_p_1">
@@ -246,18 +250,47 @@
 	<div id="_head_p_p_4">
 	</div>
 		<script type="text/babel">
+		class MainSearchSug extends React.Component {
+			constructor(props){
+				super(props);
+			}
+			render(){
+				return (
+					<div id="_s_e_a_pop" style={{width:"30%",height:"400px",backgroundColor:"lavender",position:"fixed",marginLeft:"34.7%",overflowY:"scroll"}} >
+						a
+					</div>
+				)
+			}
+		}
 			const dCapStyle={width:"100%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center"};
 			const dSerAllStyle={width:"100%",height:"35px"}
 			class DomainSearch extends React.Component {
 				constructor(props){
 					super(props);
 					this.state = {
+						mainSerVal:""
 					};
+					this._me_main_change_sera=this._me_main_change_sera.bind(this);
+				}
+				_me_main_change_sera(evt){
+					evt.preventDefault();
+					evt.stopPropagation();
+					let v=evt.target.value
+					this.setState({
+						mainSerVal:evt.target.value
+					})
+					if(v !=""){
+						ReactDOM.unmountComponentAtNode(document.getElementById('_pop_up'));
+						ReactDOM.render(<MainSearchSug />,document.getElementById('_pop_up'));
+					}else{
+						ReactDOM.unmountComponentAtNode(document.getElementById('_pop_up'));
+					}
+					
 				}
 				render(){
 					return (
 						<div id="_domain_caption" style={dCapStyle}>
-							<input type="search" name="_d_search_all" id="_d_search_all" style={dSerAllStyle} placeholder="Search anything" />
+							<input type="search" name="_d_search_all" id="_d_search_all" style={dSerAllStyle} placeholder="Search anything" value={this.state.mainSerVal} onChange={this._me_main_change_sera} />
 						</div>
 					)
 				}
@@ -268,6 +301,20 @@
 	</div>
 	<div id="_head_p_p_6">
 	</div>
+	<script type="text/babel">
+		class Notification extends React.Component {
+			constructor(props){
+				super(props);
+			}
+			render(){
+				return (
+					<div>
+						<img src="">
+					</div>
+				)
+			}
+		}
+	</script>
 	<div id="_head_p_p_7">
 	</div>
 	<div id="_head_p_p_8">
@@ -566,9 +613,9 @@
 								<textarea id="_act_idea_texta" placeholder="have any idea in your mind ???" style={{width:"100%",height:"97%"}} value={this.state.textVal} onChange={this._pageAtTextaChng}></textarea>
 							</div><br />
 							<div id="_wrapper_btn" style={{width:"100%",height:"30%",maxHeight:"30%"}}>
-								<input type="button" id="_snd" style={{display:"inline",float:"left",backgroundColor:"transparent",fontFamily:"cursive"}} value="Share" />
+								<input type="button" id="_snd" style={{display:"inline",float:"left",backgroundColor:"transparent",fontFamily:"cursive",borderRadius:"50%"}} value="Share" />
 								<input type="button" style={{display:"inline",float:"left",marginLeft:"15%",backgroundColor:"transparent",borderColor:"transparent",fontFamily:"cursive",color:this.state.dColor,cursor:"pointer"}} value={this.state.char-this.state.cur+" charecter left"} disabled="true"/>
-								<input type="button" id="_snd" style={{display:"inline",float:"right",backgroundColor:"transparent",fontFamily:"cursive",cursor:"pointer"}} value="Attach" onClick={this._mm_letme_clk} />
+								<input type="button" id="_snd" style={{display:"inline",float:"right",backgroundColor:"transparent",fontFamily:"cursive",cursor:"pointer",borderRadius:"50%"}} value="Attach" onClick={this._mm_letme_clk} />
 							</div>
 						</div>
 					)
@@ -682,7 +729,7 @@
 
 				const aStyle={width:"30%",minHeight:"30%",height:"100%",backgroundColor:"white",marginRight:"2%",display:"inline-block"};
 				const realFaceOtherStyle={width:"100%",height:"50%",display:"flex",justifyContent:"center",alignItems:"center"};
-				const realFaceInfyOtherStyle={width:"100%",height:"48%",marginTop:"2%"};
+				const realFaceInfyOtherStyle={width:"100%",height:"48%",marginTop:"2%",display:"flex",justifyContent:"center",alignItems:"center"};
 				const imgEachStyle={width:"50%",height:"100%",borderRadius:"50%"};
 
 				//sass end for AvailableFaceOnDomain
@@ -691,8 +738,22 @@
 					constructor(props){
 						super(props);
 						this.state = {
-							imSrc:this.props.ImSrc
+							imSrc:this.props.ImSrc,
+							name:"ajay jha"
 						};
+						this._get_me_to_face_linking=this._get_me_to_face_linking.bind(this);
+					}
+					_get_me_to_face_linking(evt){
+						evt.preventDefault();
+						evt.stopPropagation();
+						var xhttp = new XMLHttpRequest();
+							xhttp.open("GET", `linkMyFace?s_a=`, true);
+							xhttp.onreadystatechange = function(data){
+    							if (xhttp.readyState==4) {
+    								console.log(this.responseText)
+    							}
+							};
+						xhttp.send();
 					}
 					render(){
 						return (
@@ -701,6 +762,20 @@
 									<img src={this.state.imSrc} style={imgEachStyle} />
 								</div>
 								<div id="_see_my_real_face_infy" style={realFaceInfyOtherStyle}>
+									<table>
+										<tr>
+											<td>
+												<code style={{fontFamily:"cursive"}} ><font size={4}>
+													{this.state.name}
+												</font></code>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<input type="button" name="_link_face_gate" className="_link_face_gate" value="link face" style={{fontFamily:"cursive",backgroundColor:"transparent",cursor:"point5r",borderRadius:"50%",cursor:"pointer"}} onClick={this._get_me_to_face_linking} />
+											</td>
+										</tr>
+									</table>
 								</div>
 							</div>
 						)
@@ -791,18 +866,79 @@
 					<div id="_music_content">
 					</div>
 						<script type="text/babel">
+						class SearchAfterMusic extends React.Component{
+							constructor(props){
+								super(props);
+								this.state = {
+									sName:this.props.S
+								};
+								this._songs_to_player=this._songs_to_player.bind(this);
+							}
+							_songs_to_player(evt){
+								evt.preventDefault();
+								evt.stopPropagation();
+								//alert(evt.target.innerText);
+								document.getElementById('_vid_player').src=`http://www.linkedface.in/${evt.target.innerText}`;
+								document.getElementById('_vid_player').play();
+							}
+							render(){
+								return (
+									<div id="_vid_s_sr_aftr" style={{width:"100%",height:"300px",backgroundColor:"transparent",overflowY:"scroll"}} >
+									{
+									this.state.sName.map( (a,b) => {
+										return (
+											<div key={b} className="_s_n_g_n" style={{width:"100%",height:"40px",display:"flex",justifyContent:"center",alignItems:"center",backgroundColor:"white",marginBottom:"10px"}}>
+												<code style={{fontFamily:"cursive",cursor:"pointer"}} >
+													<font size={4} onClick={this._songs_to_player} >
+														{a}
+													</font>
+												</code>
+											</div>
+										)
+									} )
+									}
+									</div>
+								)
+							}
+						}
 							class MusicContents extends React.Component {
 								constructor(props){
 									super(props);
 									this.state = {
-										cPlay:"yahin.mp4"
+										cPlay:"http://www.linkedface.in/yahin.mp4",
+										valSearch:""
 									};
+									this._search_music=this._search_music.bind(this);
+								}
+								_search_music(evt){
+									evt.preventDefault();
+									evt.stopPropagation();
+									let xvb=evt.target.value
+									this.setState({
+										valSearch:xvb
+									});
+									if(xvb !=""){
+									var xhttp = new XMLHttpRequest();
+									//let that=this;
+
+									xhttp.open("GET", `songs?s_a=${xvb}`, true);
+									xhttp.onreadystatechange = function(data){
+										
+    									if (xhttp.readyState==4) {
+    										console.log(this.responseText)
+    										ReactDOM.render(<SearchAfterMusic S={JSON.parse(this.responseText).ob} />,document.getElementById("_m_ser_bx_after"))
+    									}
+									};
+									xhttp.send();
+									}else{
+										ReactDOM.unmountComponentAtNode(document.getElementById('_m_ser_bx_after'))
+									}
 								}
 								render(){
 									return (
 										<div id="_p_music_cont" style={{width:"100%",height:"100%",overflowY:"scroll"}}>
 											<div id="_m_search_bx" style={{width:"100%",height:"45px",display:"flex",alignItems:"center"}}>
-												<input type="search" id="_m_ser_act_ip" name="_m_ser_act_ip" placeholder="search musics .." style={{width:"100%",height:"35px"}} />
+												<input type="search" id="_m_ser_act_ip" name="_m_ser_act_ip" placeholder="search musics .." value={this.state.valSearch} style={{width:"100%",height:"35px"}} onChange={this._search_music} />
 											</div>
 											<div id="_m_ser_bx_after" style={{width:"100%"}}>
 											</div>
@@ -844,6 +980,78 @@
 							</script>
 						<div id="_m_playlist_content_vide">
 						</div>
+						<script type="text/babel">
+							let ob=top.location.search.split("=")[1];
+							class Playlist extends React.Component {
+								constructor(props){
+									super(props);
+									this.state= {
+										ini:[],
+										col:"black"
+									};
+									this.componentDidMount=this.componentDidMount.bind(this);
+									this._mm_mouse_enter=this._mm_mouse_enter.bind(this);
+									this._mm_mouse_out=this._mm_mouse_out.bind(this);
+								}
+								componentDidMount(){
+									var xhttp = new XMLHttpRequest();
+									let that=this;
+									xhttp.open("GET", "playlist?l_v=9831296420", true);
+									xhttp.onreadystatechange = function(data){
+										
+    									if (xhttp.readyState==4) {
+    										
+										let mncvbg=this.responseText;
+										let it=JSON.parse(mncvbg).ob;
+										console.log("hi")
+       										that.setState({
+       											ini:it
+       										})
+    									}
+									};
+									xhttp.send();
+								}
+								_mm_mouse_enter(evt){
+									evt.preventDefault();
+									evt.stopPropagation();
+									evt.target.style.color="blue";
+								}
+								_mm_mouse_out(evt){
+									evt.preventDefault();
+									evt.stopPropagation();
+									evt.target.style.color="black";
+								}
+								render(){
+									if(this.state.ini.length==0){
+									return (
+										<div id="_mm_gota_playlist" style={{width:"100%",height:"100%"}} >
+											{
+												this.state.ini.map( (a,b) => {
+													return (
+														<p key={b} >Loading..</p>
+													)
+												} )
+											}
+										</div>
+									)
+									}else{
+									return (
+										<div id="_mm_gota_playlist" style={{width:"100%",height:"100%",textAlign:"center"}} >
+											{
+												this.state.ini.map( (a,b) => {
+													return (
+														<p key={b} style={{cursor:"pointer",backgroundColor:"white"}}  ><code style={{fontFamily:"cursive"}} ><font size={4} onMouseEnter={this._mm_mouse_enter} onMouseOut={this._mm_mouse_out}>{a}</font></code></p>
+
+													)
+												} )
+											}
+										</div>
+									)
+									}
+								}
+							}
+							ReactDOM.render(<Playlist />,document.getElementById('_m_playlist_content_vide'));
+						</script>
 					</div>
 					
 				</div>
@@ -866,13 +1074,13 @@
 							}
 							render(){
 								return (
-									<div id="_welcome_ajay" style={{width:"100%",height:"100%"}}>
+									<div id="_welcome_ajay" style={{width:"100%",height:"100%",backgroundColor:"white",borderRadius:"20%"}}>
 										<div id="_mm_wlcm" style={{width:"100%",height:"25%"}}>
 											<div id="_mm_wlcm_caption" style={{width:"48%",height:"100%",display:"inline-flex",justifyContent:"center",alignItems:"center",float:"left"}}>
 												<code style={{fontFamily:"cursive"}}><font size={3} color="black">{this.state.wlcm}</font></code>
 											</div>
 											<div id="_mm_wlcm_user" style={{width:"48%",height:"100%",display:"inline-flex",justifyContent:"center",alignItems:"center",float:"right"}}>
-												<select id="" style={{width:"50%",maxWidth:"100%",fontFamily:"cursive",fontSize:14,backgroundColor:"transparent",borderColor:"transparent"}}>
+												<select id="" style={{width:"50%",maxWidth:"100%",fontFamily:"cursive",fontSize:20,backgroundColor:"transparent",borderColor:"transparent"}}>
 													<option value="" disabled="true" selected="true">{this.state.usr.split(' ')[0]}</option>
 													{
 														this.state.face.map((a,b) => {
@@ -902,6 +1110,25 @@
 				<div id="_mm_info_mine_aj_after">
 				</div>
 				<script type="text/babel">
+				class ChatBoxActual extends React.Component {
+					constructor(props){
+						super(props);
+					}
+					render(){
+						return (
+							<div className="_box_c" style={{width:"50%",height:"30px",float:"left"}}>
+								{
+									this.state.getSes.map( (a,b)=>{
+										return (
+											<div className="_indi_eact_chat_open" style={{width:"200px",height:"100%"}}>
+											</div>
+										)
+									} )
+								}
+							</div>
+						)
+					}
+				}
 					class LinkedFacesMine extends React.Component{
 						constructor(props){
 							super(props);
@@ -942,6 +1169,7 @@
 				xhttp.onreadystatechange = function(data){
     			if (xhttp.readyState==4) {
     				console.log(this.responseText);
+    				console.log("error1")
     				let cvbfcg=JSON.parse(this.responseText).data;
        				ReactDOM.render(<LinkedFacesMine Mapper={JSON.parse(this.responseText).data} />,document.getElementById('_mm_info_mine_aj_after'));
     				}
@@ -949,7 +1177,7 @@
 				
 				xhttp.setRequestHeader('Content-Type', 'application/json');
 				xhttp.send();
-				</script>>
+				</script>
 			</div>
 		</div>
 	</div>

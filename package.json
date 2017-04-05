@@ -20,8 +20,9 @@
     "promise": "7.1.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "socket.io": "^1.7.3",
-    "twilio": "2.11.1"
+    "socket.io": "1.7.3",
+    "twilio": "2.11.1",
+    "uuid": "3.0.1"
   },
   "repository": {
     "type": "git",

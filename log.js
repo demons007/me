@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import events from 'events';
 import Promise from 'promise';
 import twilio from 'twilio';
+const uuidV4 = require('uuid/v4');
 const nodemailer = require('nodemailer');
 var userMap=new Map();
 var redirect = require("express-redirect");
@@ -166,6 +167,62 @@ app.get('/lfS',(req,res) => {
 	res.write(m.get('home').toString());
 	res.end();
 })
+
+app.get('/linkMyFace',(req,res) => {
+	console.log(req.query.s_a);
+	res.end();
+})
+
+app.get('/songs',(req,res) => {
+	console.log(req.query.s_a)
+	let vc=req.query.s_a;
+	let driverX = neo4j.driver("bolt://hobby-panhpmpgjildgbkepcdcklol.dbs.graphenedb.com:24786", neo4j.auth.basic("rita", "b.PuhuqVThYfCn.fvurl1e25g7fzyCI"));
+		let sessionX = driverX.session();
+		sessionX
+			.run("Match (ee:Video) where ee.name=~'"+".*."+vc+".*' return ee.name as songs")
+			.then( function(resultX){
+				console.log("test data")
+				console.log(resultX.records);
+				let ar=[];
+				for(let i of resultX.records){
+					ar.push(i.get("songs"))
+				}
+				console.log(ar);
+				res.setHeader("Content-Type", "application/json");
+				res.write(JSON.stringify({ob:ar}));
+				res.end();
+				driverX.close();
+				sessionX.close();
+			}).catch((e)=>{
+				console.log(e);
+			})
+			
+})
+
+app.get('/playlist',(req,res) => {
+	console.log(req.query.l_v)
+	let vc=req.query.l_v;
+	let driverX = neo4j.driver("bolt://hobby-panhpmpgjildgbkepcdcklol.dbs.graphenedb.com:24786", neo4j.auth.basic("rita", "b.PuhuqVThYfCn.fvurl1e25g7fzyCI"));
+		let sessionX = driverX.session();
+		sessionX
+			.run(`Match (ee:Rita)-[:HAS_VIDEO]->(ff:Video) where ee.email = "${vc}" return ff.name as songs`)
+			.then( function(resultX){
+				console.log(resultX.records);
+				let ar=[];
+				for(let i of resultX.records){
+					ar.push(i.get("songs"))
+				}
+				console.log(ar);
+				res.setHeader("Content-Type", "application/json");
+				res.write(JSON.stringify({ob:ar}));
+				res.end();
+				driverX.close();
+				sessionX.close();
+			}).catch((e)=>{
+				console.log(e);
+			})
+			
+})
 app.get('/MyLf',(req,res) => {
 	var em=JSON.parse(req.query.ref).email;
 	//console.log(em)
@@ -182,6 +239,8 @@ app.get('/MyLf',(req,res) => {
 				res.setHeader("Content-Type", "application/json");
 				res.write(JSON.stringify({data:inMapMyLf}));
 				res.end();
+				driverX.close();
+				sessionX.close();
 			})
 			.catch(function(e){console.log(e)});
 
