@@ -305,15 +305,19 @@
 		class Notification extends React.Component {
 			constructor(props){
 				super(props);
+				this.state = {
+					notUri:"notification.jpg"
+				};
 			}
 			render(){
 				return (
-					<div>
-						<img src="">
+					<div style={{width:"100%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+						<img src={this.state.notUri} style={{width:"50%",height:"100%",verticalAlign:"center"}}><p>hi</p>
 					</div>
 				)
 			}
 		}
+		ReactDOM.render(<Notification />,document.getElementById('_head_p_p_6'));
 	</script>
 	<div id="_head_p_p_7">
 	</div>
