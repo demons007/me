@@ -30,6 +30,7 @@ var _twilio2 = _interopRequireDefault(_twilio);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var uuidV4 = require('uuid/v4');
 var nodemailer = require('nodemailer');
 var userMap = new Map();
 var redirect = require("express-redirect");
@@ -185,6 +186,100 @@ app.get('/lfS', function (req, res) {
 	res.write(m.get('home').toString());
 	res.end();
 });
+
+app.get('/linkMyFace', function (req, res) {
+	console.log(req.query.s_a);
+	res.end();
+});
+
+app.get('/songs', function (req, res) {
+	console.log(req.query.s_a);
+	var vc = req.query.s_a;
+	var driverX = _neo4jDriver2.default.driver("bolt://hobby-panhpmpgjildgbkepcdcklol.dbs.graphenedb.com:24786", _neo4jDriver2.default.auth.basic("rita", "b.PuhuqVThYfCn.fvurl1e25g7fzyCI"));
+	var sessionX = driverX.session();
+	sessionX.run("Match (ee:Video) where ee.name=~'" + ".*." + vc + ".*' return ee.name as songs").then(function (resultX) {
+		console.log("test data");
+		console.log(resultX.records);
+		var ar = [];
+		var _iteratorNormalCompletion = true;
+		var _didIteratorError = false;
+		var _iteratorError = undefined;
+
+		try {
+			for (var _iterator = resultX.records[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+				var i = _step.value;
+
+				ar.push(i.get("songs"));
+			}
+		} catch (err) {
+			_didIteratorError = true;
+			_iteratorError = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion && _iterator.return) {
+					_iterator.return();
+				}
+			} finally {
+				if (_didIteratorError) {
+					throw _iteratorError;
+				}
+			}
+		}
+
+		console.log(ar);
+		res.setHeader("Content-Type", "application/json");
+		res.write(JSON.stringify({ ob: ar }));
+		res.end();
+		driverX.close();
+		sessionX.close();
+	}).catch(function (e) {
+		console.log(e);
+	});
+});
+
+app.get('/playlist', function (req, res) {
+	console.log(req.query.l_v);
+	var vc = req.query.l_v;
+	var driverX = _neo4jDriver2.default.driver("bolt://hobby-panhpmpgjildgbkepcdcklol.dbs.graphenedb.com:24786", _neo4jDriver2.default.auth.basic("rita", "b.PuhuqVThYfCn.fvurl1e25g7fzyCI"));
+	var sessionX = driverX.session();
+	sessionX.run('Match (ee:Rita)-[:HAS_VIDEO]->(ff:Video) where ee.email = "' + vc + '" return ff.name as songs').then(function (resultX) {
+		console.log(resultX.records);
+		var ar = [];
+		var _iteratorNormalCompletion2 = true;
+		var _didIteratorError2 = false;
+		var _iteratorError2 = undefined;
+
+		try {
+			for (var _iterator2 = resultX.records[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+				var i = _step2.value;
+
+				ar.push(i.get("songs"));
+			}
+		} catch (err) {
+			_didIteratorError2 = true;
+			_iteratorError2 = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion2 && _iterator2.return) {
+					_iterator2.return();
+				}
+			} finally {
+				if (_didIteratorError2) {
+					throw _iteratorError2;
+				}
+			}
+		}
+
+		console.log(ar);
+		res.setHeader("Content-Type", "application/json");
+		res.write(JSON.stringify({ ob: ar }));
+		res.end();
+		driverX.close();
+		sessionX.close();
+	}).catch(function (e) {
+		console.log(e);
+	});
+});
 app.get('/MyLf', function (req, res) {
 	var em = JSON.parse(req.query.ref).email;
 	//console.log(em)
@@ -199,6 +294,8 @@ app.get('/MyLf', function (req, res) {
 		res.setHeader("Content-Type", "application/json");
 		res.write(JSON.stringify({ data: inMapMyLf }));
 		res.end();
+		driverX.close();
+		sessionX.close();
 	}).catch(function (e) {
 		console.log(e);
 	});
