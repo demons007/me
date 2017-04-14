@@ -199,6 +199,33 @@ app.get('/songs',(req,res) => {
 			
 })
 
+
+app.get('/logAuth',(req,res){
+	let email=req.boby.emAuth;
+	let password=req.boby.psAuth;
+	let driverX = neo4j.driver("bolt://hobby-panhpmpgjildgbkepcdcklol.dbs.graphenedb.com:24786", neo4j.auth.basic("rita", "b.PuhuqVThYfCn.fvurl1e25g7fzyCI"));
+		let sessionX = driverX.session();
+		sessionX
+			.run(`Match (ee:Rita) where ee.email="${email}" return ee.password`)
+			.then( function(resultX){
+				console.log("test data")
+				console.log(resultX.records);
+				let ar=[];
+				for(let i of resultX.records){
+					ar.push(i.get("songs"))
+				}
+				console.log(ar);
+				res.setHeader("Content-Type", "application/json");
+				res.write(JSON.stringify({ob:ar}));
+				res.end();
+				driverX.close();
+				sessionX.close();
+			}).catch((e)=>{
+				console.log(e);
+			})
+});
+
+
 app.get('/playlist',(req,res) => {
 	console.log(req.query.l_v)
 	let vc=req.query.l_v;

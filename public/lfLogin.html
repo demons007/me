@@ -219,12 +219,50 @@ function sName(id)
 					numEmPlace:"mobile",
 					eye:"lock.jpg",
 					atVal:"@",
-					mobEm:"mobile.jpg"
+					mobEm:"mobile.jpg",
+					authEm:"",
+					authPs:""
 				};
 				this._show_pwd=this._show_pwd.bind(this);
 				this._hide_pwd=this._hide_pwd.bind(this);
 				this._tog_email=this._tog_email.bind(this);
 				this._tog_number=this._tog_number.bind(this);
+				this._letIt_be_auth=this._letIt_be_auth.bind(this);
+				this._let_write_em=this._let_write_em.bind(this);
+				this._let_write_ps=this._let_write_ps.bind(this);
+			}
+			_let_write_ps(evt){
+				this.setState({
+					authPs:evt.target.value
+				});
+			}
+			_let_write_em(evt){
+				//console.log(this.refs.tog_me_bt_re.src.indexOf("email"))
+				this.setState({
+					authEm:evt.target.value
+				});
+			}
+			_letIt_be_auth(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				var ob=
+				console.log(`value of auth is em : ${this.state.authEm} & pass : ${this.state.authPs}`);
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("POST", "logAuth", true);
+				xhttp.onreadystatechange = function(data){
+    			if (xhttp.readyState==4) {
+       				// Action to be performed when the document is read;
+       				//console.log("in true")
+       				//console.log(this.responseText)
+       				
+       					ReactDOM.unmountComponentAtNode(document.getElementById('_js_root_animation'))
+       					//ReactDOM.render(<Otp hfdhg={this.responseText} to={ob.email} />,document.getElementById('_js_root_animation'))
+       				
+    			}
+				};
+				
+				xhttp.setRequestHeader('Content-Type', 'application/json');
+				xhttp.send(JSON.stringify(ob));
 			}
 			_tog_number(evt){
 				evt.preventDefault();
@@ -234,7 +272,12 @@ function sName(id)
 			_tog_email(evt){
 				evt.preventDefault();
 				evt.stopPropagation();
-				this.setState({togNem:"email",mobEm:"email.jpg",numEmPlace:"email"});
+				console.log(this.refs._em_place_ref.type)
+				if(this.refs.tog_me_bt_re.src.indexOf("email")>0){
+					this.setState({mobEm:"mobile.jpg",numEmPlace:"mobile"});
+				}else{
+					this.setState({mobEm:"email.jpg",numEmPlace:"email"});
+				}
 			}
 			_hide_pwd(evt){
 				evt.preventDefault();
@@ -250,11 +293,11 @@ function sName(id)
 			render(){
 				return (
 					<div id="_login_data" style={loginMaxArea}>
-						<input type={this.state.togNem} max="9999999999" name="_em_o_m" id="_em_o_m" style={emBoxStyle} placeholder={this.state.numEmPlace}  />
-						<input type="image" src={this.state.mobEm} name="tog_me_bt" id="tog_me_bt"  value={this.state.atVal} style={togBtStyle} title={this.state.togTitle} onClick={this._tog_email} onBlur={this._tog_number} />
-						<input type={this.state.togTypePwd} name="_ps_o_s" id="_ps_o_s" style={psBoxStyle} placeholder="password"  />
+						<input type={this.state.togNem} max="9999999999" name="_em_o_m" id="_em_o_m" style={emBoxStyle} placeholder={this.state.numEmPlace} onChange={this._let_write_em} ref="_em_place_ref" />
+						<input type="image" src={this.state.mobEm} name="tog_me_bt" id="tog_me_bt"  value={this.state.atVal} style={togBtStyle} title={this.state.togTitle} onClick={this._tog_email} ref="tog_me_bt_re" />
+						<input type={this.state.togTypePwd} name="_ps_o_s" id="_ps_o_s" style={psBoxStyle} placeholder="password" onChange={this._let_write_ps} />
 						<input type="image" src={this.state.eye} name="tog_me_bt" id="tog_me_bt"  alt="show" style={togBtStyleHide} title="show password" onClick={this._show_pwd} onBlur={this._hide_pwd} />
-						<input type="submit" name="submit" value="login" />
+						<input type="button" name="submit" value="login" onClick={this._letIt_be_auth} />
 					</div>
 				)
 			}
