@@ -200,24 +200,27 @@ app.get('/songs',(req,res) => {
 })
 
 
-app.get('/logAuth',(req,res){
-	let email=req.boby.emAuth;
-	let password=req.boby.psAuth;
+app.post('/logAuth',(req,res) =>{
+	let email=req.body.emAuth;
+	let password=req.body.psAuth;
 	let driverX = neo4j.driver("bolt://hobby-panhpmpgjildgbkepcdcklol.dbs.graphenedb.com:24786", neo4j.auth.basic("rita", "b.PuhuqVThYfCn.fvurl1e25g7fzyCI"));
 		let sessionX = driverX.session();
 		sessionX
-			.run(`Match (ee:Rita) where ee.email="${email}" return ee.password`)
+			.run(`Match (ee:Rita) where ee.email="${email}" return ee.password as password`)
 			.then( function(resultX){
 				console.log("test data")
 				console.log(resultX.records);
-				let ar=[];
-				for(let i of resultX.records){
-					ar.push(i.get("songs"))
+				var x=resultX.records[0];
+				if(x.get("password")==password){
+					let enc=encrypt(email);
+					res.setHeader("Content-Type", "text/plain");
+					res.write(`/lfS?l_v=${enc}`);
+					res.end();
+				}else{
+					res.write("lodu");
+					res.end();
 				}
-				console.log(ar);
-				res.setHeader("Content-Type", "application/json");
-				res.write(JSON.stringify({ob:ar}));
-				res.end();
+				
 				driverX.close();
 				sessionX.close();
 			}).catch((e)=>{
@@ -249,6 +252,34 @@ app.get('/playlist',(req,res) => {
 				console.log(e);
 			})
 			
+})
+app.get('/googleKindSearch',(req,res) => {
+	let vc=req.query.l_data;
+	let driverX = neo4j.driver("bolt://hobby-panhpmpgjildgbkepcdcklol.dbs.graphenedb.com:24786", neo4j.auth.basic("rita", "b.PuhuqVThYfCn.fvurl1e25g7fzyCI"));
+		let sessionX = driverX.session();
+		sessionX
+			.run(`Match (ee:Video) where ee.name=~".*.${vc}.*" with ee as videos optional Match (ff:Rita)-[:HAS_MANDATORY_DP]-(gg:ProfilePic) where ff.name=~".*.${vc}.*" return collect(distinct [ff.name,ff.email,gg.title]) as people,collect(distinct videos.name) as songs`)
+			.then( function(resultX){
+				let obr=resultX.records[0];
+				let pep=obr.get("people");
+				console.log(pep[0][1]);
+				if(pep[0][1]!=null){
+					pep.map( (a,b) => {
+						a[1]=encrypt(a[1]);
+					} )
+				}
+				
+				console.log(pep)
+				let song=obr.get("songs")
+				let ob={people:pep,songs:song};
+				res.setHeader("Content-Type", "application/json");
+				res.write(JSON.stringify(ob));
+				res.end();
+				driverX.close();
+				sessionX.close();
+			}).catch((e)=>{
+				console.log(e);
+			})
 })
 app.get('/MyLf',(req,res) => {
 	var em=JSON.parse(req.query.ref).email;
