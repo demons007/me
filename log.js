@@ -262,13 +262,15 @@ app.get('/googleKindSearch',(req,res) => {
 			.then( function(resultX){
 				let obr=resultX.records[0];
 				let pep=obr.get("people");
+				console.log(pep[0])
+				if(pep[0]!=undefined){
 				console.log(pep[0][1]);
 				if(pep[0][1]!=null){
 					pep.map( (a,b) => {
 						a[1]=encrypt(a[1]);
 					} )
 				}
-				
+				}
 				console.log(pep)
 				let song=obr.get("songs")
 				let ob={people:pep,songs:song};
