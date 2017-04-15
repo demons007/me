@@ -245,17 +245,25 @@ function sName(id)
 			_letIt_be_auth(evt){
 				evt.preventDefault();
 				evt.stopPropagation();
-				var ob=
+				var ob={emAuth:this.state.authEm,psAuth:this.state.authPs};
 				console.log(`value of auth is em : ${this.state.authEm} & pass : ${this.state.authPs}`);
+				const shcvl=`${document.body.clientHeight}px`;
+		 	const swcvl=`${document.body.clientWidth}px`;
+				ReactDOM.render(<SvgContainer Ch={shcvl} Cw={swcvl} />,document.getElementById('_js_root_animation'))
 				var xhttp = new XMLHttpRequest();
 				xhttp.open("POST", "logAuth", true);
 				xhttp.onreadystatechange = function(data){
     			if (xhttp.readyState==4) {
        				// Action to be performed when the document is read;
        				//console.log("in true")
-       				//console.log(this.responseText)
-       				
+       				console.log(this.responseText)
+       				let mnbhg=this.responseText;
+       				if(mnbhg.indexOf("l_v")>0){
        					ReactDOM.unmountComponentAtNode(document.getElementById('_js_root_animation'))
+       					top.location.href=`${mnbhg}`;
+       				}
+       				
+       					
        					//ReactDOM.render(<Otp hfdhg={this.responseText} to={ob.email} />,document.getElementById('_js_root_animation'))
        				
     			}
