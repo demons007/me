@@ -250,16 +250,263 @@
 	<div id="_head_p_p_4">
 	</div>
 		<script type="text/babel">
+		class Spinner extends React.Component {
+		 		constructor(props){
+		 			super(props);
+		 			this.state = {
+		 			};
+		 		}
+		 		render(){
+		 			return (
+		 				<div className="loader loader--style5" title="4">
+  							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+  width="24px" height="30px" viewBox="0 0 24 30" style={{enableBackground:"new 0 0 50 50"}} xmlSpace="preserve">
+    <rect x="0" y="0" width="4" height="20" fill="#333">
+      <animateTransform attributeType="xml"
+        attributeName="transform" type="translate"
+        values="0 0; 0 20; 0 0"
+        begin="0" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+    <rect x="10" y="0" width="4" height="10" fill="#333">
+      <animateTransform attributeType="xml"
+        attributeName="transform" type="translate"
+        values="0 0; 0 20; 0 0"
+        begin="0.2s" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+    <rect x="20" y="0" width="4" height="20" fill="#333">
+      <animateTransform attributeType="xml"
+        attributeName="transform" type="translate"
+        values="0 0; 0 20; 0 0"
+        begin="0.4s" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+  </svg>
+</div>
+		 			)
+		 		}
+		 	}
+
+
+		 	
+
+
+		 	const sh=`${document.body.clientHeight}px`;
+		 	const sw=`${document.body.clientWidth}px`;
+		 	const ph={width:"100%",height:"20%",display:"flex",justifyContent:"flex-end",alignItems:"center"};
+		 	const pw={width:"100%",height:"400px",display:"flex",justifyContent:"center",alignItems:"center"}
+		 	//console.log(`${sh} ${sw} lol`)
+		 	
+		 	class SvgContainerSpinner extends React.Component {
+		 		constructor(props){
+		 			super(props);
+		 			this._unmount_me=this._unmount_me.bind(this);
+		 			this.componentWillUnmount=this.componentWillUnmount.bind(this);
+		 			this.componentWillMount=this.componentWillMount.bind(this);
+		 			this.state={
+		 				clH:this.props.Ch,
+		 				clW:this.props.Cw
+		 			};
+		 		}
+		 		componentWillMount(){
+				
+		 		}
+		 		componentWillUnmount(){
+		 		
+					
+		 		}
+		 		_unmount_me(evt){
+		 			
+					ReactDOM.unmountComponentAtNode(document.getElementById('_js_root_animation'))
+		 		}
+		 		render(){
+		 			return (
+		 				<div id="_map_in_search" style={{width:this.state.clW,height:this.state.clH,position:"absolute",backgroundColor:"transparent",overflow:"hidden",zIndex:1}} ref={() => {console.log("plpo");
+		 																
+		 															}}>
+
+		 				
+		 				<div id="_table_p_body" style={pw} >
+		 					<table style={{width:"20%"}}>
+		 					<tr><td>
+		 					<Spinner />
+		 					
+		 					</td></tr>
+		 					</table>
+		 				</div>
+		 					
+		 				</div>
+		 			)
+		 		}
+		 	}
 		class MainSearchSug extends React.Component {
 			constructor(props){
 				super(props);
 			}
+			componentDidMount(){
+				ReactDOM.render(<SvgContainerSpinner Ch={"400px"} Cw={"100%"} />,document.getElementById('_s_e_a_pop'));
+			}
 			render(){
 				return (
-					<div id="_s_e_a_pop" style={{width:"30%",height:"400px",backgroundColor:"lavender",position:"fixed",marginLeft:"34.7%",overflowY:"scroll"}} >
-						a
+					<div id="_s_e_a_pop" style={{width:"30%",height:"400px",backgroundColor:"lavender",position:"absolute",marginLeft:"34.7%",overflowY:"scroll"}} >
+						
 					</div>
 				)
+			}
+		}
+
+		class LocalAllSearchView extends React.Component {
+			constructor(props){
+				super(props);
+				this.state = {
+					people:this.props.People,
+					songs:this.props.Songs
+				};
+			}
+			render(){
+			//console.log(this.state.people)
+			if(this.state.people.length==0 && this.state.songs.length>0 ){
+				return (
+					<div style={{width:"100%",height:"100%",textAlign:"center"}}>
+						<table style={{width:"100%"}}>
+							<tbody style={{width:"100%"}}>
+								<tr style={{width:"100%"}}>
+									<td style={{width:"100%"}}>
+										<code style={{fontFamily:"cursive"}}><font size={5}>Peoples</font></code>
+									</td>
+								</tr>
+								
+											<tr style={{width:"100%"}}>
+												<td style={{width:"100%"}}>
+													<code style={{fontFamily:"cursive"}}><font size={3}>{`Sorry no people found that contain letter ${document.getElementById('_d_search_all').value}`}</font></code>
+													
+												</td>
+											</tr>
+										
+								<tr style={{width:"100%"}}>
+									<td style={{width:"100%"}}>
+										<code style={{fontFamily:"cursive"}}><font size={5}>Songs</font></code>
+									</td>
+								</tr>
+								{
+									this.state.songs.map( (a,b) => {
+										return (
+											<tr key={b} style={{width:"100%"}}>
+												<td style={{width:"100%"}}>
+													<code style={{fontFamily:"cursive"}}><font size={3}>{a}</font></code>
+												</td>
+											</tr>
+										)
+									} )
+								}
+							</tbody>
+						</table>
+					</div>
+				)
+			}else if(this.state.songs.length==0 && this.state.people.length>0){
+				return (
+					<div style={{width:"100%",height:"100%",textAlign:"center"}}>
+						<table style={{width:"100%"}}>
+							<tbody style={{width:"100%"}}>
+								<tr style={{width:"100%"}}>
+									<td style={{width:"100%"}}>
+										<code style={{fontFamily:"cursive"}}><font size={5}>Peoples</font></code>
+									</td>
+								</tr>
+								{
+									this.state.people.map( (a,b) => {
+										return (
+											<tr key={b} style={{width:"100%"}}>
+												<td style={{width:"100%"}}>
+													<div style={{width:"100%",height:"50px"}}>
+														<div style={{width:"45%",display:"inline",float:"left",height:"100%",marginRight:"4%"}}>
+															<div style={{width:"100%",height:"100%",display:"flex",justifyContent:"flex-end"}}>
+																<img src={a[2]} style={{width:"50px",height:"100%",verticalAlign:"center"}} />
+															</div>
+														</div>
+														<div style={{width:"50%",display:"inline",float:"right",height:"100%"}}>
+															<div style={{width:"100%",height:"100%",display:"flex",justifyContent:"flex-start",alignItems:"center"}}>
+																<a href={`lfP?l_v_ref=${a[1]}`} style={{textDecoration:"none",fontSize:"15px"}}>{a[0]}</a>
+															</div>
+														</div>
+														
+													</div>
+													
+												</td>
+											</tr>
+										)
+									} )
+								}
+								<tr style={{width:"100%"}}>
+									<td style={{width:"100%"}}>
+										<code style={{fontFamily:"cursive"}}><font size={5}>Songs</font></code>
+									</td>
+								</tr>
+								
+											<tr style={{width:"100%"}}>
+												<td style={{width:"100%"}}>
+													<code style={{fontFamily:"cursive"}}><font size={3}>{`Sorry no songs found that contain letter ${document.getElementById('_d_search_all').value}`}</font></code>
+												</td>
+											</tr>
+										
+							</tbody>
+						</table>
+					</div>
+				)
+			}else{
+				return (
+					<div style={{width:"100%",height:"100%",textAlign:"center"}}>
+						<table style={{width:"100%"}}>
+							<tbody style={{width:"100%"}}>
+								<tr style={{width:"100%"}}>
+									<td style={{width:"100%"}}>
+										<code style={{fontFamily:"cursive"}}><font size={5}>Peoples</font></code>
+									</td>
+								</tr>
+								{
+									this.state.people.map( (a,b) => {
+										return (
+											<tr key={b} style={{width:"100%"}}>
+												<td style={{width:"100%"}}>
+													<div style={{width:"100%",height:"50px"}}>
+														<div style={{width:"45%",display:"inline",float:"left",height:"100%",marginRight:"4%"}}>
+															<div style={{width:"100%",height:"100%",display:"flex",justifyContent:"flex-end"}}>
+																<img src={a[2]} style={{width:"50px",height:"100%",verticalAlign:"center"}} />
+															</div>
+														</div>
+														<div style={{width:"50%",display:"inline",float:"right",height:"100%"}}>
+															<div style={{width:"100%",height:"100%",display:"flex",justifyContent:"flex-start",alignItems:"center"}}>
+																<a href={`lfP?l_v_ref=${a[1]}`} style={{textDecoration:"none",fontSize:"15px"}}>{a[0]}</a>
+															</div>
+														</div>
+														
+													</div>
+													
+												</td>
+											</tr>
+										)
+									} )
+								}
+								<tr style={{width:"100%"}}>
+									<td style={{width:"100%"}}>
+										<code style={{fontFamily:"cursive"}}><font size={5}>Songs</font></code>
+									</td>
+								</tr>
+								{
+									this.state.songs.map( (a,b) => {
+										return (
+											<tr key={b} style={{width:"100%"}}>
+												<td style={{width:"100%"}}>
+													<code style={{fontFamily:"cursive"}}><font size={3}>{a}</font></code>
+												</td>
+											</tr>
+										)
+									} )
+								}
+							</tbody>
+						</table>
+					</div>
+				)
+			}
+				
 			}
 		}
 			const dCapStyle={width:"100%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center"};
@@ -282,6 +529,22 @@
 					if(v !=""){
 						ReactDOM.unmountComponentAtNode(document.getElementById('_pop_up'));
 						ReactDOM.render(<MainSearchSug />,document.getElementById('_pop_up'));
+						
+		 				var xhttps = new XMLHttpRequest();
+						xhttps.open("GET", `googleKindSearch?l_data=${v}`, true);
+						xhttps.onreadystatechange = function(data){
+    						if (xhttps.readyState==4) {
+       							console.log(this.responseText)
+       							let okl=this.responseText;
+       							ReactDOM.unmountComponentAtNode(document.getElementById('_s_e_a_pop'));
+       							ReactDOM.render(<LocalAllSearchView People={JSON.parse(okl).people} Songs={JSON.parse(okl).songs} />,document.getElementById('_s_e_a_pop'));
+       							//top.location.href=`${this.responseText}`;
+    						}
+						};
+				
+						xhttps.setRequestHeader('Content-Type', 'application/json');
+						xhttps.send();
+				
 					}else{
 						ReactDOM.unmountComponentAtNode(document.getElementById('_pop_up'));
 					}
