@@ -168,6 +168,15 @@
   			pointer-events: none;
 		}
 	</style>
+	<script type="text/javascript">
+	window.addEventListener("opacity",(evt) => {
+		 		console.log(evt.detail.message+"hi")
+		 		console.log("i am")
+		 		document.getElementById("_head").style.opacity=evt.detail.message;
+		 			document.getElementById("_body").style.opacity=evt.detail.message;
+		 			document.getElementById("_p_body_prev").style.opacity=evt.detail.message;
+		 	},false)
+</script>
 </head>
 <body >
 <!-- <script type="text/javascript">
@@ -192,6 +201,8 @@
 </script> -->
 <div id="_cht_baxa">
 	
+</div>
+<div id="_js_root_animation_style">
 </div>
 <div id="_head">
 	<div id="_head_p_p_1">
@@ -363,7 +374,9 @@
 			}
 			render(){
 			//console.log(this.state.people)
-			if(this.state.people.length==0 && this.state.songs.length>0 ){
+			if(this.state.people[0]!=undefined){
+			if(this.state.people[0][0]==null && this.state.songs[0]!=null ){
+				console.log("hi")
 				return (
 					<div style={{width:"100%",height:"100%",textAlign:"center"}}>
 						<table style={{width:"100%"}}>
@@ -401,7 +414,8 @@
 						</table>
 					</div>
 				)
-			}else if(this.state.songs.length==0 && this.state.people.length>0){
+			}else if(this.state.people[0][0]!=null && this.state.songs[0]==null){
+			console.log("hi puchh")
 				return (
 					<div style={{width:"100%",height:"100%",textAlign:"center"}}>
 						<table style={{width:"100%"}}>
@@ -451,7 +465,10 @@
 						</table>
 					</div>
 				)
-			}else{
+			}else if(this.state.people[0][0]!=null && this.state.songs[0]!=null){
+			console.log(this.state.people[0])
+			console.log(this.state.songs[0])
+			console.log("tester")
 				return (
 					<div style={{width:"100%",height:"100%",textAlign:"center"}}>
 						<table style={{width:"100%"}}>
@@ -506,7 +523,38 @@
 					</div>
 				)
 			}
-				
+			}else{
+				return (
+					<div style={{width:"100%",height:"100%",textAlign:"center"}}>
+						<table style={{width:"100%"}}>
+							<tbody style={{width:"100%"}}>
+								<tr style={{width:"100%"}}>
+									<td style={{width:"100%"}}>
+										<code style={{fontFamily:"cursive"}}><font size={5}>Peoples</font></code>
+									</td>
+								</tr>
+											<tr style={{width:"100%"}}>
+												<td style={{width:"100%"}}>
+													<code style={{fontFamily:"cursive"}}><font size={3}>{`Sorry no peoples found that contain letter ${document.getElementById('_d_search_all').value}`}</font></code>
+												</td>
+											</tr>
+								<tr style={{width:"100%"}}>
+									<td style={{width:"100%"}}>
+										<code style={{fontFamily:"cursive"}}><font size={5}>Songs</font></code>
+									</td>
+								</tr>
+								
+											<tr style={{width:"100%"}}>
+												<td style={{width:"100%"}}>
+													<code style={{fontFamily:"cursive"}}><font size={3}>{`Sorry no songs found that contain letter ${document.getElementById('_d_search_all').value}`}</font></code>
+												</td>
+											</tr>
+										
+							</tbody>
+						</table>
+					</div>
+				)
+			}
 			}
 		}
 			const dCapStyle={width:"100%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center"};
@@ -695,7 +743,7 @@
 		
 		//class ended
 		
-		const blackBodyStyle={width:"99%",height:"1220px",backgroundColor:"black",position:"absolute",zIndex:"2"};
+		const blackBodyStyle={width:"99%",height:"1220px",backgroundColor:"transparent",position:"absolute",zIndex:"2"};
 		const popUpStyle={width:"50%",height:"400px",position:"absolute",marginLeft:"25%",marginRight:"25%",marginBottom:"10%",marginTop:"10%",backgroundColor:"white",zIndex:"2"};
 		const popCutterStyle={width:"100%",height:"45px",backgroundColor:"#3f4360"};
 		const popCotterInnerStyle_1={width:"90%",height:"100%",display:"inline",float:"left"};
@@ -709,12 +757,44 @@
 				this.state = {
 				};
 				this._mm_rndr_clk_go=this._mm_rndr_clk_go.bind(this);
+				this.componentWillMount=this.componentWillMount.bind(this);
+				this.componentWillMount=this.componentWillMount.bind(this);
+			}
+			componentWillMount(){
+				var opacityO = new CustomEvent(
+					"opacity", 
+					{
+					detail: {
+						message: "0.2",
+						time: new Date(),
+					},
+					bubbles: false,
+					cancelable: false
+					}
+					);
+
+					window.dispatchEvent(opacityO);
+			}
+			componentWillUnmount(){
+				var opacityO = new CustomEvent(
+					"opacity", 
+					{
+					detail: {
+						message: "",
+						time: new Date(),
+					},
+					bubbles: false,
+					cancelable: false
+					}
+					);
+
+					window.dispatchEvent(opacityO);
 			}
 			_mm_rndr_clk_go(evt){
 				evt.preventDefault();
 				evt.stopPropagation();
 				//alert("hello")
-				ReactDOM.unmountComponentAtNode(document.getElementById('_pop_up'))
+				ReactDOM.unmountComponentAtNode(document.getElementById('_js_root_animation_style'))
 			}
 			render(){
 				return (
@@ -859,9 +939,9 @@
 		}
 	}
 		
-		window.addEventListener('load',function(evt){
+		/*window.addEventListener('load',function(evt){
 					domInit();
-				},true);
+				},true);*/
 		/*document.getElementsByTagName("img").addEventListener('click',function(evt){
 						evt.preventDefault();
 						evt.stopPropagation();
@@ -882,12 +962,12 @@
 				_mm_letme_clk(evt){
 					evt.preventDefault();
 					evt.stopPropagation();
-					console.log(document.getElementById('_pop_up').hasChildNodes())
-					if(typeof document.getElementById('_pop_up').children[0] === "undefined"){
-						ReactDOM.render(<Popup />,document.getElementById('_pop_up'))
+					console.log(document.getElementById('_js_root_animation_style').hasChildNodes())
+					if(typeof document.getElementById('_js_root_animation_style').children[0] === "undefined"){
+						ReactDOM.render(<Popup />,document.getElementById('_js_root_animation_style'))
 					}else{
-						ReactDOM.unmountComponentAtNode(document.getElementById('_pop_up'));
-						ReactDOM.render(<Popup />,document.getElementById('_pop_up'))
+						ReactDOM.unmountComponentAtNode(document.getElementById('_js_root_animation_style'));
+						ReactDOM.render(<Popup />,document.getElementById('_js_root_animation_style'))
 					}
 				}
 				_pageAtTextaChng(evt){
@@ -919,7 +999,7 @@
 							<div id="_wrapper_btn" style={{width:"100%",height:"30%",maxHeight:"30%"}}>
 								<input type="button" id="_snd" style={{display:"inline",float:"left",backgroundColor:"transparent",fontFamily:"cursive",borderRadius:"50%"}} value="Share" />
 								<input type="button" style={{display:"inline",float:"left",marginLeft:"15%",backgroundColor:"transparent",borderColor:"transparent",fontFamily:"cursive",color:this.state.dColor,cursor:"pointer"}} value={this.state.char-this.state.cur+" charecter left"} disabled="true"/>
-								<input type="button" id="_snd" style={{display:"inline",float:"right",backgroundColor:"transparent",fontFamily:"cursive",cursor:"pointer",borderRadius:"50%"}} value="Attach" onClick={this._mm_letme_clk} />
+								<input type="button" id="_attach" style={{display:"inline",float:"right",backgroundColor:"transparent",fontFamily:"cursive",cursor:"pointer",borderRadius:"50%"}} value="Attach" onClick={this._mm_letme_clk} />
 							</div>
 						</div>
 					)
@@ -971,7 +1051,7 @@
 					})
 			}
 			componentDidMount(){
-				domInitX();
+				//domInitX();
 			}
 			render(){
 				return (
