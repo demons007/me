@@ -168,7 +168,78 @@ app.get('/lfS',(req,res) => {
 	res.end();
 })
 
+app.get('/allMyMoreFacesAvailable',(req,res) => {
+	let s_c_a=decrypt(req.query.s_a);
+	let rCount=req.query.r_count;
+	let driverX = neo4j.driver("bolt://hobby-panhpmpgjildgbkepcdcklol.dbs.graphenedb.com:24786", neo4j.auth.basic("rita", "b.PuhuqVThYfCn.fvurl1e25g7fzyCI"));
+		let sessionX = driverX.session();
+		sessionX
+			.run(`match (ee:Rita) where not ()-[:LINKED]->(ee) and ee.email <> "${s_c_a}" with ee optional match (ee)-[:HAS_MANDATORY_DP]->(ff) return collect(distinct [ee.name,ee.email,ee.gender,ee.interest,ee.dob,ff.title])[${5*rCount}..${10*rCount}] as AllFace`)
+			.then( function(resultX){
+				console.log("test data")
+				console.log("all faces together")
+				console.log(resultX.records[0].get("AllFace"));
+				let ar=resultX.records[0].get("AllFace")
+				res.setHeader("Content-Type", "application/json");
+				res.write(JSON.stringify({ob:ar}));
+				res.end();
+				driverX.close();
+				sessionX.close();
+			}).catch((e)=>{
+				console.log(e);
+			})
+})
+
+app.get('/linkMyFacePlease',(req,res) => {
+	console.log(req.query.s_a);
+	let s_c_a=decrypt(req.query.s_a);
+	let l_o_a=req.query.l_o;
+	let driverX = neo4j.driver("bolt://hobby-panhpmpgjildgbkepcdcklol.dbs.graphenedb.com:24786", neo4j.auth.basic("rita", "b.PuhuqVThYfCn.fvurl1e25g7fzyCI"));
+		let sessionX = driverX.session();
+		sessionX
+			.run(`match (ee:Rita) where ee.email="${s_c_a}" with ee optional match (ff:Rita) where ff.email="${l_o_a}" merge (ee)-[:LINKED_R]-(ff)`)
+			.then(function(){
+				return sessionX.run(`match (ee:Rita) where not ()-[:LINKED]->(ee) and ee.email <> "${s_c_a}" with ee optional match (ee)-[:HAS_MANDATORY_DP]->(ff) return collect(distinct [ee.name,ee.email,ee.gender,ee.interest,ee.dob,ff.title])[0..5] as AllFace`)
+			})
+			.then( function(resultX){
+				console.log("test data")
+				console.log("all faces together")
+				console.log(resultX.records[0].get("AllFace"));
+				let ar=resultX.records[0].get("AllFace")
+				res.setHeader("Content-Type", "application/json");
+				res.write(JSON.stringify({ob:ar}));
+				res.end();
+				driverX.close();
+				sessionX.close();
+			}).catch((e)=>{
+				console.log(e);
+			})
+})
+
+app.get('/allMyFacesAvailable',(req,res) => {
+	console.log(req.query.s_a);
+	let s_c_a=decrypt(req.query.s_a);
+	let driverX = neo4j.driver("bolt://hobby-panhpmpgjildgbkepcdcklol.dbs.graphenedb.com:24786", neo4j.auth.basic("rita", "b.PuhuqVThYfCn.fvurl1e25g7fzyCI"));
+		let sessionX = driverX.session();
+		sessionX
+			.run(`match (ee:Rita) where not ()-[:LINKED]->(ee) and ee.email <> "${s_c_a}" with ee optional match (ee)-[:HAS_MANDATORY_DP]->(ff) return collect(distinct [ee.name,ee.email,ee.gender,ee.interest,ee.dob,ff.title])[0..5] as AllFace`)
+			.then( function(resultX){
+				console.log("test data")
+				console.log("all faces together")
+				console.log(resultX.records[0].get("AllFace"));
+				let ar=resultX.records[0].get("AllFace")
+				res.setHeader("Content-Type", "application/json");
+				res.write(JSON.stringify({ob:ar}));
+				res.end();
+				driverX.close();
+				sessionX.close();
+			}).catch((e)=>{
+				console.log(e);
+			})
+})
+
 app.get('/linkMyFace',(req,res) => {
+
 	console.log(req.query.s_a);
 	res.end();
 })
@@ -480,6 +551,15 @@ if(mn.get('email') && mn.get('name') && mn.get('password')){
 }
 })
 */
+
+app.get('/shopping',(req,res) => {
+	res.sendFile(__dirname+'/public/lfShop.html')
+})
+
+app.get('/shopOwner',(req,res) => {
+	res.sendFile(__dirname+'/public/lfShopOwner.html')
+})
+
 app.listen(app.get('port'), () => {
   console.log('Node app is running on port', app.get('port'));
 });
