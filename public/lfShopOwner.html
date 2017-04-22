@@ -1,0 +1,314 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>linkedFace-we link faces together</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+	<style type="text/css">
+		#_head{width:100%;height:65px;background-color:#3f4360}
+		#_body{width:100%;height:1200px;background-color:#eaeff2;margin-top:15px;}
+		#_body_p_1{width:35%;height:100%;display:inline;float:left;}
+		#_body_p_2{width:40%;height:100%;display:inline;float:left;}
+		#_body_p_3{width:25%;height:100%;display:inline;float:left;}
+		#_p_3_1_dp{width: 100%;height: 20%}
+		#_p_3_2_cart{width: 100%;height: 40%}
+		#_p_3_3_history{width: 100%;height: 40%}
+		#_dp_infy{width: 50%;height:100%;display: inline;float: left;}
+		#_dp_img{width: 50%;height:100%;display: inline;float: right;}
+		#_b_d_2_1{width:100%;height: 10%;}
+		#_b_d_2_2{width:100%;height: 90%;}
+	</style>
+	<style type="text/css">
+		html::-webkit-scrollbar {
+    			width: 0px;  /* remove scrollbar space */
+    			background: transparent;  /* optional: just make scrollbar invisible */
+		}
+		._categories::-webkit-scrollbar {
+    			width: 0px;  /* remove scrollbar space */
+    			background: transparent;  /* optional: just make scrollbar invisible */
+		}
+	</style>
+	<style type="text/css">
+		#_head_p_p_1{width:15%;height:100%;display:inline;float:left}
+		#_head_p_p_2{width:15%;height:100%;display:inline;float:left}
+		#_head_p_p_3{width:5%;height:100%;display:inline;float:left}
+		#_head_p_p_4{width:30%;height:100%;display:inline;float:left}
+		#_head_p_p_5{width:5%;height:100%;display:inline;float:left}
+		#_head_p_p_6{width:10%;height:100%;display:inline;float:left}
+		#_head_p_p_7{width:10%;height:100%;display:inline;float:left}
+		#_head_p_p_8{width:10%;height:100%;display:inline;float:left}
+		#_head_p_p_1_p_1{width:70%;height:100%;display:inline;float:left;}
+		#_head_p_p_1_p_2{width:30%;height:100%;display:inline;float:right;}
+	</style>
+	<script type="text/javascript">
+	window.addEventListener("opacity",(evt) => {
+		 		console.log(evt.detail.message+"hi")
+		 		console.log("i am")
+		 		document.getElementById("_head").style.opacity=evt.detail.message;
+		 		document.getElementById("_body").style.opacity=evt.detail.message;
+		 	},false)
+	</script>
+</head>
+<body>
+<div id="_js_root_animation"></div>
+<div id="_head">
+	<div id="_head_p_p_1">
+		<div id="_head_p_p_1_p_1">
+		</div>
+		<div id="_head_p_p_1_p_2">
+		</div>
+			<script type="text/babel">
+				const logoDomStyle={width:"100%",height:"100%"};
+				const imgStyle={width:"100%",height:"100%",borderRadius:"50%"};
+				class DomainLogo extends React.Component {
+					constructor(props){
+						super(props);
+						this.state = {
+							log:"logo.jpg"
+						};
+					}
+					render(){
+						return (
+							<div id="_dom_logo" style={logoDomStyle}>
+								<img src={this.state.log} style={imgStyle} />
+							</div>
+						)
+					}
+				}
+				ReactDOM.render(<DomainLogo />,document.getElementById('_head_p_p_1_p_2'))
+			</script>
+	</div>
+	<div id="_head_p_p_2">
+	</div>
+		<script type="text/babel">
+			const dNameStyle={width:"100%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center",textAlign:"center"};
+			const codeStyleDname={fontFamily:"cursive",cursor:"pointer"}
+			class DomainNameCaption extends React.Component {
+				constructor(props){
+					super(props);
+					this.state = {
+						name:"linkedFace",
+						Sname:"we link faces together"
+					};
+				}
+				render(){
+					return (
+						<div id="_mm_d_caption_name" style={dNameStyle}>
+							<code style={codeStyleDname}>
+								<font size={4} color="white">{this.state.name}</font><br /><font size={2} color="white">{this.state.Sname}</font>
+							</code>
+						</div>
+					)
+				}
+			}
+			ReactDOM.render(<DomainNameCaption />,document.getElementById('_head_p_p_2'))
+		</script>
+	<div id="_head_p_p_3">
+	</div>
+	<div id="_head_p_p_4">
+	</div>
+	<div id="_head_p_p_5">
+	</div>
+	<div id="_head_p_p_6">
+	</div>
+	<div id="_head_p_p_7">
+	</div>
+	<div id="_head_p_p_8">
+	</div>
+</div>
+<div id="_body">
+	<div id="_body_p_1">1
+	</div>
+	<div id="_body_p_2">
+		<div id="_b_d_2_1">
+		</div>
+		<script type="text/babel">
+		class NewShopRawData extends React.Component {
+			constructor(props){
+				super(props);
+				this.state = {
+
+				};
+				this.componentWillMount=this.componentWillMount.bind(this);
+				this.componentWillUnmount=this.componentWillUnmount.bind(this);
+				this._remove_me_am_done=this._remove_me_am_done.bind(this);
+			}
+			_remove_me_am_done(evt){
+				
+				console.log("am");
+				ReactDOM.unmountComponentAtNode(document.getElementById('_js_root_animation'))
+			}
+			componentWillUnmount(){
+				var opacityO = new CustomEvent(
+					"opacity", 
+					{
+					detail: {
+						message: "1",
+						time: new Date(),
+					},
+					bubbles: false,
+					cancelable: false
+					}
+				);
+
+				window.dispatchEvent(opacityO);
+			}
+			componentWillMount(){
+				var opacityO = new CustomEvent(
+					"opacity", 
+					{
+					detail: {
+						message: "0.1",
+						time: new Date(),
+					},
+					bubbles: false,
+					cancelable: false
+					}
+				);
+
+				window.dispatchEvent(opacityO);
+			}
+			render(){
+				return (
+					<div style={{width:"97%",height:"1240px",position:"absolute",zIndex:2}} >
+						<div id="_p_head_shop_new_raw" style={{width:"100%",height:"60px",display:"flex",justifyContent:"flex-end",alignItems:"center"}} >
+							<img src="cancel.png" style={{width:"60px",height:"60px",cursor:"pointer"}} onClick={this._remove_me_am_done} />
+						</div>
+						<div style={{width:"100%",height:"1180px"}} >
+							<div style={{width:"33%",height:"100%",display:"inline",float:"left"}} >
+								
+							</div>
+							<div style={{width:"33%",height:"100%",display:"inline",float:"left"}} >
+								<div style={{width:"100%",height:"50px",display:"flex",justifyContent:"center",alignItems:"center"}} >
+								</div>
+								<div style={{width:"100%",height:"50px",display:"flex",justifyContent:"center",alignItems:"center"}} >
+								</div>
+							</div>
+							<div style={{width:"33%",height:"100%",display:"inline",float:"right"}} >
+								
+							</div>
+						</div>
+					</div>
+				);
+			}
+		}
+		class WelcomeShopOwner extends React.Component {
+			constructor(props){
+				super(props);
+				this.state = {
+					message:"Welcome to the global shop union - ",
+					tom:" - to create new virtual shop."
+				};
+				this._my_new_shop=this._my_new_shop.bind(this);
+			}
+			_my_new_shop(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				ReactDOM.render(<NewShopRawData />,document.getElementById('_js_root_animation'))
+			}
+			render(){
+				return (
+					<div style={{width:"100%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center",textAlign:"center"}}>
+						<code style={{fontFamily:"cursive"}} >
+							<font size={5}>
+								{this.state.message}
+							</font><font color="blue" style={{cursor:"pointer"}} size={4} onClick={this._my_new_shop}>
+								Click
+							</font><font size={5}>
+								{this.state.tom}
+							</font>
+						</code>
+					</div>
+				);
+			}
+		}
+		ReactDOM.render(<WelcomeShopOwner />,document.getElementById('_b_d_2_1'))
+		</script>
+		<div id="_b_d_2_2">
+		</div>
+		<script type="text/babel">
+			class YourShops extends React.Component {
+				constructor(props){
+					super(props);
+					this.state = {
+						myShop:this.props.MyShop
+					};
+				}
+				render(){
+					return (
+						<div style={{width:"100%",height:"100%"}} >
+							<div style={{width:"100%",height:"5%"}} >
+								<div style={{width:"100%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center",textAlign:"center"}} >
+									<code style={{fontFamily:"cursive"}} ><font size={5}> Your registered shops : -</font></code>
+								</div>
+							</div>
+							<div style={{width:"100%",height:"95%",overflowY:"scroll"}} >
+								
+							</div>
+						</div>
+					);
+				}
+			}
+			ReactDOM.render(<YourShops />,document.getElementById('_b_d_2_2'))
+		</script>
+	</div>
+	
+	<div id="_body_p_3">
+		<div id="_p_3_1_dp">
+			<div id="_dp_infy">1
+			</div>
+			<script type="text/babel">
+				class InfyContPsudo extends React.Component {
+					constructor(props){
+						super(props);
+						this.state = {
+							dprc:"a.jpg"
+						};
+					}
+					render(){
+						return (
+							<div style={{width:"100%",height:"100%",display:"flex",alignItems:"center"}}>
+								<div style={{width:"100%",height:"70%",display:"flex",alignItems:"center",justifyContent:"center"}}>
+									<code style={{fontFamily:"cursive",cursor:"pointer"}} >
+										<font size={4}>
+											Welcome Ajay
+										</font>
+									</code>
+								</div>
+							</div>
+						)
+					}
+				}
+				ReactDOM.render(<InfyContPsudo />,document.getElementById('_dp_infy'));
+			</script>
+
+			<div id="_dp_img">
+			</div>
+			<script type="text/babel">
+				class ImgContPsudo extends React.Component {
+					constructor(props){
+						super(props);
+						this.state = {
+							dprc:"a.jpg"
+						};
+					}
+					render(){
+						return (
+							<div style={{width:"100%",height:"100%",display:"flex",alignItems:"center"}}>
+								<img src={this.state.dprc} style={{width:"100%",height:"70%"}} />
+							</div>
+						)
+					}
+				}
+				ReactDOM.render(<ImgContPsudo />,document.getElementById('_dp_img'));
+			</script>
+		</div>
+		<div id="_p_3_2_cart">2
+		</div>
+		<div id="_p_3_3_history">3
+		</div>
+	</div>
+</div>
+</body>
+</html>
