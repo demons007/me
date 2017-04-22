@@ -11,6 +11,11 @@
 		#_body_p_1{width:50%;height:100%;display:inline;float:left;}
 		#_body_p_2{width:25%;height:100%;display:inline;float:left;}
 		#_body_p_3{width:25%;height:100%;display:inline;float:left;}
+		#_p_3_1_dp{width: 100%;height: 20%}
+		#_p_3_2_cart{width: 100%;height: 40%}
+		#_p_3_3_history{width: 100%;height: 40%}
+		#_dp_infy{width: 50%;height:100%;display: inline;float: left;}
+		#_dp_img{width: 50%;height:100%;display: inline;float: right;}
 	</style>
 	<style type="text/css">
 		html::-webkit-scrollbar {
@@ -22,9 +27,84 @@
     			background: transparent;  /* optional: just make scrollbar invisible */
 		}
 	</style>
+	<style type="text/css">
+		#_head_p_p_1{width:15%;height:100%;display:inline;float:left}
+		#_head_p_p_2{width:15%;height:100%;display:inline;float:left}
+		#_head_p_p_3{width:5%;height:100%;display:inline;float:left}
+		#_head_p_p_4{width:30%;height:100%;display:inline;float:left}
+		#_head_p_p_5{width:5%;height:100%;display:inline;float:left}
+		#_head_p_p_6{width:10%;height:100%;display:inline;float:left}
+		#_head_p_p_7{width:10%;height:100%;display:inline;float:left}
+		#_head_p_p_8{width:10%;height:100%;display:inline;float:left}
+		#_head_p_p_1_p_1{width:70%;height:100%;display:inline;float:left;}
+		#_head_p_p_1_p_2{width:30%;height:100%;display:inline;float:right;}
+	</style>
 </head>
 <body>
 <div id="_head">
+	<div id="_head_p_p_1">
+		<div id="_head_p_p_1_p_1">
+		</div>
+		<div id="_head_p_p_1_p_2">
+		</div>
+			<script type="text/babel">
+				const logoDomStyle={width:"100%",height:"100%"};
+				const imgStyle={width:"100%",height:"100%",borderRadius:"50%"};
+				class DomainLogo extends React.Component {
+					constructor(props){
+						super(props);
+						this.state = {
+							log:"logo.jpg"
+						};
+					}
+					render(){
+						return (
+							<div id="_dom_logo" style={logoDomStyle}>
+								<img src={this.state.log} style={imgStyle} />
+							</div>
+						)
+					}
+				}
+				ReactDOM.render(<DomainLogo />,document.getElementById('_head_p_p_1_p_2'))
+			</script>
+	</div>
+	<div id="_head_p_p_2">
+	</div>
+		<script type="text/babel">
+			const dNameStyle={width:"100%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center",textAlign:"center"};
+			const codeStyleDname={fontFamily:"cursive",cursor:"pointer"}
+			class DomainNameCaption extends React.Component {
+				constructor(props){
+					super(props);
+					this.state = {
+						name:"linkedFace",
+						Sname:"we link faces together"
+					};
+				}
+				render(){
+					return (
+						<div id="_mm_d_caption_name" style={dNameStyle}>
+							<code style={codeStyleDname}>
+								<font size={4} color="white">{this.state.name}</font><br /><font size={2} color="white">{this.state.Sname}</font>
+							</code>
+						</div>
+					)
+				}
+			}
+			ReactDOM.render(<DomainNameCaption />,document.getElementById('_head_p_p_2'))
+		</script>
+	<div id="_head_p_p_3">
+	</div>
+	<div id="_head_p_p_4">
+	</div>
+	<div id="_head_p_p_5">
+	</div>
+	<div id="_head_p_p_6">
+	</div>
+	<div id="_head_p_p_7">
+	</div>
+	<div id="_head_p_p_8">
+	</div>
 </div>
 <div id="_body">
 	<div id="_body_p_1">1
@@ -777,6 +857,187 @@
 			}
 		}
 
+		class HomeDecorationInside extends React.Component {
+			constructor(props){
+				super(props);
+				this.state = {
+					mp:this.props.Mp
+				};
+			}
+			render(){
+				return (
+					<div style={{width:"100%"}}>
+						<ol style={{listStyleType:"disc"}}>
+						{
+							this.state.mp.map( (a,b) => {
+									return (
+										<ul key={b}><li ><code style={{fontFamily:"cursive",cursor:"pointer"}}><font size={3} onClick={this._electronics_category_in}>{a}</font></code></li>
+										<li style={{display:"none"}}><div ref="_electronics_after_div_inside_electronics" ></div></li></ul>
+									);
+								} )
+						}
+						</ol>
+					</div>
+				);
+			}
+		}
+
+
+		class FurnitureInside extends React.Component {
+			constructor(props){
+				super(props);
+				this.state = {
+					mp:this.props.Mp
+				};
+			}
+			render(){
+				return (
+					<div style={{width:"100%"}}>
+						<ol style={{listStyleType:"disc"}}>
+						{
+							this.state.mp.map( (a,b) => {
+									return (
+										<ul key={b}><li ><code style={{fontFamily:"cursive",cursor:"pointer"}}><font size={3} onClick={this._electronics_category_in}>{a}</font></code></li>
+										<li style={{display:"none"}}><div ref="_electronics_after_div_inside_electronics" ></div></li></ul>
+									);
+								} )
+						}
+						</ol>
+					</div>
+				);
+			}
+		}
+
+
+		class FoodInside extends React.Component {
+			constructor(props){
+				super(props);
+				this.state = {
+					mp:this.props.Mp
+				};
+			}
+			render(){
+				return (
+					<div style={{width:"100%"}}>
+						<ol style={{listStyleType:"disc"}}>
+						{
+							this.state.mp.map( (a,b) => {
+									return (
+										<ul key={b}><li ><code style={{fontFamily:"cursive",cursor:"pointer"}}><font size={3} onClick={this._electronics_category_in}>{a}</font></code></li>
+										<li style={{display:"none"}}><div ref="_electronics_after_div_inside_electronics" ></div></li></ul>
+									);
+								} )
+						}
+						</ol>
+					</div>
+				);
+			}
+		}
+
+
+		class JewelInside extends React.Component {
+			constructor(props){
+				super(props);
+				this.state = {
+					mp:this.props.Mp
+				};
+			}
+			render(){
+				return (
+					<div style={{width:"100%"}}>
+						<ol style={{listStyleType:"disc"}}>
+						{
+							this.state.mp.map( (a,b) => {
+									return (
+										<ul key={b}><li ><code style={{fontFamily:"cursive",cursor:"pointer"}}><font size={3} onClick={this._electronics_category_in}>{a}</font></code></li>
+										<li style={{display:"none"}}><div ref="_electronics_after_div_inside_electronics" ></div></li></ul>
+									);
+								} )
+						}
+						</ol>
+					</div>
+				);
+			}
+		}
+
+
+		class BooksInside extends React.Component {
+			constructor(props){
+				super(props);
+				this.state = {
+					mp:this.props.Mp
+				};
+			}
+			render(){
+				return (
+					<div style={{width:"100%"}}>
+						<ol style={{listStyleType:"disc"}}>
+						{
+							this.state.mp.map( (a,b) => {
+									return (
+										<ul key={b}><li ><code style={{fontFamily:"cursive",cursor:"pointer"}}><font size={3} onClick={this._electronics_category_in}>{a}</font></code></li>
+										<li style={{display:"none"}}><div ref="_electronics_after_div_inside_electronics" ></div></li></ul>
+									);
+								} )
+						}
+						</ol>
+					</div>
+				);
+			}
+		}
+
+
+		class GymsInside extends React.Component {
+			constructor(props){
+				super(props);
+				this.state = {
+					mp:this.props.Mp
+				};
+			}
+			render(){
+				return (
+					<div style={{width:"100%"}}>
+						<ol style={{listStyleType:"disc"}}>
+						{
+							this.state.mp.map( (a,b) => {
+									return (
+										<ul key={b}><li ><code style={{fontFamily:"cursive",cursor:"pointer"}}><font size={3} onClick={this._electronics_category_in}>{a}</font></code></li>
+										<li style={{display:"none"}}><div ref="_electronics_after_div_inside_electronics" ></div></li></ul>
+									);
+								} )
+						}
+						</ol>
+					</div>
+				);
+			}
+		}
+
+
+		class SportsInside extends React.Component {
+			constructor(props){
+				super(props);
+				this.state = {
+					mp:this.props.Mp
+				};
+			}
+			render(){
+				return (
+					<div style={{width:"100%"}}>
+						<ol style={{listStyleType:"disc"}}>
+						{
+							this.state.mp.map( (a,b) => {
+									return (
+										<ul key={b}><li ><code style={{fontFamily:"cursive",cursor:"pointer"}}><font size={3} onClick={this._electronics_category_in}>{a}</font></code></li>
+										<li style={{display:"none"}}><div ref="_electronics_after_div_inside_electronics" ></div></li></ul>
+									);
+								} )
+						}
+						</ol>
+					</div>
+				);
+			}
+		}
+
 
 		class CategoryFilter extends React.Component {
 			constructor(props){
@@ -786,10 +1047,101 @@
 				this._kids_category=this._kids_category.bind(this);
 				this._electronics_category=this._electronics_category.bind(this);
 				this._kitchen_category=this._kitchen_category.bind(this);
+				this._home_decoration_category=this._home_decoration_category.bind(this);
+				this._furniture_category=this._furniture_category.bind(this);
+				this._foods_category=this._foods_category.bind(this);
+				this._jewel_category=this._jewel_category.bind(this);
+				this._books_category=this._books_category.bind(this);
+				this._gym_category=this._gym_category.bind(this);
+				this._sports_category=this._sports_category.bind(this);
+			}
+			_sports_category(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				if(this.refs._sports_after_div.parentElement.style.display=="none"){
+					this.refs._sports_after_div.parentElement.style.display="block";
+					ReactDOM.render(<SportsInside Mp={["Cricket","Badminton","Football","Skating","Cycling","Camping","Swimming","Table Tennis","Tennis"]} />,this.refs._sports_after_div)
+				}else{
+					ReactDOM.unmountComponentAtNode(this.refs._sports_after_div)
+					this.refs._sports_after_div.parentElement.style.display="none";
+				}
+			}
+			_gym_category(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				if(this.refs._gym_after_div.parentElement.style.display=="none"){
+					this.refs._gym_after_div.parentElement.style.display="block";
+					ReactDOM.render(<GymsInside Mp={["Gloves","AB Exerciser","Yoga Mats","Home Gyms","Cardio Equipments"]} />,this.refs._gym_after_div)
+				}else{
+					ReactDOM.unmountComponentAtNode(this.refs._gym_after_div)
+					this.refs._gym_after_div.parentElement.style.display="none";
+				}
+			}
+			_books_category(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				if(this.refs._books_after_div.parentElement.style.display=="none"){
+					this.refs._books_after_div.parentElement.style.display="block";
+					ReactDOM.render(<BooksInside Mp={["Entrance Exams","Academics","Literature","Fiction","Indian Writing","Biographies","Autobiographies","Comics","Business","Pen","Note Book","Diaries","Keychains","Calculators"]} />,this.refs._books_after_div)
+				}else{
+					ReactDOM.unmountComponentAtNode(this.refs._books_after_div)
+					this.refs._books_after_div.parentElement.style.display="none";
+				}
+			}
+			_jewel_category(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				if(this.refs._jewel_after_div.parentElement.style.display=="none"){
+					this.refs._jewel_after_div.parentElement.style.display="block";
+					ReactDOM.render(<JewelInside Mp={["Gold Jewellery","Silver Jewellery","Platinum Jewellery","Diamond Jewellery","Artificial Jewellery"]} />,this.refs._jewel_after_div)
+				}else{
+					ReactDOM.unmountComponentAtNode(this.refs._jewel_after_div)
+					this.refs._jewel_after_div.parentElement.style.display="none";
+				}
+			}
+			_foods_category(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				if(this.refs._food_after_div.parentElement.style.display=="none"){
+					this.refs._food_after_div.parentElement.style.display="block";
+					ReactDOM.render(<FoodInside Mp={["Uncooked","Cooked"]} />,this.refs._food_after_div)
+				}else{
+					ReactDOM.unmountComponentAtNode(this.refs._food_after_div)
+					this.refs._food_after_div.parentElement.style.display="none";
+				}
+			}
+			_furniture_category(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				if(this.refs._furniture_after_div.parentElement.style.display=="none"){
+					this.refs._furniture_after_div.parentElement.style.display="block";
+					ReactDOM.render(<FurnitureInside Mp={["Beds","Sofas","Dining Tables","TV Cabinates","Mattresses","Chairs","Storages","Bean Bags"]} />,this.refs._furniture_after_div)
+				}else{
+					ReactDOM.unmountComponentAtNode(this.refs._furniture_after_div)
+					this.refs._furniture_after_div.parentElement.style.display="none";
+				}
+			}
+			_home_decoration_category(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				if(this.refs._home_decoration_after_div.parentElement.style.display=="none"){
+					this.refs._home_decoration_after_div.parentElement.style.display="block";
+					ReactDOM.render(<HomeDecorationInside Mp={["Bedsheets","Curtains","Cushion","Pillow Covers","Blankets","Towels","Mats","Security Systems","Locks","Paintings","Clocks","Wall Shelves","Wall Decals","Showpieces","Lightening","Lamps","LED & CFL"]} />,this.refs._home_decoration_after_div)
+				}else{
+					ReactDOM.unmountComponentAtNode(this.refs._home_decoration_after_div)
+					this.refs._home_decoration_after_div.parentElement.style.display="none";
+				}
 			}
 			_kitchen_category(evt){
 				evt.preventDefault();
 				evt.stopPropagation();
+				if(this.refs._kitchen_after_div.parentElement.style.display=="none"){
+					this.refs._kitchen_after_div.parentElement.style.display="block";
+					ReactDOM.render(<KitchenInside Mp={["Pots","Pans","Pressure Cookers","Knifes","Gass Stoves","Coffee Mugs","Dinnerware","Glassware","Lunch Boxes","Flasks","Bottles","Containers"]} />,this.refs._kitchen_after_div)
+				}else{
+					ReactDOM.unmountComponentAtNode(this.refs._kitchen_after_div)
+					this.refs._kitchen_after_div.parentElement.style.display="none";
+				}
 			}
 			_electronics_category(evt){
 				evt.preventDefault();
@@ -807,7 +1159,7 @@
 				evt.stopPropagation();
 				if(this.refs._kids_after_div.parentElement.style.display=="none"){
 					this.refs._kids_after_div.parentElement.style.display="block";
-					ReactDOM.render(<KidsInside Mp={["Footwear","Top Wear","Bottom Wear","Groomings","SportsWear","Innerwear","Sleepwear","Winter Wear","Watches","Accessories","Ethenic"]} />,this.refs._kids_after_div)
+					ReactDOM.render(<KidsInside Mp={["Boy's Cloths","Girl's Cloths","Boy's Footwear","Girl's Footwear","Charecter Shoes","School Supplies","Toys","Baby Care","Study"]} />,this.refs._kids_after_div)
 				}else{
 					ReactDOM.unmountComponentAtNode(this.refs._kids_after_div)
 					this.refs._kids_after_div.parentElement.style.display="none";
@@ -856,20 +1208,22 @@
 							<li style={{display:"none"}}><div ref="_kids_after_div" ></div></li>
 							<li><code style={{fontFamily:"cursive",cursor:"pointer"}}><font size={4} onClick={this._electronics_category}>Electronics</font></code></li>
 							<li style={{display:"none"}}><div ref="_electronics_after_div" ></div></li>
-							<li><code style={{fontFamily:"cursive"}}><font size={4} onClick={this._kitchen_category}>Kitchens</font></code></li>
-							<li style={{display:"none"}}><div ref="_kitchen_after_div" >hi</div></li>
-							<li><code style={{fontFamily:"cursive"}}><font size={4}>Home Decoration</font></code></li>
-							<li style={{display:"none"}}><div ref="_home_decoration_after_div" >hi</div></li>
-							<li><code style={{fontFamily:"cursive"}}><font size={4}>Furnitures</font></code></li>
-							<li style={{display:"none"}}><div ref="_furniture_after_div" >hi</div></li>
-							<li><code style={{fontFamily:"cursive"}}><font size={4}>Foods</font></code></li>
-							<li style={{display:"none"}}><div ref="_food_after_div" >hi</div></li>
-							<li><code style={{fontFamily:"cursive"}}><font size={4}>Jewellery</font></code></li>
-							<li style={{display:"none"}}><div ref="_jewel_after_div" >hi</div></li>
-							<li><code style={{fontFamily:"cursive"}}><font size={4}>Studies and books</font></code></li>
-							<li style={{display:"none"}}><div ref="_books_after_div" >hi</div></li>
-							<li><code style={{fontFamily:"cursive"}}><font size={4}>Fitness and gyms</font></code></li>
-							<li style={{display:"none"}}><div ref="_gym_after_div" >hi</div></li>
+							<li><code style={{fontFamily:"cursive",cursor:"pointer"}}><font size={4} onClick={this._kitchen_category}>Kitchens</font></code></li>
+							<li style={{display:"none"}}><div ref="_kitchen_after_div" ></div></li>
+							<li><code style={{fontFamily:"cursive",cursor:"pointer"}}><font size={4} onClick={this._home_decoration_category}>Home Decoration</font></code></li>
+							<li style={{display:"none"}}><div ref="_home_decoration_after_div" ></div></li>
+							<li><code style={{fontFamily:"cursive",cursor:"pointer"}}><font size={4} onClick={this._furniture_category}>Furnitures</font></code></li>
+							<li style={{display:"none"}}><div ref="_furniture_after_div" ></div></li>
+							<li><code style={{fontFamily:"cursive",cursor:"pointer"}}><font size={4} onClick={this._foods_category}>Foods</font></code></li>
+							<li style={{display:"none"}}><div ref="_food_after_div" ></div></li>
+							<li><code style={{fontFamily:"cursive",cursor:"pointer"}}><font size={4} onClick={this._jewel_category}>Jewellery</font></code></li>
+							<li style={{display:"none"}}><div ref="_jewel_after_div" ></div></li>
+							<li><code style={{fontFamily:"cursive",cursor:"pointer"}}><font size={4} onClick={this._books_category}>Studies and books</font></code></li>
+							<li style={{display:"none"}}><div ref="_books_after_div" ></div></li>
+							<li><code style={{fontFamily:"cursive",cursor:"pointer"}}><font size={4} onClick={this._gym_category}>Fitness and gyms</font></code></li>
+							<li style={{display:"none"}}><div ref="_gym_after_div" ></div></li>
+							<li><code style={{fontFamily:"cursive",cursor:"pointer"}}><font size={4} onClick={this._sports_category}>Sports</font></code></li>
+							<li style={{display:"none"}}><div ref="_sports_after_div" ></div></li>
 						</ol>
 						</div>
 					</div>
@@ -878,7 +1232,60 @@
 		}
 		ReactDOM.render(<CategoryFilter />,document.getElementById('_body_p_2'));
 	</script>
-	<div id="_body_p_3">3
+	<div id="_body_p_3">
+		<div id="_p_3_1_dp">
+			<div id="_dp_infy">1
+			</div>
+			<script type="text/babel">
+				class InfyContPsudo extends React.Component {
+					constructor(props){
+						super(props);
+						this.state = {
+							dprc:"a.jpg"
+						};
+					}
+					render(){
+						return (
+							<div style={{width:"100%",height:"100%",display:"flex",alignItems:"center"}}>
+								<div style={{width:"100%",height:"70%",display:"flex",alignItems:"center",justifyContent:"center"}}>
+									<code style={{fontFamily:"cursive",cursor:"pointer"}} >
+										<font size={4}>
+											Welcome Ajay
+										</font>
+									</code>
+								</div>
+							</div>
+						)
+					}
+				}
+				ReactDOM.render(<InfyContPsudo />,document.getElementById('_dp_infy'));
+			</script>
+
+			<div id="_dp_img">
+			</div>
+			<script type="text/babel">
+				class ImgContPsudo extends React.Component {
+					constructor(props){
+						super(props);
+						this.state = {
+							dprc:"a.jpg"
+						};
+					}
+					render(){
+						return (
+							<div style={{width:"100%",height:"100%",display:"flex",alignItems:"center"}}>
+								<img src={this.state.dprc} style={{width:"100%",height:"70%"}} />
+							</div>
+						)
+					}
+				}
+				ReactDOM.render(<ImgContPsudo />,document.getElementById('_dp_img'));
+			</script>
+		</div>
+		<div id="_p_3_2_cart">2
+		</div>
+		<div id="_p_3_3_history">3
+		</div>
 	</div>
 </div>
 </body>
